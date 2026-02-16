@@ -229,7 +229,7 @@ export default function TreeViewDemo() {
     <RichTreeView
       items={ITEMS}
       aria-label="file explorer"
-      defaultExpandedItems={['1', '1.1', '1.2', '1.2.2']}
+      defaultExpandedItems={['1']}
       defaultSelectedItems="1.1"
       sx={{ height: 'fit-content', flexGrow: 1, p: 1 }}
       itemChildrenIndentation={0}

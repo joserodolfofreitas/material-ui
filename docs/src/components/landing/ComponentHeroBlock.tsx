@@ -22,7 +22,7 @@ interface ComponentHeroBlockProps {
   title: string;
   gradientText?: string;
   description: string;
-  status: ProductStatus;
+  status?: ProductStatus;
   ctas: ComponentHeroCta[];
 }
 
@@ -71,9 +71,11 @@ export default function ComponentHeroBlock({
           maxWidth: 720,
         }}
       >
-        <Box sx={{ mb: 2, display: 'inline-flex' }}>
-          <StatusBadge status={status} size="medium" />
-        </Box>
+        {status && (
+          <Box sx={{ mb: 2, display: 'inline-flex' }}>
+            <StatusBadge status={status} size="medium" />
+          </Box>
+        )}
         <Typography variant="h1" sx={{ mb: 2 }}>
           {title}
           {gradientText && (

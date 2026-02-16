@@ -203,23 +203,19 @@ export default function HeroBlock({
                 (theme) => ({
                   display: { xs: 'none', md: 'block' },
                   position: 'absolute',
-                  top: '-15%',
-                  left: '-6%',
-                  width: '30%',
-                  height: '130%',
-                  background: `radial-gradient(ellipse 100% 70% at 0% 50%, ${
+                  top: '-50vh',
+                  left: '-50vw',
+                  width: '68vw',
+                  height: 'calc(100% + 50vh)',
+                  background: `linear-gradient(to right, ${
                     theme.palette.mode === 'dark'
                       ? theme.palette.primaryDark[900]
                       : theme.palette.common.white
                   } 0%, ${
                     theme.palette.mode === 'dark'
-                      ? alpha(theme.palette.primaryDark[900], 0.92)
-                      : alpha(theme.palette.common.white, 0.92)
-                  } 35%, ${
-                    theme.palette.mode === 'dark'
-                      ? alpha(theme.palette.primaryDark[900], 0.5)
-                      : alpha(theme.palette.common.white, 0.5)
-                  } 65%, ${
+                      ? theme.palette.primaryDark[900]
+                      : theme.palette.common.white
+                  } 85%, ${
                     theme.palette.mode === 'dark'
                       ? alpha(theme.palette.primaryDark[900], 0)
                       : alpha(theme.palette.common.white, 0)

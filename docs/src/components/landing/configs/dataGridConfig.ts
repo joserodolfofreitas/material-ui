@@ -1,4 +1,3 @@
-import type { ProductStatus } from 'docs/src/components/landing/marketingTheme';
 import type { Highlight } from 'docs/src/components/landing/HighlightsBlock';
 import type { UseCase } from 'docs/src/components/landing/UseCasesBlock';
 
@@ -7,7 +6,7 @@ export const dataGridHero = {
   gradientText: 'fast, customizable, and built to scale',
   description:
     'From simple tables to enterprise-grade data experiences - editing, filtering, sorting, grouping, pivoting, and AI-powered exploration. One component, every use case.',
-  status: 'stable' as ProductStatus,
+  status: undefined,
   ctas: [
     { label: 'Get started', href: '/x/react-data-grid/', variant: 'contained' as const },
     { label: 'View documentation', href: '/x/react-data-grid/getting-started/', variant: 'outlined' as const, color: 'secondary' as const },

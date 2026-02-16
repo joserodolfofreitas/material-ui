@@ -15,6 +15,8 @@ import {
 } from '@mui/x-data-grid-premium';
 import { useDemoData } from '@mui/x-data-grid-generator';
 import { LineChart } from '@mui/x-charts/LineChart';
+import { BarChart } from '@mui/x-charts/BarChart';
+import { PieChart } from '@mui/x-charts/PieChart';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
 import SendRounded from '@mui/icons-material/SendRounded';
 import SmartToyRounded from '@mui/icons-material/SmartToyRounded';
@@ -231,7 +233,7 @@ function AIChatPanel() {
         ]}
       >
         <SmartToyRounded sx={{ fontSize: 16, color: 'primary.main' }} />
-        <Typography sx={{ fontSize: 12, fontWeight: 700 }}>MUI Assistant</Typography>
+        <Typography sx={{ fontSize: 12, fontWeight: 700 }}>AI Assistant</Typography>
         <Box
           sx={{
             ml: 'auto', borderRadius: 99,
@@ -446,88 +448,126 @@ export default function LiveComponentShowcase() {
               <PivotingGrid />
             </Box>
             <Divider />
-            {/* Bottom strip: TreeView | LineChart | Slider */}
+            {/* Bottom strip: 2×2 charts on left | TreeView + Slider on right */}
             <Box
               sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row' },
+                display: { xs: 'none', sm: 'flex' },
+                flexDirection: 'row',
               }}
             >
-              {/* TreeView */}
-              <Box
-                sx={[
-                  (t) => ({
-                    flex: '0 0 auto',
-                    width: { sm: 200 },
-                    px: 1, py: 1,
-                    animation: `${fadeInUp} 0.7s ease-out 0.2s both`,
-                    '& .MuiTreeItem-root': { fontSize: '0.75rem' },
-                    display: { xs: 'none', sm: 'block' },
-                    borderRight: '1px solid',
-                    borderColor: t.palette.mode === 'dark' ? 'primaryDark.600' : 'grey.200',
-                  }),
-                ]}
-              >
-                <Typography sx={{ fontSize: 10, fontWeight: 700, color: 'text.secondary', mb: 0.5, textTransform: 'uppercase', letterSpacing: 0.5, px: 1 }}>
-                  Project files
-                </Typography>
-                <FolderTreeView />
-              </Box>
-              {/* Area LineChart */}
+              {/* 2×2 chart grid */}
               <Box
                 sx={{
-                  flex: '1 1 0',
-                  p: 1.5,
-                  animation: `${fadeInUp} 0.7s ease-out 0.3s both`,
-                  display: 'flex',
-                  alignItems: 'center',
+                  flex: 1,
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gridTemplateRows: '1fr 1fr',
                   minWidth: 0,
                 }}
               >
-                <LineChart
-                  series={[
-                    {
+                {/* Chart 1: Area line chart — Revenue */}
+                <Box sx={{ p: 0.5, animation: `${fadeInUp} 0.7s ease-out 0.2s both`, display: 'flex', alignItems: 'center' }}>
+                  <LineChart
+                    series={[{
                       data: [1200, 1800, 1400, 2200, 2800, 2400, 3100, 3600, 3200, 4000, 4400, 4800],
-                      label: 'Revenue',
-                      area: true,
-                      showMark: false,
-                      curve: 'natural',
-                      color: '#1976d2',
-                    },
-                    {
-                      data: [800, 1100, 900, 1500, 1900, 1600, 2100, 2500, 2200, 2800, 3100, 3400],
-                      label: 'Profit',
-                      area: true,
-                      showMark: false,
-                      curve: 'natural',
-                      color: '#9c27b0',
-                    },
-                  ]}
-                  xAxis={[{ data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], scaleType: 'point' }]}
-                  height={170}
-                  margin={{ top: 10, bottom: 20, left: 40, right: 10 }}
-                  hideLegend
-                  sx={{ '& .MuiAreaElement-root': { opacity: 0.15 } }}
-                />
+                      area: true, showMark: false, curve: 'natural', color: '#1976d2',
+                    }]}
+                    xAxis={[{ data: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'], scaleType: 'point' }]}
+                    height={120}
+                    margin={{ top: 8, bottom: 16, left: 30, right: 8 }}
+                    hideLegend
+                    sx={{ '& .MuiAreaElement-root': { opacity: 0.15 } }}
+                  />
+                </Box>
+                {/* Chart 2: Bar chart — Quarterly */}
+                <Box sx={{ p: 0.5, animation: `${fadeInUp} 0.7s ease-out 0.25s both`, display: 'flex', alignItems: 'center' }}>
+                  <BarChart
+                    series={[
+                      { data: [35, 44, 24, 34], color: '#1976d2' },
+                      { data: [51, 6, 49, 30], color: '#42a5f5' },
+                    ]}
+                    xAxis={[{ data: ['Q1', 'Q2', 'Q3', 'Q4'], scaleType: 'band' }]}
+                    height={120}
+                    margin={{ top: 8, bottom: 16, left: 30, right: 8 }}
+                    hideLegend
+                  />
+                </Box>
+                {/* Chart 3: Line chart — Sessions */}
+                <Box sx={{ p: 0.5, animation: `${fadeInUp} 0.7s ease-out 0.3s both`, display: 'flex', alignItems: 'center' }}>
+                  <LineChart
+                    series={[{
+                      data: [300, 900, 600, 1200, 1500, 1800, 2400, 2100, 2700, 3000, 2500, 3300],
+                      showMark: false, curve: 'natural', color: '#9c27b0',
+                    }, {
+                      data: [500, 700, 1100, 900, 1400, 1100, 1700, 2000, 1600, 2300, 2600, 2900],
+                      showMark: false, curve: 'natural', color: '#e91e63',
+                    }]}
+                    xAxis={[{ data: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'], scaleType: 'point' }]}
+                    height={120}
+                    margin={{ top: 8, bottom: 16, left: 30, right: 8 }}
+                    hideLegend
+                  />
+                </Box>
+                {/* Chart 4: Pie chart — Distribution */}
+                <Box sx={{ p: 0.5, animation: `${fadeInUp} 0.7s ease-out 0.35s both`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <PieChart
+                    series={[{
+                      data: [
+                        { id: 0, value: 45, label: 'Desktop', color: '#1976d2' },
+                        { id: 1, value: 30, label: 'Mobile', color: '#42a5f5' },
+                        { id: 2, value: 15, label: 'Tablet', color: '#9c27b0' },
+                        { id: 3, value: 10, label: 'Other', color: '#e0e0e0' },
+                      ],
+                      innerRadius: 24,
+                      paddingAngle: 2,
+                      cornerRadius: 3,
+                    }]}
+                    height={120}
+                    width={180}
+                    margin={{ top: 4, bottom: 4, left: 4, right: 4 }}
+                    hideLegend
+                  />
+                </Box>
               </Box>
-              {/* Slider */}
+              {/* TreeView (75%) + Slider (25%) */}
               <Box
-                sx={[
-                  (t) => ({
-                    flex: '0 0 auto',
-                    width: { sm: 180 },
-                    p: 1.5,
-                    borderLeft: { sm: '1px solid' },
-                    borderColor: t.palette.mode === 'dark' ? 'primaryDark.600' : 'grey.200',
+                sx={{
+                  flex: '0 0 auto',
+                  width: 160,
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                {/* TreeView */}
+                <Box
+                  sx={{
+                    flex: 3,
+                    px: 0.5, py: 0.5,
+                    animation: `${fadeInUp} 0.7s ease-out 0.25s both`,
+                    '& .MuiTreeItem-root': { fontSize: '0.7rem' },
+                    '& .MuiTreeItem-content': { py: 0, minHeight: 24 },
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Typography sx={{ fontSize: 9, fontWeight: 700, color: 'text.secondary', mb: 0.25, textTransform: 'uppercase', letterSpacing: 0.5, px: 0.5 }}>
+                    Project files
+                  </Typography>
+                  <FolderTreeView />
+                </Box>
+                {/* Slider */}
+                <Box
+                  sx={{
+                    flex: 1,
+                    px: 1, py: 0.75,
                     animation: `${fadeInUp} 0.7s ease-out 0.35s both`,
-                    display: { xs: 'none', sm: 'flex' },
+                    display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     '& > div': { maxWidth: 'none' },
-                  }),
-                ]}
-              >
-                <ThemeSlider />
+                  }}
+                >
+                  <ThemeSlider />
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -535,23 +575,37 @@ export default function LiveComponentShowcase() {
           {/* ---- Right column: AI chat + TaskCard ---- */}
           {isMd && (
             <Box
-              sx={[
-                (t) => ({
-                  width: 240,
-                  flexShrink: 0,
-                  borderLeft: '1px solid',
-                  borderColor: t.palette.mode === 'dark' ? 'primaryDark.600' : 'grey.200',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  animation: `${fadeInUp} 0.7s ease-out 0.2s both`,
-                }),
-              ]}
+              sx={{
+                width: 240,
+                flexShrink: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                animation: `${fadeInUp} 0.7s ease-out 0.2s both`,
+              }}
             >
-              {/* AI Chat */}
-              <Box sx={{ flex: 1, minHeight: 0 }}>
+              {/* AI Chat — extends up to cover the header "AI Enabled" area */}
+              <Box
+                sx={[
+                  (t) => ({
+                    flex: 1,
+                    minHeight: 0,
+                    position: 'relative',
+                    zIndex: 3,
+                    mt: '-38px',
+                    borderRadius: '12px 12px 0 0',
+                    boxShadow:
+                      t.palette.mode === 'dark'
+                        ? `0 -4px 24px ${alpha(t.palette.primary.main, 0.2)}, 0 8px 32px ${alpha(t.palette.primary.main, 0.25)}, 0 2px 12px ${alpha(t.palette.common.black, 0.4)}`
+                        : `0 -4px 24px ${alpha(t.palette.primary.main, 0.08)}, 0 8px 32px ${alpha(t.palette.primary.main, 0.12)}, 0 2px 12px ${alpha(t.palette.grey[400], 0.2)}`,
+                    bgcolor:
+                      t.palette.mode === 'dark'
+                        ? t.palette.primaryDark[800]
+                        : t.palette.common.white,
+                  }),
+                ]}
+              >
                 <AIChatPanel />
               </Box>
-              <Divider />
               {/* TaskCard */}
               <Box
                 sx={{

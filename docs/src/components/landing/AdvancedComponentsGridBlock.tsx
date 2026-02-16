@@ -26,7 +26,7 @@ interface AdvancedComponent {
   title: string;
   description: string;
   highlights: string[];
-  status: ProductStatus;
+  status?: ProductStatus;
   href: string;
 }
 
@@ -37,7 +37,6 @@ const components: AdvancedComponent[] = [
     description:
       'The fully featured grid for real products: fast, customizable, and built to scale.',
     highlights: ['AI assistance with voice', 'Pivoting, tree data, master-detail'],
-    status: 'stable',
     href: '/x/data-grid-landing/',
   },
   {
@@ -46,7 +45,6 @@ const components: AdvancedComponent[] = [
     description:
       'Composable, dashboard-ready charts that match your system and scale with your app.',
     highlights: ['High performance rendering', 'Composable building blocks'],
-    status: 'stable',
     href: '/x/charts-landing/',
   },
   {
@@ -205,7 +203,7 @@ export default function AdvancedComponentsGridBlock() {
                   >
                     {comp.icon}
                   </Box>
-                  <StatusBadge status={comp.status} />
+                  {comp.status && <StatusBadge status={comp.status} />}
                 </Box>
                 <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
                   {comp.title}

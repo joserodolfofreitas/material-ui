@@ -16,7 +16,6 @@ import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
-import StatusBadge from 'docs/src/components/landing/StatusBadge';
 import { motionTransition } from 'docs/src/components/landing/marketingTheme';
 import GradientMesh from 'docs/src/components/landing/effects/GradientMesh';
 import { Link } from '@mui/docs/Link';
@@ -58,8 +57,7 @@ export default function AIExperienceBlock() {
         <Grid size={{ xs: 12, md: 5 }}>
           <SectionReveal>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-              <AutoAwesomeRounded sx={{ color: 'warning.main' }} />
-              <StatusBadge status="alpha" size="medium" />
+              
             </Box>
             <SectionHeadline
               overline="AI-native components"
@@ -67,6 +65,7 @@ export default function AIExperienceBlock() {
                 <Typography variant="h2">
                   Give your users{' '}
                   <GradientText>AI superpowers</GradientText>
+                  <AutoAwesomeRounded sx={{ color: 'warning.main' }} />
                 </Typography>
               }
               description="Every MUI X component is designed to be AI-ready. Add intelligence to grids, charts, schedulers, and chat - so your end users interact with data through natural language, voice, and conversation."

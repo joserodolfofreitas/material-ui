@@ -7,7 +7,7 @@ export const chartsHero = {
   gradientText: 'match your system and scale',
   description:
     'Bar, line, pie, scatter, heatmap, radar, and more - built as composable building blocks that integrate with your MUI theme and respond to any layout.',
-  status: 'stable' as ProductStatus,
+  status: undefined,
   ctas: [
     { label: 'Get started', href: '/x/react-charts/', variant: 'contained' as const },
     { label: 'View documentation', href: '/x/react-charts/getting-started/', variant: 'outlined' as const, color: 'secondary' as const },

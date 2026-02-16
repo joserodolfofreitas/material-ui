@@ -31,19 +31,13 @@ export default function ThemeSlider() {
         <Slider
           getAriaLabel={() => 'Temperature'}
           getAriaValueText={valuetext}
-          defaultValue={[25, 50]}
+          defaultValue={[25, 60]}
           valueLabelFormat={valuetext}
           valueLabelDisplay="on"
           marks={[
-            { value: 10 },
             { value: 20, label: '20ºC' },
-            { value: 30 },
-            { value: 40 },
             { value: 50, label: '50ºC' },
-            { value: 60 },
-            { value: 70 },
             { value: 80, label: '80ºC' },
-            { value: 90 },
           ]}
           sx={[
             {

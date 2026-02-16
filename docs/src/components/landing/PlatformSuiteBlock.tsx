@@ -7,7 +7,6 @@ import { alpha } from '@mui/material/styles';
 import WidgetsRounded from '@mui/icons-material/WidgetsRounded';
 import DashboardCustomizeRounded from '@mui/icons-material/DashboardCustomizeRounded';
 import BrushRounded from '@mui/icons-material/BrushRounded';
-import WebRounded from '@mui/icons-material/WebRounded';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
 import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
@@ -48,15 +47,8 @@ const suiteCards: SuiteCard[] = [
     href: '/design-kits/',
   },
   {
-    icon: <WebRounded />,
-    title: 'Templates',
-    description:
-      'Free starter layouts and fully built templates that turn days of setup into a single install.',
-    href: '/templates/',
-  },
-  {
     icon: <AutoAwesomeRounded />,
-    title: 'MUI Chat',
+    title: 'Tailored examples with AI',
     description:
       "AI that generates examples, scaffolds patterns, and iterates on UI - grounded in MUI's real component system.",
     href: 'https://chat.mui.com',
