@@ -14,7 +14,7 @@ export interface HomepageHeroConfig {
 }
 
 export const heroConfig: HomepageHeroConfig = {
-  headline: 'The UI platform for',
+  headline: 'The React library for',
   gradientText: 'products that scale',
   description:
     'Design in Figma, build with production-ready components, start fast with templates, and accelerate iteration with AI - all from one connected system trusted by thousands of teams.',

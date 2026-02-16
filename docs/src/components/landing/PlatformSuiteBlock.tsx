@@ -29,14 +29,14 @@ const suiteCards: SuiteCard[] = [
     icon: <WidgetsRounded />,
     title: 'Core components',
     description:
-      'Material UI, Base UI, and Joy UI - production-ready components with deep theming, accessibility, and composability built in.',
+      'Production-ready components with deep theming, accessibility and reliability built in.',
     href: '/core/',
   },
   {
     icon: <DashboardCustomizeRounded />,
     title: 'Advanced components',
     description:
-      'Data Grid, Charts, Date Pickers, Tree View, and more - complex UI solved so your team can focus on product logic.',
+      'Data Grid, Charts, Scheduler and more - complex UI solved so your team can focus on product logic.',
     href: '/x/',
   },
   {
@@ -48,7 +48,7 @@ const suiteCards: SuiteCard[] = [
   },
   {
     icon: <AutoAwesomeRounded />,
-    title: 'Tailored examples with AI',
+    title: 'Tailored UI Blocks and templates with AI',
     description:
       "AI that generates examples, scaffolds patterns, and iterates on UI - grounded in MUI's real component system.",
     href: 'https://chat.mui.com',
@@ -75,7 +75,7 @@ export default function PlatformSuiteBlock() {
         {suiteCards.map((card, index) => (
           <Grid
             key={card.title}
-            size={{ xs: 12, sm: 6, md: index < 2 ? 6 : 4 }}
+            size={{ xs: 12, sm: 6 }}
           >
             <SectionReveal delay={index * 60}>
               <Paper

@@ -26,10 +26,10 @@ interface FinalCTABlockProps {
 
 export default function FinalCTABlock({
   headline,
-  description = 'Join thousands of product teams building with MUI.',
-  primaryCta = { label: 'Explore our docs', href: '/material-ui/getting-started/' },
-  secondaryCta = { label: 'Explore advanced components', href: '/x/' },
-  tertiaryCta = { label: 'Start building', href: 'https://chat.mui.com' },
+  description = 'Join thousands of developers and teams building with MUI. From startups to enterprise, MUI powers the world\'s best products.',
+  primaryCta = { label: 'Get started', href: '/material-ui/getting-started/' },
+  secondaryCta = { label: 'Start building with AI', href: 'https://chat.mui.com' },
+  tertiaryCta,
 }: FinalCTABlockProps) {
   return (
     <Section cozy>
@@ -81,7 +81,7 @@ export default function FinalCTABlock({
           <Typography variant="h2" sx={{ mb: 2 }}>
             {headline || (
               <React.Fragment>
-                Ready to <GradientText>build something great</GradientText>?
+                <GradientText>Start building</GradientText> today
               </React.Fragment>
             )}
           </Typography>
@@ -122,17 +122,19 @@ export default function FinalCTABlock({
             >
               {secondaryCta.label}
             </Button>
-            <Button
-              component={Link}
-              noLinkStyle
-              href={tertiaryCta.href}
-              variant="outlined"
-              color="primary"
-              size="large"
-              startIcon={<AutoAwesomeRounded />}
-            >
-              {tertiaryCta.label}
-            </Button>
+            {tertiaryCta && (
+              <Button
+                component={Link}
+                noLinkStyle
+                href={tertiaryCta.href}
+                variant="outlined"
+                color="primary"
+                size="large"
+                startIcon={<AutoAwesomeRounded />}
+              >
+                {tertiaryCta.label}
+              </Button>
+            )}
           </Stack>
         </Box>
       </SectionReveal>

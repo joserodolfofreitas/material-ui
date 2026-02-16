@@ -8,13 +8,9 @@ import HeroBlock from 'docs/src/components/landing/HeroBlock';
 import LiveComponentShowcase from 'docs/src/components/landing/effects/LiveComponentShowcase';
 import TrustLogoCloudBlock from 'docs/src/components/landing/TrustLogoCloudBlock';
 import StatsBar from 'docs/src/components/landing/StatsBar';
-import PlatformLoopBlock from 'docs/src/components/landing/PlatformLoopBlock';
 import PlatformSuiteBlock from 'docs/src/components/landing/PlatformSuiteBlock';
-import FeatureGridBlock from 'docs/src/components/landing/FeatureGridBlock';
 import AIExperienceBlock from 'docs/src/components/landing/AIExperienceBlock';
 import AdvancedComponentsGridBlock from 'docs/src/components/landing/AdvancedComponentsGridBlock';
-import DesignKitsBlock from 'docs/src/components/landing/DesignKitsBlock';
-import CommunitySustainabilityBlock from 'docs/src/components/landing/CommunitySustainabilityBlock';
 import FinalCTABlock from 'docs/src/components/landing/FinalCTABlock';
 import { heroConfig, metaConfig } from 'docs/src/components/landing/configs/homepageConfig';
 
@@ -58,19 +54,11 @@ export default function Home() {
         <TrustLogoCloudBlock />
         <StatsBar />
         <Divider />
-        <PlatformLoopBlock />
-        <Divider />
-        <PlatformSuiteBlock />
-        <Divider />
-        <FeatureGridBlock />
+        <AdvancedComponentsGridBlock />
         <Divider />
         <AIExperienceBlock />
         <Divider />
-        <AdvancedComponentsGridBlock />
-        <Divider />
-        <DesignKitsBlock />
-        <Divider />
-        <CommunitySustainabilityBlock />
+        <PlatformSuiteBlock />
         <Divider />
         <FinalCTABlock />
         <Divider />

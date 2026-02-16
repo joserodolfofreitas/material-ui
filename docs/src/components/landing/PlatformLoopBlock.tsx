@@ -59,10 +59,10 @@ export default function PlatformLoopBlock() {
           overline="The platform loop"
           title={
             <Typography variant="h2">
-              From idea to shipped UI - <GradientText>one connected workflow</GradientText>
+              Design to code, <GradientText>code to design</GradientText>
             </Typography>
           }
-          description="Design, build, start fast, and accelerate iteration. Every step shares the same vocabulary."
+          description="MUI bridges the gap between design and development. Start in Figma, build with React, and iterate with AI - all from one connected system."
         />
       </SectionReveal>
       <Grid container spacing={3} sx={{ mt: 2 }}>
