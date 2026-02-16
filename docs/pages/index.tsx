@@ -1,27 +1,30 @@
-import NoSsr from '@mui/material/NoSsr';
 import Divider from '@mui/material/Divider';
 import Head from 'docs/src/modules/components/Head';
 import AppHeader from 'docs/src/layouts/AppHeader';
-import Hero from 'docs/src/components/home/Hero';
-import References, { CORE_CUSTOMERS } from 'docs/src/components/home/References';
-import ProductSuite from 'docs/src/components/home/ProductSuite';
-import ValueProposition from 'docs/src/components/home/ValueProposition';
-import DesignSystemComponents from 'docs/src/components/home/DesignSystemComponents';
-import Testimonials from 'docs/src/components/home/Testimonials';
-import Sponsors from 'docs/src/components/home/Sponsors';
-import HeroEnd from 'docs/src/components/home/HeroEnd';
 import AppFooter from 'docs/src/layouts/AppFooter';
 import BrandingCssVarsProvider from 'docs/src/BrandingCssVarsProvider';
-import NewsletterToast from 'docs/src/components/home/NewsletterToast';
 import AppHeaderBanner from 'docs/src/components/banner/AppHeaderBanner';
+import HeroBlock from 'docs/src/components/landing/HeroBlock';
+import LiveComponentShowcase from 'docs/src/components/landing/effects/LiveComponentShowcase';
+import TrustLogoCloudBlock from 'docs/src/components/landing/TrustLogoCloudBlock';
+import StatsBar from 'docs/src/components/landing/StatsBar';
+import PlatformLoopBlock from 'docs/src/components/landing/PlatformLoopBlock';
+import PlatformSuiteBlock from 'docs/src/components/landing/PlatformSuiteBlock';
+import FeatureGridBlock from 'docs/src/components/landing/FeatureGridBlock';
+import AIExperienceBlock from 'docs/src/components/landing/AIExperienceBlock';
+import AdvancedComponentsGridBlock from 'docs/src/components/landing/AdvancedComponentsGridBlock';
+import DesignKitsBlock from 'docs/src/components/landing/DesignKitsBlock';
+import CommunitySustainabilityBlock from 'docs/src/components/landing/CommunitySustainabilityBlock';
+import FinalCTABlock from 'docs/src/components/landing/FinalCTABlock';
+import { heroConfig, metaConfig } from 'docs/src/components/landing/configs/homepageConfig';
 
 export default function Home() {
   return (
     <BrandingCssVarsProvider>
       <Head
-        title="MUI: The React component library you always wanted"
-        description="MUI provides a simple, customizable, and accessible library of React components. Follow your own design system, or start with Material Design."
-        card="/static/social-previews/home-preview.jpg"
+        title={metaConfig.title}
+        description={metaConfig.description}
+        card={metaConfig.card}
       >
         <script
           type="application/ld+json"
@@ -42,26 +45,34 @@ export default function Home() {
           }}
         />
       </Head>
-      <NoSsr>
-        <NewsletterToast />
-      </NoSsr>
       <AppHeaderBanner />
       <AppHeader />
       <main id="main-content">
-        <Hero />
-        <References companies={CORE_CUSTOMERS} />
+        <HeroBlock
+          headline={heroConfig.headline}
+          gradientText={heroConfig.gradientText}
+          description={heroConfig.description}
+          ctas={heroConfig.ctas}
+          visual={<LiveComponentShowcase />}
+        />
+        <TrustLogoCloudBlock />
+        <StatsBar />
         <Divider />
-        <ProductSuite />
+        <PlatformLoopBlock />
         <Divider />
-        <ValueProposition />
+        <PlatformSuiteBlock />
         <Divider />
-        <DesignSystemComponents />
+        <FeatureGridBlock />
         <Divider />
-        <Testimonials />
+        <AIExperienceBlock />
         <Divider />
-        <Sponsors />
+        <AdvancedComponentsGridBlock />
         <Divider />
-        <HeroEnd />
+        <DesignKitsBlock />
+        <Divider />
+        <CommunitySustainabilityBlock />
+        <Divider />
+        <FinalCTABlock />
         <Divider />
       </main>
       <AppFooter />
