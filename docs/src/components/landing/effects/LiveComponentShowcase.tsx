@@ -14,8 +14,7 @@ import {
   useKeepGroupedColumnsHidden,
 } from '@mui/x-data-grid-premium';
 import { useDemoData } from '@mui/x-data-grid-generator';
-import { BarChart } from '@mui/x-charts/BarChart';
-import { blueberryTwilightPaletteLight } from '@mui/x-charts';
+import { LineChart } from '@mui/x-charts/LineChart';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
 import SendRounded from '@mui/icons-material/SendRounded';
 import SmartToyRounded from '@mui/icons-material/SmartToyRounded';
@@ -447,54 +446,68 @@ export default function LiveComponentShowcase() {
               <PivotingGrid />
             </Box>
             <Divider />
-            {/* Bottom strip: TaskCard | Chart | Slider */}
+            {/* Bottom strip: TreeView | LineChart | Slider */}
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
               }}
             >
-              {/* TaskCard */}
+              {/* TreeView */}
+              <Box
+                sx={[
+                  (t) => ({
+                    flex: '0 0 auto',
+                    width: { sm: 200 },
+                    px: 1, py: 1,
+                    animation: `${fadeInUp} 0.7s ease-out 0.2s both`,
+                    '& .MuiTreeItem-root': { fontSize: '0.75rem' },
+                    display: { xs: 'none', sm: 'block' },
+                    borderRight: '1px solid',
+                    borderColor: t.palette.mode === 'dark' ? 'primaryDark.600' : 'grey.200',
+                  }),
+                ]}
+              >
+                <Typography sx={{ fontSize: 10, fontWeight: 700, color: 'text.secondary', mb: 0.5, textTransform: 'uppercase', letterSpacing: 0.5, px: 1 }}>
+                  Project files
+                </Typography>
+                <FolderTreeView />
+              </Box>
+              {/* Area LineChart */}
               <Box
                 sx={{
                   flex: '1 1 0',
                   p: 1.5,
-                  animation: `${fadeInUp} 0.7s ease-out 0.2s both`,
-                  '& .MuiCard-root': {
-                    minWidth: 'auto',
-                    maxWidth: 'none',
-                    minHeight: 'auto',
-                    p: 2,
-                  },
+                  animation: `${fadeInUp} 0.7s ease-out 0.3s both`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  minWidth: 0,
                 }}
               >
-                <TaskCard />
-              </Box>
-              {/* BarChart */}
-              <Box
-                sx={[
-                  (t) => ({
-                    flex: '1 1 0',
-                    p: 1.5,
-                    borderLeft: { sm: '1px solid' },
-                    borderColor: t.palette.mode === 'dark' ? 'primaryDark.600' : 'grey.200',
-                    animation: `${fadeInUp} 0.7s ease-out 0.3s both`,
-                    display: 'flex',
-                    alignItems: 'center',
-                  }),
-                ]}
-              >
-                <BarChart
+                <LineChart
                   series={[
-                    { data: [35, 44, 24, 34] },
-                    { data: [51, 6, 49, 30] },
-                    { data: [15, 25, 30, 50] },
-                    { data: [60, 50, 15, 25] },
+                    {
+                      data: [1200, 1800, 1400, 2200, 2800, 2400, 3100, 3600, 3200, 4000, 4400, 4800],
+                      label: 'Revenue',
+                      area: true,
+                      showMark: false,
+                      curve: 'natural',
+                      color: '#1976d2',
+                    },
+                    {
+                      data: [800, 1100, 900, 1500, 1900, 1600, 2100, 2500, 2200, 2800, 3100, 3400],
+                      label: 'Profit',
+                      area: true,
+                      showMark: false,
+                      curve: 'natural',
+                      color: '#9c27b0',
+                    },
                   ]}
+                  xAxis={[{ data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], scaleType: 'point' }]}
                   height={170}
-                  xAxis={[{ data: ['Q1', 'Q2', 'Q3', 'Q4'], scaleType: 'band' }]}
-                  margin={{ top: 10, bottom: 20, left: 30, right: 10 }}
-                  colors={blueberryTwilightPaletteLight}
+                  margin={{ top: 10, bottom: 20, left: 40, right: 10 }}
+                  hideLegend
+                  sx={{ '& .MuiAreaElement-root': { opacity: 0.15 } }}
                 />
               </Box>
               {/* Slider */}
@@ -519,12 +532,12 @@ export default function LiveComponentShowcase() {
             </Box>
           </Box>
 
-          {/* ---- Right column: AI chat + TreeView ---- */}
+          {/* ---- Right column: AI chat + TaskCard ---- */}
           {isMd && (
             <Box
               sx={[
                 (t) => ({
-                  width: 220,
+                  width: 240,
                   flexShrink: 0,
                   borderLeft: '1px solid',
                   borderColor: t.palette.mode === 'dark' ? 'primaryDark.600' : 'grey.200',
@@ -539,18 +552,20 @@ export default function LiveComponentShowcase() {
                 <AIChatPanel />
               </Box>
               <Divider />
-              {/* TreeView */}
+              {/* TaskCard */}
               <Box
                 sx={{
-                  px: 1, py: 1,
+                  p: 1.5,
                   animation: `${fadeInUp} 0.7s ease-out 0.35s both`,
-                  '& .MuiTreeItem-root': { fontSize: '0.75rem' },
+                  '& .MuiCard-root': {
+                    minWidth: 'auto',
+                    maxWidth: 'none',
+                    minHeight: 'auto',
+                    p: 2,
+                  },
                 }}
               >
-                <Typography sx={{ fontSize: 10, fontWeight: 700, color: 'text.secondary', mb: 0.5, textTransform: 'uppercase', letterSpacing: 0.5, px: 1 }}>
-                  Project files
-                </Typography>
-                <FolderTreeView />
+                <TaskCard />
               </Box>
             </Box>
           )}

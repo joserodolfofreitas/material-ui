@@ -176,16 +176,17 @@ export default function HeroBlock({
           </Stack>
         </Box>
 
-        {/* Right: visual demo — bleeds left into the text column */}
+        {/* Right: visual demo — bleeds left into the text column and right past the container */}
         {visual && (
           <Box
             ref={parallax.ref}
             sx={{
               position: 'relative',
               zIndex: 2,
-              flex: { md: '0 0 70%' },
-              maxWidth: { xs: '100%', md: '70%' },
+              flex: { md: '0 0 75%' },
+              maxWidth: { xs: '100%', md: '75%' },
               ml: { md: '-12%' },
+              mr: { md: -4 },
               transform: parallax.transform,
               willChange: 'transform',
               transition: 'transform 0.1s linear',
@@ -195,6 +196,39 @@ export default function HeroBlock({
               },
             }}
           >
+            {/* Glow on the left edge: keeps text readable over the demo */}
+            <Box
+              aria-hidden
+              sx={[
+                (theme) => ({
+                  display: { xs: 'none', md: 'block' },
+                  position: 'absolute',
+                  top: '-15%',
+                  left: '-6%',
+                  width: '30%',
+                  height: '130%',
+                  background: `radial-gradient(ellipse 100% 70% at 0% 50%, ${
+                    theme.palette.mode === 'dark'
+                      ? theme.palette.primaryDark[900]
+                      : theme.palette.common.white
+                  } 0%, ${
+                    theme.palette.mode === 'dark'
+                      ? alpha(theme.palette.primaryDark[900], 0.92)
+                      : alpha(theme.palette.common.white, 0.92)
+                  } 35%, ${
+                    theme.palette.mode === 'dark'
+                      ? alpha(theme.palette.primaryDark[900], 0.5)
+                      : alpha(theme.palette.common.white, 0.5)
+                  } 65%, ${
+                    theme.palette.mode === 'dark'
+                      ? alpha(theme.palette.primaryDark[900], 0)
+                      : alpha(theme.palette.common.white, 0)
+                  } 100%)`,
+                  pointerEvents: 'none',
+                  zIndex: 4,
+                }),
+              ]}
+            />
             {visual}
           </Box>
         )}
