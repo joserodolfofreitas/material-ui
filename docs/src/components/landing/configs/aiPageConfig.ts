@@ -8,8 +8,7 @@ export const aiHero = {
   status: 'alpha' as ProductStatus,
   ctas: [
     { label: 'Start building', href: '/material-ui/getting-started/', variant: 'contained' as const },
-    { label: 'Browse templates', href: '/templates/', variant: 'outlined' as const, color: 'secondary' as const },
-    { label: 'Explore docs', href: '/material-ui/getting-started/', variant: 'outlined' as const, color: 'primary' as const },
+    { label: 'Explore AI components', href: '/x/', variant: 'outlined' as const, color: 'secondary' as const },
   ],
 };
 

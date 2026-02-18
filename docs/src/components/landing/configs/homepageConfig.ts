@@ -17,7 +17,7 @@ export const heroConfig: HomepageHeroConfig = {
   headline: 'The React library for',
   gradientText: 'products that scale',
   description:
-    'Design in Figma, build with production-ready components, start fast with templates, and accelerate iteration with AI - all from one connected system trusted by thousands of teams.',
+    'Design in Figma, build with production-ready components, and move faster with AI for developers and end users, all in one platform trusted by thousands of teams.',
   ctas: [
     {
       label: 'Get started',
@@ -37,7 +37,7 @@ export const heroConfig: HomepageHeroConfig = {
 export const metaConfig = {
   title: 'MUI: The UI platform for products that scale',
   description:
-    'Design in Figma, build with production-ready React components, start fast with templates, and accelerate with AI. Trusted by thousands of product teams.',
+    'Design in Figma, build with production-ready React components, and accelerate with AI. Trusted by thousands of product teams.',
   card: '/static/social-previews/home-preview.jpg',
 };
 

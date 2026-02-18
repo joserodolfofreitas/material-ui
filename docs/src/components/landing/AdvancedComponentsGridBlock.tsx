@@ -9,8 +9,6 @@ import BarChartRounded from '@mui/icons-material/BarChartRounded';
 import CalendarMonthRounded from '@mui/icons-material/CalendarMonthRounded';
 import ChatBubbleOutlineRounded from '@mui/icons-material/ChatBubbleOutlineRounded';
 import AccountTreeRounded from '@mui/icons-material/AccountTreeRounded';
-import CloudUploadRounded from '@mui/icons-material/CloudUploadRounded';
-import EditNoteRounded from '@mui/icons-material/EditNoteRounded';
 import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
@@ -73,24 +71,6 @@ const components: AdvancedComponent[] = [
     highlights: ['Task dependencies', 'Timeline and resource views'],
     status: 'coming-soon',
     href: '/x/gantt-landing/',
-  },
-  {
-    icon: <CloudUploadRounded />,
-    title: 'Upload',
-    description:
-      'File upload with drag-and-drop, progress tracking, and validation built in.',
-    highlights: ['Drag-and-drop zones', 'Progress and validation'],
-    status: 'coming-soon',
-    href: '/x/upload-landing/',
-  },
-  {
-    icon: <EditNoteRounded />,
-    title: 'Rich Text Editor',
-    description:
-      'A rich text editing experience with formatting, media, and collaborative features.',
-    highlights: ['Rich formatting toolbar', 'Extensible plugin system'],
-    status: 'coming-soon',
-    href: '/x/rich-text-editor-landing/',
   },
 ];
 

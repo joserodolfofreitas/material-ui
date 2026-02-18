@@ -163,8 +163,7 @@ export default function AILanding() {
         }
         description="Add AI superpowers to your product with components your team already knows."
         primaryCta={{ label: 'Get started', href: '/material-ui/getting-started/' }}
-        secondaryCta={{ label: 'Explore Data Grid', href: '/x/data-grid-landing/' }}
-        tertiaryCta={{ label: 'View all components', href: '/x/' }}
+        secondaryCta={{ label: 'Explore AI components', href: '/x/' }}
       />
     </React.Fragment>
   );
