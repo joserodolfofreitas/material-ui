@@ -38,10 +38,10 @@ const components: AdvancedComponent[] = [
     description:
       'The flagship grid for serious products: high-performance, deeply customizable, and ready for AI-assisted workflows.',
     highlights: [
-      'Highly performant',
-      'UX empowered by AI assistance with voice support',
-      'Advanced data analysis use cases',
-      'Hierarchical data and more',
+      'High performance',
+      'User experience empowered by AI assistance',
+      'Support for advanced data analysis use cases',
+      'Pivoting, Hierarchical data, and more',
     ],
     href: '/x/data-grid-landing/',
   },
@@ -51,8 +51,8 @@ const components: AdvancedComponent[] = [
     description:
       'Composable, dashboard-ready charts that match your system and scale with your app.',
     highlights: [
-      'High-performance rendering',
       'Rich chart portfolio of chart types',
+      'WebGL rendering for large datasets',
       'Financial charts',
       'Composable building blocks',
     ],

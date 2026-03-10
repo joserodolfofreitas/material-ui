@@ -145,6 +145,7 @@ export default function HeroBlock({
               mb: 2,
               maxWidth: premiumTokens.hero.headlineMaxWidth,
               mx: { xs: 'auto', md: 0 },
+              fontWeight: 500,
               letterSpacing: '-0.04em',
               lineHeight: 1.02,
               fontSize: { xs: 'clamp(2.75rem, 10vw, 3.75rem)', md: '3.75rem' },
@@ -158,6 +159,7 @@ export default function HeroBlock({
                   sx={{
                     backgroundSize: '200% auto',
                     display: 'inline-block',
+                    fontWeight: 800,
                     animation: `${textShimmer} 4s linear infinite`,
                     '@media (prefers-reduced-motion: reduce)': { animation: 'none' },
                   }}
