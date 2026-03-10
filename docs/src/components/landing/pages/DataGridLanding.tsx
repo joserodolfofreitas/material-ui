@@ -1,9 +1,11 @@
 import * as React from 'react';
+import dynamic from 'next/dynamic';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import { alpha } from '@mui/material/styles';
 import TableChartRounded from '@mui/icons-material/TableChartRounded';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
 import PivotTableChartRounded from '@mui/icons-material/PivotTableChartRounded';
@@ -23,13 +25,39 @@ import ComponentHeroBlock from 'docs/src/components/landing/ComponentHeroBlock';
 import HighlightsBlock from 'docs/src/components/landing/HighlightsBlock';
 import UseCasesBlock from 'docs/src/components/landing/UseCasesBlock';
 import FinalCTABlock from 'docs/src/components/landing/FinalCTABlock';
+import { Link } from '@mui/docs/Link';
+import { cardHoverSx, premiumTokens } from 'docs/src/components/landing/marketingTheme';
 import {
   dataGridHero,
   dataGridHighlights,
   dataGridUseCases,
-  dataGridIntegrations,
+  dataGridExamples,
   dataGridWhyStrip,
 } from 'docs/src/components/landing/configs/dataGridConfig';
+
+const DataGridFeatureShowcaseBlock = dynamic(
+  () => import('docs/src/components/landing/effects/DataGridFeatureShowcaseBlock'),
+  {
+    ssr: false,
+    loading: () => (
+      <Box
+        sx={(theme) => ({
+          minHeight: 760,
+          borderRadius: premiumTokens.radius.xl,
+          border: '1px solid',
+          borderColor:
+            theme.palette.mode === 'dark'
+              ? alpha(theme.palette.primary[300], 0.12)
+              : alpha(theme.palette.primary[100], 0.8),
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? alpha(theme.palette.common.white, 0.02)
+              : alpha(theme.palette.common.white, 0.72),
+        })}
+      />
+    ),
+  },
+);
 
 const highlightIcons = [
   <AutoAwesomeRounded key="ai" />,
@@ -57,6 +85,8 @@ export default function DataGridLanding() {
         ctas={dataGridHero.ctas}
       />
       <Divider />
+      <DataGridFeatureShowcaseBlock />
+      <Divider />
       <HighlightsBlock
         overline="Highlights"
         headline={
@@ -71,29 +101,80 @@ export default function DataGridLanding() {
         }))}
       />
       <Divider />
-      {/* Integrations section */}
       <Section bg="comfort" cozy>
         <SectionReveal>
           <SectionHeadline
             alwaysCenter
-            overline="Integrations"
+            overline="Common workflows"
             title={
               <Typography variant="h2">
-                Works seamlessly with <GradientText>MUI X Charts</GradientText>
+                Documentation paths for <GradientText>real product needs</GradientText>
               </Typography>
             }
+            description="Use these entry points to jump straight to the workflows teams most often implement with MUI X Data Grid."
           />
         </SectionReveal>
-        <Grid container spacing={3} sx={{ mt: 2, justifyContent: 'center' }}>
-          {dataGridIntegrations.map((integration, index) => (
-            <Grid key={integration.title} size={{ xs: 12, md: 8 }}>
+        <Grid container spacing={3} sx={{ mt: 2 }}>
+          {dataGridExamples.map((example, index) => (
+            <Grid key={example.title} size={{ xs: 12, sm: 6 }}>
               <SectionReveal delay={index * 80}>
-                <Paper variant="outlined" sx={{ p: 4, textAlign: 'center' }}>
-                  <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
-                    {integration.title}
+                <Paper
+                  component={Link}
+                  noLinkStyle
+                  href={example.href}
+                  variant="outlined"
+                  sx={[
+                    (theme) => ({
+                      p: 3,
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 1.5,
+                      textDecoration: 'none',
+                      borderRadius: premiumTokens.radius.lg,
+                      bgcolor:
+                        theme.palette.mode === 'dark'
+                          ? alpha(theme.palette.common.white, 0.02)
+                          : alpha(theme.palette.common.white, 0.82),
+                      ...cardHoverSx(theme),
+                    }),
+                  ]}
+                >
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                    {example.title}
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    {integration.description}
+                    {example.description}
+                  </Typography>
+                  <Box
+                    component="ul"
+                    sx={{
+                      m: 0,
+                      pl: 2,
+                      '& li': { mb: 0.5 },
+                    }}
+                  >
+                    {example.features.map((feature) => (
+                      <Typography
+                        key={feature}
+                        component="li"
+                        variant="body2"
+                        sx={{ color: 'text.secondary', fontSize: '0.8125rem' }}
+                      >
+                        {feature}
+                      </Typography>
+                    ))}
+                  </Box>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      mt: 'auto',
+                      pt: 0.5,
+                      color: 'primary.main',
+                      fontWeight: 700,
+                    }}
+                  >
+                    Explore this example
                   </Typography>
                 </Paper>
               </SectionReveal>
@@ -151,7 +232,7 @@ export default function DataGridLanding() {
       <Divider />
       <FinalCTABlock
         primaryCta={{ label: 'Get started with Data Grid', href: '/x/react-data-grid/' }}
-        secondaryCta={{ label: 'View documentation', href: '/x/react-data-grid/getting-started/' }}
+        secondaryCta={{ label: 'View documentation', href: '/x/react-data-grid/quickstart/' }}
       />
     </React.Fragment>
   );

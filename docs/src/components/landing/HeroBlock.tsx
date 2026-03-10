@@ -159,7 +159,7 @@ export default function HeroBlock({
                   sx={{
                     backgroundSize: '200% auto',
                     display: 'inline-block',
-                    fontWeight: 800,
+                    fontWeight: 700,
                     animation: `${textShimmer} 4s linear infinite`,
                     '@media (prefers-reduced-motion: reduce)': { animation: 'none' },
                   }}

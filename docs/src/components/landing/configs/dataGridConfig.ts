@@ -2,16 +2,16 @@ import type { Highlight } from 'docs/src/components/landing/HighlightsBlock';
 import type { UseCase } from 'docs/src/components/landing/UseCasesBlock';
 
 export const dataGridHero = {
-  title: 'The fully featured grid for real products:',
-  gradientText: 'fast, customizable, and built to scale',
+  title: 'A fast, extensible React data grid',
+  gradientText: 'for real product workflows',
   description:
-    'From simple tables to enterprise-grade data experiences - editing, filtering, sorting, grouping, pivoting, and AI-powered exploration. One component, every use case.',
+    'Go from simple CRUD tables to complex analytical workspaces with sorting, filtering, editing, column pinning, row grouping, aggregation, pivoting, export, and server-side data.',
   status: undefined,
   ctas: [
     { label: 'Get started', href: '/x/react-data-grid/', variant: 'contained' as const },
     {
       label: 'View documentation',
-      href: '/x/react-data-grid/getting-started/',
+      href: '/x/react-data-grid/quickstart/',
       variant: 'outlined' as const,
       color: 'secondary' as const,
     },
@@ -20,65 +20,88 @@ export const dataGridHero = {
 
 export const dataGridHighlights: Omit<Highlight, 'icon'>[] = [
   {
-    title: 'AI assistance with voice support',
+    title: 'Core table features, ready out of the box',
     description:
-      'Let end users explore data with natural language and voice commands. AI-powered filtering, sorting, and insights turn the grid into a conversational data tool.',
-    tier: 'Premium',
+      'Start with sorting, filtering, pagination, row selection, and editing in the free Community plan, then scale up without changing components.',
+    tier: 'Community',
   },
   {
-    title: 'Pivoting',
+    title: 'Column pinning, tree data, and master-detail',
     description:
-      'Reshape data on the fly with drag-and-drop pivot tables. Aggregate, group, and summarize without leaving the grid.',
-    tier: 'Premium',
-  },
-  {
-    title: 'Charts integration',
-    description:
-      'Visualize grid data inline with MUI X Charts. Select rows or columns and see trends, distributions, and comparisons instantly.',
-    tier: 'Premium',
-  },
-  {
-    title: 'Tree data and row grouping',
-    description:
-      'Display hierarchical data with expandable tree rows, or group flat data by any column. Master-detail views let users drill into nested records.',
+      'Handle denser workflows with pinned columns, hierarchical records, master-detail panels, and richer interaction patterns.',
     tier: 'Pro',
   },
   {
-    title: 'Fully featured foundation',
+    title: 'Row grouping and aggregation',
     description:
-      'Inline editing, multi-column sorting, quick filter, column pinning, row virtualization, CSV/Excel export, and clipboard support - all built in.',
+      'Group large datasets by category, summarize values with built-in aggregations, and keep totals visible where decisions happen.',
+    tier: 'Premium',
+  },
+  {
+    title: 'Pivoting for analytical workflows',
+    description:
+      'Reshape datasets on the fly with pivot tables so product teams can move from raw records to analysis without leaving the grid.',
+    tier: 'Premium',
   },
   {
     title: 'Server-side data source',
     description:
-      'Lazy-load millions of rows with server-side filtering, sorting, and pagination. Built-in caching keeps the experience fast.',
-    tier: 'Pro',
+      'Centralize pagination, sorting, filtering, lazy loading, grouping, and caching with the Data Source layer for large datasets.',
+  },
+  {
+    title: 'Charts integration and export',
+    description:
+      'Connect tabular exploration to charts and export workflows so analysis can move fluidly between records, visuals, and spreadsheets.',
+    tier: 'Premium',
   },
 ];
 
 export const dataGridUseCases: Omit<UseCase, 'icon'>[] = [
   {
-    title: 'Admin dashboards',
+    title: 'Admin and operations software',
     description:
-      'Build data-dense admin panels with inline editing, bulk actions, and real-time updates.',
+      'Manage high-volume records with inline editing, bulk actions, pinned columns, and fast search.',
   },
   {
-    title: 'Financial applications',
+    title: 'Financial and analytical workbenches',
     description:
-      'Handle large datasets with virtualized rendering, pivoting, and Excel-like interactions.',
+      'Handle large datasets with virtualization, grouping, aggregation, pivoting, and Excel-style workflows.',
   },
   {
-    title: 'CRM and ERP systems',
+    title: 'CRM, ERP, and internal tools',
     description:
-      'Master-detail views, row grouping, and server-side data sources for complex business workflows.',
+      'Use master-detail panels, server-side data, and rich row interactions for complex business workflows.',
   },
 ];
 
-export const dataGridIntegrations = [
+export const dataGridExamples = [
   {
-    title: 'Data Grid \u2194 Charts',
+    title: 'Operations console',
     description:
-      'Select data in the grid and visualize it with MUI X Charts. Seamless workflows between tabular and visual data.',
+      'Combine quick filter, inline editing, row selection, and pinned columns to manage live records without losing context.',
+    href: '/x/react-data-grid/editing/',
+    features: ['Inline editing', 'Quick filter', 'Column pinning'],
+  },
+  {
+    title: 'Financial analysis workspace',
+    description:
+      'Use row grouping, aggregation, pivoting, and Excel export to turn raw transactions into a decision-ready view.',
+    href: '/x/react-data-grid/pivoting/',
+    features: ['Row grouping', 'Aggregation', 'Excel export'],
+  },
+  {
+    title: 'Server-side data explorer',
+    description:
+      'Load and explore large datasets with pagination, lazy loading, caching, and server-driven sorting and filtering.',
+    href: '/x/react-data-grid/server-side-data/',
+    features: ['Data Source', 'Lazy loading', 'Server-side filtering'],
+  },
+  {
+    title: 'Grid-to-chart workflow',
+    description:
+      'Select data in the grid and visualize it with MUI X Charts for a tighter loop between tabular and visual analysis.',
+    href: '/x/react-charts/data-grid-integration/',
+    features: ['Charts integration', 'Interactive analysis', 'Cross-filtered views'],
   },
 ];
 
@@ -89,7 +112,7 @@ export const dataGridWhyStrip = [
 ];
 
 export const metaConfig = {
-  title: 'MUI X Data Grid: The React data grid you need',
+  title: 'MUI X Data Grid: A fast, extensible React data grid',
   description:
-    'A fast, feature-rich React data grid with editing, filtering, sorting, grouping, pivoting, and AI assistance. Built for real products.',
+    'A fast, extensible React data grid for real product workflows, with editing, filtering, sorting, grouping, pivoting, export, and server-side data.',
 };

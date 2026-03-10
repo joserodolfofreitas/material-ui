@@ -3,16 +3,16 @@ import type { Highlight } from 'docs/src/components/landing/HighlightsBlock';
 import type { UseCase } from 'docs/src/components/landing/UseCasesBlock';
 
 export const chartsHero = {
-  title: 'Composable, dashboard-ready charts that',
-  gradientText: 'match your system and scale',
+  title: 'React charts for the',
+  gradientText: 'dashboards teams actually build',
   description:
-    'Bar, line, pie, scatter, heatmap, radar, and more - built as composable building blocks that integrate with your MUI theme and respond to any layout.',
+    'Build dashboards and analytical surfaces with bar, line, pie, scatter, sparkline, gauge, heatmap, radar, funnel, and sankey charts, then layer in composition, zoom, pan, export, and advanced customization as your product grows.',
   status: undefined,
   ctas: [
     { label: 'Get started', href: '/x/react-charts/', variant: 'contained' as const },
     {
       label: 'View documentation',
-      href: '/x/react-charts/getting-started/',
+      href: '/x/react-charts/quickstart/',
       variant: 'outlined' as const,
       color: 'secondary' as const,
     },
@@ -21,35 +21,40 @@ export const chartsHero = {
 
 export const chartsHighlights: Omit<Highlight, 'icon'>[] = [
   {
-    title: 'High performance rendering',
+    title: 'Essential chart types',
     description:
-      'SVG-based rendering optimized for large datasets. Smooth animations and responsive resizing without jank.',
+      'Ship the foundations teams ask for most with bar, line, pie, scatter, sparkline, and gauge charts in the free Community plan.',
+    tier: 'Community',
   },
   {
-    title: 'Composable building blocks',
+    title: 'Composition API',
     description:
-      'Axes, plots, legends, tooltips, and scales are independent components you compose freely - not a monolithic chart config.',
+      'Compose axes, plots, tooltips, legends, and custom surfaces with building blocks instead of a monolithic chart config.',
+    tier: 'Community',
   },
   {
-    title: 'Strong theming integration',
+    title: 'Theming and styling control',
     description:
-      'Charts inherit your MUI theme colors, typography, and spacing. Dark mode works out of the box.',
+      'Match your product system with theme-aware colors, typography, spacing, highlights, labels, and legends.',
+    tier: 'Community',
   },
   {
-    title: 'Layout responsiveness',
+    title: 'Advanced chart types',
     description:
-      'Charts resize fluidly with their container. Responsive margins, tick density, and label placement adapt automatically.',
+      'Extend dashboards with heatmap, radar, funnel, and sankey charts when standard chart types are not enough.',
+    tier: 'Pro',
   },
   {
-    title: 'Rich interaction model',
+    title: 'Zoom and pan',
     description:
-      'Built-in zoom, pan, highlighting, and tooltip interactions. Axis-based and item-based highlighting for dashboard workflows.',
+      'Let users explore dense datasets with zooming, panning, and focused analysis for line, bar, scatter, and heatmap charts.',
+    tier: 'Pro',
   },
   {
-    title: 'Finance charts',
+    title: 'Export and sharing',
     description:
-      'Candlestick and OHLC chart types for financial data visualization. Built for trading dashboards and market analysis.',
-    status: 'coming-soon' as ProductStatus,
+      'Add toolbar-driven export so charts can move from interactive dashboards into reports, presentations, and printed workflows.',
+    tier: 'Pro',
   },
 ];
 
@@ -57,22 +62,53 @@ export const chartsUseCases: Omit<UseCase, 'icon'>[] = [
   {
     title: 'Analytics dashboards',
     description:
-      'Combine bar, line, and pie charts with the Data Grid for interactive analytics experiences.',
+      'Combine bar, line, pie, and gauge charts with the Data Grid for interactive analytics experiences.',
   },
   {
     title: 'Monitoring and observability',
     description:
-      'Real-time line charts with zoom and pan for infrastructure monitoring and performance tracking.',
+      'Use line and scatter charts with zoom and pan for infrastructure monitoring and performance tracking.',
   },
   {
-    title: 'Business intelligence',
+    title: 'Business intelligence and reporting',
     description:
-      'Composable chart layouts with custom tooltips, legends, and drill-down interactions for BI tools.',
+      'Build composed chart layouts with custom tooltips, legends, labels, and export workflows for reporting products.',
+  },
+];
+
+export const chartsExamples = [
+  {
+    title: 'Executive KPI dashboard',
+    description:
+      'Mix bar, line, pie, gauge, and sparkline charts to surface performance at a glance across responsive dashboard layouts.',
+    href: '/x/react-charts/bars/',
+    features: ['Bar, line, and pie', 'Gauge and sparkline', 'Responsive layout'],
+  },
+  {
+    title: 'Monitoring timeline',
+    description:
+      'Track infrastructure, product health, or operations metrics with dense time-series views that support zoom and pan.',
+    href: '/x/react-charts/zoom-and-pan/',
+    features: ['Time-series lines', 'Zoom and pan', 'Focused inspection'],
+  },
+  {
+    title: 'Composed analytics surface',
+    description:
+      'Combine plots, axes, legends, labels, and custom pieces to build dashboards that fit your product instead of a canned layout.',
+    href: '/x/react-charts/composition/',
+    features: ['Composition API', 'Custom legends', 'Reusable chart surfaces'],
+  },
+  {
+    title: 'Advanced visual analysis',
+    description:
+      'Go beyond standard dashboards with heatmap, radar, funnel, and sankey charts for richer analytical views.',
+    href: '/x/react-charts/heatmap/',
+    features: ['Heatmap and radar', 'Funnel and sankey', 'Advanced exploration'],
   },
 ];
 
 export const metaConfig = {
-  title: 'MUI X Charts: Composable React charts for dashboards',
+  title: 'MUI X Charts: React charts for real dashboards',
   description:
-    'High-performance, composable React charts that integrate with your MUI theme. Bar, line, pie, scatter, and more.',
+    'React charts for real dashboards, with essential and advanced chart types, composition, zoom and pan, export, and theme-aware customization.',
 };

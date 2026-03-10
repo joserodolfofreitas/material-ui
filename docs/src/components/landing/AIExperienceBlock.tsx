@@ -16,22 +16,26 @@ import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
-import { motionTransition, premiumTokens } from 'docs/src/components/landing/marketingTheme';
+import {
+  cardHoverSx,
+  motionTransition,
+  premiumTokens,
+} from 'docs/src/components/landing/marketingTheme';
 import GradientMesh from 'docs/src/components/landing/effects/GradientMesh';
 import { Link } from '@mui/docs/Link';
 
 const capabilities = [
   {
     icon: <TableChartRounded />,
-    title: 'Ask your table',
+    title: 'Prompt-driven Data Grid',
     description:
       'Turn filtering, grouping, pivoting, and analysis into natural-language actions on top of the same trusted grid.',
   },
   {
     icon: <InsightsRounded />,
-    title: 'Insightful chart workflows',
+    title: 'Charts that stay in sync',
     description:
-      'Connect chart updates to user prompts so trends, comparisons, and anomalies become easier to surface.',
+      'Connect chart updates to prompts so trends, comparisons, and anomalies stay tied to the same workflow.',
   },
   {
     icon: <RecordVoiceOverRounded />,
@@ -41,7 +45,7 @@ const capabilities = [
   },
   {
     icon: <ChatBubbleOutlineRounded />,
-    title: 'Conversational product surfaces',
+    title: 'Embedded assistant experiences',
     description:
       'Embed calm, context-aware assistants into the workflows your users already rely on every day.',
   },
@@ -56,18 +60,42 @@ export default function AIExperienceBlock() {
       <Grid container spacing={4} sx={{ alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <Grid size={{ xs: 12, md: 5 }}>
           <SectionReveal>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}></Box>
+            <Box
+              sx={(theme) => ({
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 1,
+                mb: 2,
+                px: 1.25,
+                py: 0.75,
+                borderRadius: premiumTokens.radius.pill,
+                border: '1px solid',
+                borderColor:
+                  theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.primary[500], 0.16)
+                    : alpha(theme.palette.primary[200], 0.6),
+                bgcolor:
+                  theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.primary[500], 0.06)
+                    : alpha(theme.palette.common.white, 0.5),
+                backdropFilter: 'blur(12px)',
+              })}
+            >
+              <AutoAwesomeRounded sx={{ fontSize: 16, color: 'primary.main' }} />
+              <Typography variant="body2" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                Built into advanced components
+              </Typography>
+            </Box>
             <SectionHeadline
-              overline="AI-native user experience"
+              overline="AI-native workflows"
               title={
                 <Typography variant="h2">
-                  Advanced Components, now enhanced with<br/><GradientText>AI-native workflows</GradientText>
-                  <AutoAwesomeRounded sx={{ color: 'primary.main' }} />
+                  Advanced UI, now enhanced with <GradientText>AI-native workflows</GradientText>
                 </Typography>
               }
-              description="AI is the multiplier, not the identity. MUI's advanced components are evolving to support natural language, voice, and assistant-driven product interactions across grids, charts, scheduling, and chat."
+              description="AI is the multiplier, not the identity. MUI is bringing natural-language, voice, and assistant-driven interactions to advanced components so powerful UI becomes easier to operate and more useful in production."
             />
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mt: 3 }}>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mt: 3.5 }} useFlexGap>
               <Button
                 component={Link}
                 noLinkStyle
@@ -76,7 +104,7 @@ export default function AIExperienceBlock() {
                 size="large"
                 endIcon={<KeyboardArrowRightRounded />}
               >
-                Explore AI featuress
+                Explore AI workflows
               </Button>
               <Button
                 component={Link}
@@ -92,70 +120,92 @@ export default function AIExperienceBlock() {
           </SectionReveal>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
-          <Grid container spacing={2}>
-            {capabilities.map((cap, index) => (
-              <Grid key={cap.title} size={{ xs: 12, sm: 6 }}>
-                <SectionReveal delay={index * 80}>
-                  <Paper
-                    variant="outlined"
-                    sx={[
-                      (theme) => ({
-                        p: 2.5,
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 1,
-                        borderRadius: premiumTokens.radius.lg,
-                        bgcolor:
-                          theme.palette.mode === 'dark'
-                            ? alpha(theme.palette.common.white, 0.02)
-                            : alpha(theme.palette.common.white, 0.8),
-                        transition: motionTransition(['transform', 'box-shadow', 'border-color']),
-                        '&:hover': {
-                          transform: 'translateY(-2px)',
-                          borderColor: (theme.vars || theme).palette.primary[200],
-                          boxShadow: `0 8px 30px ${alpha(theme.palette.primary[500], 0.14)}`,
-                        },
-                        ...theme.applyDarkStyles({
-                          '&:hover': {
-                            borderColor: alpha(theme.palette.primary[500], 0.3),
-                            boxShadow: `0 4px 20px ${alpha(theme.palette.common.black, 0.4)}`,
-                          },
-                        }),
-                      }),
-                    ]}
-                  >
-                    <Box
+          <Box
+            sx={(theme) => ({
+              p: { xs: 1, sm: 1.25 },
+              borderRadius: premiumTokens.radius.xl,
+              border: '1px solid',
+              borderColor:
+                theme.palette.mode === 'dark'
+                  ? alpha(theme.palette.primary[300], 0.14)
+                  : alpha(theme.palette.primary[100], 0.7),
+              bgcolor:
+                theme.palette.mode === 'dark'
+                  ? alpha(theme.palette.common.white, 0.02)
+                  : alpha(theme.palette.common.white, 0.42),
+              backdropFilter: 'blur(18px)',
+              boxShadow:
+                theme.palette.mode === 'dark'
+                  ? `0 18px 50px ${alpha(theme.palette.common.black, 0.32)}`
+                  : `0 18px 50px ${alpha(theme.palette.primary[900], 0.08)}`,
+            })}
+          >
+            <Grid container spacing={2}>
+              {capabilities.map((cap, index) => (
+                <Grid key={cap.title} size={{ xs: 12, sm: 6 }}>
+                  <SectionReveal delay={index * 80}>
+                    <Paper
+                      variant="outlined"
                       sx={[
                         (theme) => ({
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: 36,
-                          height: 36,
-                          borderRadius: 1.5,
-                          color: (theme.vars || theme).palette.primary[700],
-                          bgcolor: alpha(theme.palette.primary[100], 0.6),
-                          ...theme.applyDarkStyles({
-                            color: (theme.vars || theme).palette.primary[300],
-                            bgcolor: alpha(theme.palette.primary[900], 0.32),
-                          }),
+                          p: 2.75,
+                          minHeight: 176,
+                          height: '100%',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 1.25,
+                          borderRadius: premiumTokens.radius.lg,
+                          borderColor:
+                            theme.palette.mode === 'dark'
+                              ? alpha(theme.palette.primary[300], 0.1)
+                              : alpha(theme.palette.primary[100], 0.75),
+                          bgcolor:
+                            theme.palette.mode === 'dark'
+                              ? alpha(theme.palette.common.white, 0.03)
+                              : alpha(theme.palette.common.white, 0.86),
+                          boxShadow: 'none',
+                          ...cardHoverSx(theme),
                         }),
                       ]}
                     >
-                      {cap.icon}
-                    </Box>
-                    <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
-                      {cap.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                      {cap.description}
-                    </Typography>
-                  </Paper>
-                </SectionReveal>
-              </Grid>
-            ))}
-          </Grid>
+                      <Box
+                        sx={[
+                          (theme) => ({
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: 40,
+                            height: 40,
+                            borderRadius: '10px',
+                            color: (theme.vars || theme).palette.primary[700],
+                            bgcolor:
+                              theme.palette.mode === 'dark'
+                                ? alpha(theme.palette.primary[900], 0.34)
+                                : alpha(theme.palette.primary[100], 0.55),
+                            transition: motionTransition(['transform', 'background-color']),
+                            '.MuiPaper-root:hover &': {
+                              transform: 'scale(1.05)',
+                            },
+                            ...theme.applyDarkStyles({
+                              color: (theme.vars || theme).palette.primary[300],
+                            }),
+                          }),
+                        ]}
+                      >
+                        {cap.icon}
+                      </Box>
+                      <Typography variant="body1" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                        {cap.title}
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: 'text.secondary', maxWidth: 260 }}>
+                        {cap.description}
+                      </Typography>
+                    </Paper>
+                  </SectionReveal>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </Grid>
       </Grid>
     </Section>
