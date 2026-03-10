@@ -113,23 +113,25 @@ export default function HeroBlock({
               sx={(theme) => ({
                 display: 'inline-flex',
                 alignItems: 'center',
-                px: 1.25,
-                py: 0.75,
+                px: 1,
+                py: 0.5,
                 borderRadius: premiumTokens.radius.pill,
                 border: '1px solid',
                 borderColor:
                   theme.palette.mode === 'dark'
-                    ? alpha(theme.palette.primary[500], 0.24)
-                    : alpha(theme.palette.primary[200], 0.9),
+                    ? alpha(theme.palette.primary[500], 0.18)
+                    : alpha(theme.palette.primary[200], 0.65),
                 bgcolor:
                   theme.palette.mode === 'dark'
-                    ? alpha(theme.palette.primary[500], 0.08)
-                    : alpha(theme.palette.common.white, 0.72),
-                backdropFilter: 'blur(18px)',
-                boxShadow: premiumTokens.nav.surfaceShadow(theme),
-                fontWeight: 700,
-                letterSpacing: 0.4,
-                color: 'primary.main',
+                    ? alpha(theme.palette.primary[500], 0.05)
+                    : alpha(theme.palette.common.white, 0.42),
+                backdropFilter: 'blur(12px)',
+                fontWeight: 600,
+                letterSpacing: 0.25,
+                color:
+                  theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.primary[100], 0.92)
+                    : alpha(theme.palette.primary[900], 0.76),
                 mb: 2,
               })}
             >

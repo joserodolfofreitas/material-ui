@@ -22,7 +22,7 @@ export const heroConfig: HomepageHeroConfig = {
   gradientText: 'comprehensive UI platform',
   headlineSuffix: 'for React applications.',
   description:
-    'Build production-ready interfaces faster with customizable components, advanced building blocks, and AI-native workflows.',
+    'Build better products with UI that helps users get work done, powered by customizable components, advanced building blocks, and AI-native workflows.',
   proofLine: 'Built for enterprise.',
   ctas: [
     {
