@@ -8,7 +8,6 @@ import WidgetsRounded from '@mui/icons-material/WidgetsRounded';
 import DashboardCustomizeRounded from '@mui/icons-material/DashboardCustomizeRounded';
 import BrushRounded from '@mui/icons-material/BrushRounded';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
-import ViewQuiltRounded from '@mui/icons-material/ViewQuiltRounded';
 import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
@@ -45,13 +44,6 @@ const suiteCards: SuiteCard[] = [
     href: '/x/',
   },
   {
-    icon: <ViewQuiltRounded />,
-    title: 'Templates',
-    description:
-      'Ready-to-use application shells and polished UI patterns that help teams ship faster without starting from zero.',
-    href: '/store/#populars',
-  },
-  {
     icon: <BrushRounded />,
     title: 'Design Kits',
     description:
@@ -62,7 +54,7 @@ const suiteCards: SuiteCard[] = [
     icon: <AutoAwesomeRounded />,
     title: 'MUI Chat',
     description:
-      "Generate MUI-first examples, scaffold real interfaces, and iterate faster with AI grounded in MUI's ecosystem.",
+      "Generate MUI-first examples, scaffold real interfaces, and kickstart polished flows with AI grounded in MUI's ecosystem.",
     href: 'https://chat.mui.com',
     status: 'alpha' as ProductStatus,
   },
@@ -81,12 +73,12 @@ export default function PlatformSuiteBlock() {
               <GradientText>designing, building, and shipping</GradientText>
             </Typography>
           }
-          description="MUI brings the essentials of modern product delivery into one platform: foundational UI, advanced workflows, templates, design assets, and AI acceleration."
+          description="MUI brings the essentials of modern product delivery into one platform: foundational UI, advanced workflows, design assets, and AI acceleration."
         />
       </SectionReveal>
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {suiteCards.map((card, index) => (
-          <Grid key={card.title} size={{ xs: 12, md: index < 2 ? 6 : 4 }}>
+          <Grid key={card.title} size={{ xs: 12, sm: 6 }}>
             <SectionReveal delay={index * 60}>
               <Paper
                 component={Link}

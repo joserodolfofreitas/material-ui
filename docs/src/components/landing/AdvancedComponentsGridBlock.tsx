@@ -20,7 +20,6 @@ import {
   type ProductStatus,
 } from 'docs/src/components/landing/marketingTheme';
 import FloatingParticles from 'docs/src/components/landing/effects/FloatingParticles';
-import ComponentPreviewCard from 'docs/src/components/landing/effects/ComponentPreviewCard';
 import { Link } from '@mui/docs/Link';
 
 interface AdvancedComponent {
@@ -39,9 +38,10 @@ const components: AdvancedComponent[] = [
     description:
       'The flagship grid for serious products: high-performance, deeply customizable, and ready for AI-assisted workflows.',
     highlights: [
-      'AI-assisted analysis and voice interactions',
-      'Pivoting, tree data, and aggregation',
-      'Master-detail, editing, and export',
+      'Highly performant',
+      'UX empowered by AI assistance with voice support',
+      'Advanced data analysis use cases',
+      'Hierarchical data and more',
     ],
     href: '/x/data-grid-landing/',
   },
@@ -52,9 +52,9 @@ const components: AdvancedComponent[] = [
       'Composable, dashboard-ready charts that match your system and scale with your app.',
     highlights: [
       'High-performance rendering',
-      'Rich chart portfolio',
-      'Composable building blocks',
+      'Rich chart portfolio of chart types',
       'Financial charts',
+      'Composable building blocks',
     ],
     href: '/x/charts-landing/',
   },
@@ -100,21 +100,8 @@ export default function AdvancedComponentsGridBlock() {
               Flagship building blocks for <GradientText>high-value product workflows</GradientText>
             </Typography>
           }
-          description="MUI X gives React teams the advanced surfaces they need for analytics, planning, scheduling, and AI-enhanced product experiences."
+          description="The advanced surfaces you need for analytics, planning, scheduling, and AI-enhanced product experiences."
         />
-      </SectionReveal>
-      <SectionReveal delay={100}>
-        <Box
-          sx={{
-            maxWidth: 480,
-            mx: 'auto',
-            mt: 4,
-            mb: 5,
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <ComponentPreviewCard />
-        </Box>
       </SectionReveal>
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {components.map((comp, index) => (

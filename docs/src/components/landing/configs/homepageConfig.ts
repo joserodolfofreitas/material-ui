@@ -4,6 +4,7 @@ export interface HomepageHeroConfig {
   overline?: string;
   headline: string;
   gradientText: string;
+  headlineSuffix?: string;
   description: string;
   proofLine?: string;
   ctas: Array<{
@@ -16,11 +17,12 @@ export interface HomepageHeroConfig {
 }
 
 export const heroConfig: HomepageHeroConfig = {
-  overline: 'UI platform for React teams',
-  headline: 'From design to production UI, in',
-  gradientText: 'one platform',
+  overline: 'Reliable, battle-tested UI',
+  headline: 'The most',
+  gradientText: 'comprehensive UI platform',
+  headlineSuffix: 'for React applications.',
   description:
-    'The most complete UI platform for React teams, with production-ready components, advanced building blocks, ready-to-use templates, and AI-native workflows.',
+    'Build production-ready interfaces faster with customizable components, advanced building blocks, and AI-native workflows.',
   proofLine: 'Built for enterprise.',
   ctas: [
     {
@@ -38,9 +40,9 @@ export const heroConfig: HomepageHeroConfig = {
 };
 
 export const metaConfig = {
-  title: 'MUI: The most complete UI platform for React teams',
+  title: 'MUI: The most comprehensive UI platform for React applications',
   description:
-    'From design to production UI in one platform. MUI brings production-ready components, advanced building blocks, trusted documentation, and AI-native workflows to React teams.',
+    'The most comprehensive UI platform for React applications. MUI brings customizable components, advanced building blocks, trusted documentation, and AI-native workflows to product teams.',
   card: '/static/social-previews/home-preview.jpg',
 };
 

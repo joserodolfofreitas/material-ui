@@ -23,7 +23,7 @@ import { Link } from '@mui/docs/Link';
 const capabilities = [
   {
     icon: <TableChartRounded />,
-    title: 'AI actions for Data Grid',
+    title: 'Ask your table',
     description:
       'Turn filtering, grouping, pivoting, and analysis into natural-language actions on top of the same trusted grid.',
   },
@@ -58,10 +58,10 @@ export default function AIExperienceBlock() {
           <SectionReveal>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}></Box>
             <SectionHeadline
-              overline="AI-native workflows"
+              overline="AI-native user experience"
               title={
                 <Typography variant="h2">
-                  Advanced UI, now enhanced with <GradientText>AI-native workflows</GradientText>
+                  Advanced Components, now enhanced with<br/><GradientText>AI-native workflows</GradientText>
                   <AutoAwesomeRounded sx={{ color: 'primary.main' }} />
                 </Typography>
               }
@@ -76,7 +76,7 @@ export default function AIExperienceBlock() {
                 size="large"
                 endIcon={<KeyboardArrowRightRounded />}
               >
-                Explore AI workflows
+                Explore AI featuress
               </Button>
               <Button
                 component={Link}

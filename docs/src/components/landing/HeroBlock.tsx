@@ -35,6 +35,7 @@ interface HeroBlockProps {
   overline?: string;
   headline: React.ReactNode;
   gradientText?: string;
+  headlineSuffix?: React.ReactNode;
   description: string;
   proofLine?: React.ReactNode;
   ctas: HeroCta[];
@@ -46,6 +47,7 @@ export default function HeroBlock({
   overline,
   headline,
   gradientText,
+  headlineSuffix,
   description,
   proofLine,
   ctas,
@@ -59,11 +61,11 @@ export default function HeroBlock({
         (theme) => ({
           position: 'relative',
           overflow: 'hidden',
-          pt: { xs: 10, md: 12.5 },
-          pb: { xs: 8, md: 11 },
-          minHeight: { md: 'calc(100vh - var(--MuiDocs-header-height))' },
+          pt: { xs: 10, md: 11.5 },
+          pb: { xs: 8, md: 9.5 },
+          minHeight: { md: 'calc(100vh - var(--MuiDocs-header-height) - 72px)' },
           display: 'flex',
-          alignItems: 'center',
+          alignItems: { xs: 'center', md: 'flex-start' },
           '&::after': {
             content: '""',
             position: 'absolute',
@@ -86,7 +88,7 @@ export default function HeroBlock({
           zIndex: 1,
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
-          alignItems: 'center',
+          alignItems: { xs: 'center', md: 'flex-start' },
           gap: { xs: 5, md: 3 },
         }}
       >
@@ -160,6 +162,12 @@ export default function HeroBlock({
                 >
                   {gradientText}
                 </GradientText>
+              </React.Fragment>
+            )}
+            {headlineSuffix && (
+              <React.Fragment>
+                {' '}
+                {headlineSuffix}
               </React.Fragment>
             )}
           </Typography>

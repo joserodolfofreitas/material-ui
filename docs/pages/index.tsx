@@ -82,7 +82,7 @@ export default function Home() {
             top: 0,
             right: 0,
             left: 0,
-            height: { xs: 760, md: 920 },
+            height: { xs: 820, md: 1080 },
             background: premiumTokens.hero.stageBackground(theme),
             pointerEvents: 'none',
             zIndex: 0,
@@ -93,7 +93,7 @@ export default function Home() {
             top: 0,
             right: 0,
             left: 0,
-            height: { xs: 760, md: 920 },
+            height: { xs: 820, md: 1080 },
             background: `
               linear-gradient(180deg, ${theme.palette.mode === 'dark' ? alpha(theme.palette.common.white, 0) : alpha(theme.palette.common.white, 0.28)} 0%, transparent 26%),
               radial-gradient(circle at 24% 24%, ${alpha(theme.palette.primary[200], theme.palette.mode === 'dark' ? 0 : 0.35)} 0%, transparent 26%),
@@ -110,23 +110,25 @@ export default function Home() {
             overline={heroConfig.overline}
             headline={heroConfig.headline}
             gradientText={heroConfig.gradientText}
+            headlineSuffix={heroConfig.headlineSuffix}
             description={heroConfig.description}
             proofLine={heroConfig.proofLine}
             ctas={heroConfig.ctas}
             visual={<LiveComponentShowcase />}
           />
           <TrustLogoCloudBlock />
-          <StatsBar />
-          <Divider />
-          <PlatformSuiteBlock />
-          <Divider />
-          <FeatureGridBlock />
           <Divider />
           <AdvancedComponentsGridBlock />
           <Divider />
+          <PlatformSuiteBlock />
+          <Divider />
           <AIExperienceBlock />
           <Divider />
-          <FinalCTABlock />
+          <FeatureGridBlock />
+          <Divider />
+          <StatsBar />
+          <Divider />
+          <FinalCTABlock tertiaryCta={{ label: 'Fast track with AI', href: 'https://chat.mui.com' }} />
           <Divider />
         </main>
       </Box>
