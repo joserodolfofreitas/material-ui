@@ -34,7 +34,7 @@ const components: AdvancedComponent[] = [
     title: 'Data Grid',
     description:
       'The fully featured grid for real products: fast, customizable, and built to scale.',
-    highlights: ['AI assistance with voice', 'Pivoting, tree data, master-detail'],
+    highlights: ['UX empowered by AI assistance with voice', 'Advanced data analysis use cases','Pivoting', 'tree data', 'master-detail and much more'],
     href: '/x/data-grid-landing/',
   },
   {
@@ -42,7 +42,7 @@ const components: AdvancedComponent[] = [
     title: 'Charts',
     description:
       'Composable, dashboard-ready charts that match your system and scale with your app.',
-    highlights: ['High performance rendering', 'Composable building blocks'],
+    highlights: ['High performance rendering', 'Rich portfolio of chart types', 'Financial Charts', 'Composable building blocks'],
     href: '/x/charts-landing/',
   },
   {
@@ -188,7 +188,7 @@ export default function AdvancedComponentsGridBlock() {
                 <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
                   {comp.title}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                <Typography variant="body2" sx={{ color: 'text.secondary', flex: 1 }}>
                   {comp.description}
                 </Typography>
                 <Box
@@ -196,7 +196,6 @@ export default function AdvancedComponentsGridBlock() {
                   sx={{
                     m: 0,
                     pl: 2,
-                    mt: 'auto',
                     '& li': { mb: 0.5 },
                   }}
                 >
@@ -219,7 +218,8 @@ export default function AdvancedComponentsGridBlock() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 0.5,
-                    mt: 1,
+                    mt: 'auto',
+                    pt: 1,
                   }}
                 >
                   Learn more{' '}

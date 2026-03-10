@@ -8,7 +8,6 @@ const stats = [
   { end: 4500000, suffix: '+', label: 'Weekly npm downloads', display: '4.5M' },
   { end: 95000, suffix: '+', label: 'GitHub stars' },
   { end: 2800, suffix: '+', label: 'Open-source contributors' },
-  { end: 17000, suffix: '+', label: 'Discord members' },
 ];
 
 export default function StatsBar() {
@@ -17,7 +16,7 @@ export default function StatsBar() {
       <SectionReveal>
         <Grid container spacing={4} sx={{ py: { xs: 2, md: 4 } }}>
           {stats.map((stat, index) => (
-            <Grid key={stat.label} size={{ xs: 6, md: 3 }}>
+            <Grid key={stat.label} size={{ xs: 6, md: 4 }}>
               <SectionReveal delay={index * 100}>
                 <AnimatedCounter
                   end={stat.end}
