@@ -3,10 +3,7 @@ import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Section from 'docs/src/layouts/Section';
-import {
-  CORE_CUSTOMERS,
-  ADVANCED_CUSTOMERS,
-} from 'docs/src/components/home/CompaniesGrid';
+import { CORE_CUSTOMERS, ADVANCED_CUSTOMERS } from 'docs/src/components/home/CompaniesGrid';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
 
 const CompaniesGrid = dynamic(() => import('docs/src/components/home/CompaniesGrid'));
@@ -20,7 +17,7 @@ interface TrustLogoCloudBlockProps {
 
 export default function TrustLogoCloudBlock({
   companies = CORE_CUSTOMERS,
-  caption = "Trusted by the world's best product teams to ship faster and scale with confidence.",
+  caption = 'Trusted by product teams that need complete, dependable UI foundations for real applications.',
 }: TrustLogoCloudBlockProps) {
   return (
     <Section cozy bg="transparent">

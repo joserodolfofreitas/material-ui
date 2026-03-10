@@ -9,10 +9,7 @@ import { metaConfig } from 'docs/src/components/landing/configs/chartsConfig';
 export default function ChartsLandingPage() {
   return (
     <BrandingCssVarsProvider>
-      <Head
-        title={metaConfig.title}
-        description={metaConfig.description}
-      />
+      <Head title={metaConfig.title} description={metaConfig.description} />
       <AppHeaderBanner />
       <AppHeader gitHubRepository="https://github.com/mui/mui-x" />
       <main id="main-content">

@@ -55,11 +55,7 @@ export default function StubLandingBlock({
           <SectionHeadline
             alwaysCenter
             overline="Planned highlights"
-            title={
-              <Typography variant="h2">
-                What we&apos;re building
-              </Typography>
-            }
+            title={<Typography variant="h2">What we&apos;re building</Typography>}
             description="These features are planned. Status badges indicate what's available today and what's coming next."
           />
         </SectionReveal>
@@ -181,9 +177,7 @@ export default function StubLandingBlock({
             <Typography variant="h5" sx={{ mb: 1 }}>
               MUI integration promise
             </Typography>
-            <Typography
-              sx={{ color: 'text.secondary', mb: 4, maxWidth: 520, mx: 'auto' }}
-            >
+            <Typography sx={{ color: 'text.secondary', mb: 4, maxWidth: 520, mx: 'auto' }}>
               {integrationPromise}
             </Typography>
             <Stack

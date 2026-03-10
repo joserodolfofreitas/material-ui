@@ -9,7 +9,11 @@ import KeyboardArrowRightRounded from '@mui/icons-material/KeyboardArrowRightRou
 import GradientText from 'docs/src/components/typography/GradientText';
 import StatusBadge from 'docs/src/components/landing/StatusBadge';
 import GradientMesh from 'docs/src/components/landing/effects/GradientMesh';
-import { type ProductStatus } from 'docs/src/components/landing/marketingTheme';
+import {
+  motionTransition,
+  premiumTokens,
+  type ProductStatus,
+} from 'docs/src/components/landing/marketingTheme';
 import useParallax from 'docs/src/components/landing/effects/useParallax';
 import { Link } from '@mui/docs/Link';
 
@@ -32,6 +36,7 @@ interface HeroBlockProps {
   headline: React.ReactNode;
   gradientText?: string;
   description: string;
+  proofLine?: React.ReactNode;
   ctas: HeroCta[];
   visual?: React.ReactNode;
   badge?: ProductStatus;
@@ -42,6 +47,7 @@ export default function HeroBlock({
   headline,
   gradientText,
   description,
+  proofLine,
   ctas,
   visual,
   badge,
@@ -53,30 +59,22 @@ export default function HeroBlock({
         (theme) => ({
           position: 'relative',
           overflow: 'hidden',
-          pt: { xs: 10, md: 14 },
-          pb: { xs: 8, md: 12 },
-          minHeight: { md: '90vh' },
+          pt: { xs: 10, md: 12.5 },
+          pb: { xs: 8, md: 11 },
+          minHeight: { md: 'calc(100vh - var(--MuiDocs-header-height))' },
           display: 'flex',
           alignItems: 'center',
-          '&::before': {
+          '&::after': {
             content: '""',
             position: 'absolute',
-            top: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '200%',
-            height: '100%',
-            background: `radial-gradient(ellipse 50% 80% at 50% 0%, ${alpha(
-              theme.palette.primary[50],
-              0.5,
-            )} 0%, transparent 70%)`,
+            top: { xs: '22%', md: '16%' },
+            right: { xs: '-22%', md: '6%' },
+            width: { xs: 280, md: 620 },
+            height: { xs: 280, md: 620 },
+            background: premiumTokens.hero.visualGlow(theme),
+            opacity: theme.palette.mode === 'dark' ? 0.95 : 1,
+            filter: 'blur(6px)',
             pointerEvents: 'none',
-            ...theme.applyDarkStyles({
-              background: `radial-gradient(ellipse 50% 80% at 50% 0%, ${alpha(
-                theme.palette.primary[900],
-                0.3,
-              )} 0%, transparent 70%)`,
-            }),
           },
         }),
       ]}
@@ -89,10 +87,9 @@ export default function HeroBlock({
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: 'center',
-          gap: { xs: 4, md: 0 },
+          gap: { xs: 5, md: 3 },
         }}
       >
-        {/* Left: hero text (z-index above the demo) */}
         <Box
           sx={{
             position: 'relative',
@@ -100,7 +97,7 @@ export default function HeroBlock({
             flex: { md: '0 0 42%' },
             maxWidth: { md: '42%' },
             textAlign: { xs: 'center', md: 'left' },
-            pr: { md: 2 },
+            pr: { md: 1.5 },
           }}
         >
           {badge && (
@@ -111,12 +108,44 @@ export default function HeroBlock({
           {overline && (
             <Typography
               variant="body2"
-              sx={{ fontWeight: 'bold', color: 'primary.main', mb: 1 }}
+              sx={(theme) => ({
+                display: 'inline-flex',
+                alignItems: 'center',
+                px: 1.25,
+                py: 0.75,
+                borderRadius: premiumTokens.radius.pill,
+                border: '1px solid',
+                borderColor:
+                  theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.primary[500], 0.24)
+                    : alpha(theme.palette.primary[200], 0.9),
+                bgcolor:
+                  theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.primary[500], 0.08)
+                    : alpha(theme.palette.common.white, 0.72),
+                backdropFilter: 'blur(18px)',
+                boxShadow: premiumTokens.nav.surfaceShadow(theme),
+                fontWeight: 700,
+                letterSpacing: 0.4,
+                color: 'primary.main',
+                mb: 2,
+              })}
             >
               {overline}
             </Typography>
           )}
-          <Typography variant="h1" sx={{ mb: 2 }}>
+          <Typography
+            component="h1"
+            variant="h1"
+            sx={{
+              mb: 2,
+              maxWidth: premiumTokens.hero.headlineMaxWidth,
+              mx: { xs: 'auto', md: 0 },
+              letterSpacing: '-0.04em',
+              lineHeight: 1.02,
+              fontSize: { xs: 'clamp(2.75rem, 10vw, 3.75rem)', md: '3.75rem' },
+            }}
+          >
             {headline}
             {gradientText && (
               <React.Fragment>
@@ -124,6 +153,7 @@ export default function HeroBlock({
                 <GradientText
                   sx={{
                     backgroundSize: '200% auto',
+                    display: 'inline-block',
                     animation: `${textShimmer} 4s linear infinite`,
                     '@media (prefers-reduced-motion: reduce)': { animation: 'none' },
                   }}
@@ -136,22 +166,25 @@ export default function HeroBlock({
           <Typography
             sx={{
               color: 'text.secondary',
-              mb: 4,
-              maxWidth: 500,
+              mb: 4.5,
+              maxWidth: premiumTokens.hero.descriptionMaxWidth,
               mx: { xs: 'auto', md: 0 },
-              fontSize: { xs: '1rem', md: '1.125rem' },
-              lineHeight: 1.6,
+              fontSize: { xs: '1.0625rem', md: '1.1875rem' },
+              lineHeight: 1.65,
             }}
           >
             {description}
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
-            spacing={2}
+            spacing={1.5}
             useFlexGap
-            sx={{ justifyContent: { xs: 'center', md: 'flex-start' } }}
+            sx={{
+              justifyContent: { xs: 'center', md: 'flex-start' },
+              alignItems: { xs: 'stretch', sm: 'center' },
+            }}
           >
-            {ctas.map((cta) => (
+            {ctas.map((cta, index) => (
               <Button
                 key={cta.label}
                 component={Link}
@@ -162,8 +195,43 @@ export default function HeroBlock({
                 size="large"
                 startIcon={cta.startIcon}
                 endIcon={
-                  cta.variant !== 'text' ? <KeyboardArrowRightRounded /> : undefined
+                  cta.variant === 'contained' || cta.variant === 'outlined' ? (
+                    <KeyboardArrowRightRounded />
+                  ) : undefined
                 }
+                sx={[
+                  (theme) => ({
+                    minHeight: 48,
+                    px: 2.25,
+                    borderRadius: premiumTokens.radius.pill,
+                    fontWeight: 700,
+                    whiteSpace: 'nowrap',
+                    transition: motionTransition(
+                      ['transform', 'box-shadow', 'background-color', 'border-color', 'color'],
+                      'base',
+                    ),
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                    },
+                    ...(index === 0 && {
+                      boxShadow:
+                        theme.palette.mode === 'dark'
+                          ? `0 14px 30px ${alpha(theme.palette.primary[900], 0.5)}`
+                          : `0 14px 30px ${alpha(theme.palette.primary[500], 0.22)}`,
+                    }),
+                    ...(cta.variant === 'outlined' && {
+                      borderWidth: 1,
+                      borderColor:
+                        theme.palette.mode === 'dark'
+                          ? alpha(theme.palette.primary[300], 0.2)
+                          : alpha(theme.palette.primary[200], 0.95),
+                      bgcolor:
+                        theme.palette.mode === 'dark'
+                          ? alpha(theme.palette.common.white, 0.02)
+                          : alpha(theme.palette.common.white, 0.72),
+                    }),
+                  }),
+                ]}
               >
                 {cta.label}
                 {cta.badge && (
@@ -174,54 +242,71 @@ export default function HeroBlock({
               </Button>
             ))}
           </Stack>
+          {proofLine && (
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={1.25}
+              useFlexGap
+              sx={{
+                mt: 3.25,
+                justifyContent: { xs: 'center', md: 'flex-start' },
+                alignItems: { xs: 'center', md: 'flex-start' },
+                color: 'text.secondary',
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{ fontWeight: 700, color: 'text.primary', whiteSpace: 'nowrap' }}
+              >
+                Trusted by thousands of teams.
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  maxWidth: 420,
+                  textWrap: 'balance',
+                }}
+              >
+                {proofLine}
+              </Typography>
+            </Stack>
+          )}
         </Box>
 
-        {/* Right: visual demo — bleeds left into the text column and right past the container */}
         {visual && (
           <Box
             ref={parallax.ref}
             sx={{
               position: 'relative',
               zIndex: 2,
-              flex: { md: '0 0 75%' },
-              maxWidth: { xs: '100%', md: '75%' },
-              ml: { md: '-12%' },
-              mr: { md: -4 },
+              flex: { md: '0 0 58%' },
+              maxWidth: { xs: '100%', md: '58%' },
+              width: '100%',
+              ml: { md: 0 },
               transform: parallax.transform,
               willChange: 'transform',
-              transition: 'transform 0.1s linear',
+              transition: motionTransition('transform', 'fast'),
               '@media (prefers-reduced-motion: reduce)': {
                 transform: 'none',
                 transition: 'none',
               },
             }}
           >
-            {/* Glow on the left edge: keeps text readable over the demo */}
             <Box
               aria-hidden
               sx={[
                 (theme) => ({
                   display: { xs: 'none', md: 'block' },
                   position: 'absolute',
-                  top: '-50vh',
-                  left: '-50vw',
-                  width: '68vw',
-                  height: 'calc(100% + 50vh)',
-                  background: `linear-gradient(to right, ${
-                    theme.palette.mode === 'dark'
-                      ? theme.palette.primaryDark[900]
-                      : theme.palette.common.white
-                  } 0%, ${
-                    theme.palette.mode === 'dark'
-                      ? theme.palette.primaryDark[900]
-                      : theme.palette.common.white
-                  } 85%, ${
-                    theme.palette.mode === 'dark'
-                      ? alpha(theme.palette.primaryDark[900], 0)
-                      : alpha(theme.palette.common.white, 0)
-                  } 100%)`,
+                  top: '-15%',
+                  right: '-6%',
+                  width: '85%',
+                  height: '80%',
+                  background: premiumTokens.hero.visualGlow(theme),
+                  filter: 'blur(50px)',
+                  opacity: 0.8,
                   pointerEvents: 'none',
-                  zIndex: 4,
+                  zIndex: 0,
                 }),
               ]}
             />

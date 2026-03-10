@@ -9,10 +9,7 @@ import { metaConfig } from 'docs/src/components/landing/configs/aiPageConfig';
 export default function AIPage() {
   return (
     <BrandingCssVarsProvider>
-      <Head
-        title={metaConfig.title}
-        description={metaConfig.description}
-      />
+      <Head title={metaConfig.title} description={metaConfig.description} />
       <AppHeaderBanner />
       <AppHeader />
       <main id="main-content">

@@ -65,6 +65,50 @@ export const cardTokens = {
   hoverElevation: 4,
 } as const;
 
+export const premiumTokens = {
+  radius: {
+    lg: '12px',
+    xl: '14px',
+    pill: '999px',
+  },
+  hero: {
+    headlineMaxWidth: 560,
+    descriptionMaxWidth: 620,
+    visualShadow: (theme: any) =>
+      theme.palette.mode === 'dark'
+        ? `0 28px 90px ${alpha(theme.palette.common.black, 0.6)}`
+        : `0 28px 90px ${alpha(theme.palette.primary[900], 0.14)}`,
+    floatingShadow: (theme: any) =>
+      theme.palette.mode === 'dark'
+        ? `0 18px 60px ${alpha(theme.palette.common.black, 0.5)}`
+        : `0 18px 60px ${alpha(theme.palette.primary[700], 0.16)}`,
+    stageBackground: (theme: any) =>
+      theme.palette.mode === 'dark'
+        ? `
+          radial-gradient(circle at 18% 16%, ${alpha(theme.palette.primary[500], 0.14)} 0, transparent 34%),
+          radial-gradient(circle at 78% 22%, ${alpha(theme.palette.info.main, 0.12)} 0, transparent 30%),
+          radial-gradient(circle at 60% 72%, ${alpha(theme.palette.primary[800], 0.18)} 0, transparent 38%),
+          linear-gradient(180deg, ${alpha(theme.palette.primaryDark[900], 0.98)} 0%, ${alpha(theme.palette.primaryDark[800], 0.94)} 100%)
+        `
+        : `
+          radial-gradient(circle at 15% 14%, ${alpha(theme.palette.primary[100], 0.75)} 0, transparent 32%),
+          radial-gradient(circle at 74% 18%, ${alpha(theme.palette.info.light, 0.28)} 0, transparent 26%),
+          radial-gradient(circle at 62% 76%, ${alpha(theme.palette.primary[50], 0.9)} 0, transparent 34%),
+          linear-gradient(180deg, #fbfdff 0%, #f4f7fb 48%, #f8fbff 100%)
+        `,
+    visualGlow: (theme: any) =>
+      theme.palette.mode === 'dark'
+        ? `radial-gradient(circle, ${alpha(theme.palette.primary[400], 0.28)} 0%, transparent 68%)`
+        : `radial-gradient(circle, ${alpha(theme.palette.primary[200], 0.55)} 0%, transparent 70%)`,
+  },
+  nav: {
+    surfaceShadow: (theme: any) =>
+      theme.palette.mode === 'dark'
+        ? `0 10px 30px ${alpha(theme.palette.common.black, 0.35)}`
+        : `0 10px 30px ${alpha(theme.palette.primary[900], 0.08)}`,
+  },
+} as const;
+
 /**
  * Focus-visible outline for interactive cards (Paper used as links).
  * Ensures keyboard users see a clear focus ring.

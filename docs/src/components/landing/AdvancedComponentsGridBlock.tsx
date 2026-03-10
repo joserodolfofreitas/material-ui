@@ -14,7 +14,11 @@ import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
 import StatusBadge from 'docs/src/components/landing/StatusBadge';
-import { motionTransition, type ProductStatus } from 'docs/src/components/landing/marketingTheme';
+import {
+  motionTransition,
+  premiumTokens,
+  type ProductStatus,
+} from 'docs/src/components/landing/marketingTheme';
 import FloatingParticles from 'docs/src/components/landing/effects/FloatingParticles';
 import ComponentPreviewCard from 'docs/src/components/landing/effects/ComponentPreviewCard';
 import { Link } from '@mui/docs/Link';
@@ -33,8 +37,12 @@ const components: AdvancedComponent[] = [
     icon: <TableChartRounded />,
     title: 'Data Grid',
     description:
-      'The fully featured grid for real products: fast, customizable, and built to scale.',
-    highlights: ['UX empowered by AI assistance with voice', 'Advanced data analysis use cases','Pivoting', 'tree data', 'master-detail and much more'],
+      'The flagship grid for serious products: high-performance, deeply customizable, and ready for AI-assisted workflows.',
+    highlights: [
+      'AI-assisted analysis and voice interactions',
+      'Pivoting, tree data, and aggregation',
+      'Master-detail, editing, and export',
+    ],
     href: '/x/data-grid-landing/',
   },
   {
@@ -42,14 +50,18 @@ const components: AdvancedComponent[] = [
     title: 'Charts',
     description:
       'Composable, dashboard-ready charts that match your system and scale with your app.',
-    highlights: ['High performance rendering', 'Rich portfolio of chart types', 'Financial Charts', 'Composable building blocks'],
+    highlights: [
+      'High-performance rendering',
+      'Rich chart portfolio',
+      'Composable building blocks',
+      'Financial charts',
+    ],
     href: '/x/charts-landing/',
   },
   {
     icon: <CalendarMonthRounded />,
     title: 'Scheduler',
-    description:
-      'Scheduling for complex products: events, resources, and timelines.',
+    description: 'Scheduling for complex products: events, resources, and timelines.',
     highlights: ['Calendar events and resources', 'Recurring events support'],
     status: 'alpha',
     href: '/x/scheduler-landing/',
@@ -57,8 +69,7 @@ const components: AdvancedComponent[] = [
   {
     icon: <ChatBubbleOutlineRounded />,
     title: 'Chatbox',
-    description:
-      'A conversational UI component for chat interfaces, AI assistants, and messaging.',
+    description: 'A conversational UI component for chat interfaces, AI assistants, and messaging.',
     highlights: ['Streaming message support', 'Customizable message rendering'],
     status: 'alpha',
     href: '/x/chatbox-landing/',
@@ -86,11 +97,10 @@ export default function AdvancedComponentsGridBlock() {
           overline="Advanced components"
           title={
             <Typography variant="h2">
-              Industry-leading UI for{' '}
-              <GradientText>complex workflows</GradientText>
+              Flagship building blocks for <GradientText>high-value product workflows</GradientText>
             </Typography>
           }
-          description="Purpose-built components that solve the hardest UI challenges so your team can focus on product logic."
+          description="MUI X gives React teams the advanced surfaces they need for analytics, planning, scheduling, and AI-enhanced product experiences."
         />
       </SectionReveal>
       <SectionReveal delay={100}>
@@ -108,10 +118,7 @@ export default function AdvancedComponentsGridBlock() {
       </SectionReveal>
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {components.map((comp, index) => (
-          <Grid
-            key={comp.title}
-            size={{ xs: 12, sm: 6, md: index < 2 ? 6 : 4 }}
-          >
+          <Grid key={comp.title} size={{ xs: 12, sm: 6, md: index < 2 ? 6 : 4 }}>
             <SectionReveal delay={index * 60}>
               <Paper
                 component={Link}
@@ -126,18 +133,16 @@ export default function AdvancedComponentsGridBlock() {
                     flexDirection: 'column',
                     gap: 1.5,
                     textDecoration: 'none',
-                    transition: motionTransition([
-                      'transform',
-                      'box-shadow',
-                      'border-color',
-                    ]),
+                    borderRadius: premiumTokens.radius.lg,
+                    bgcolor:
+                      theme.palette.mode === 'dark'
+                        ? alpha(theme.palette.common.white, 0.02)
+                        : alpha(theme.palette.common.white, 0.82),
+                    transition: motionTransition(['transform', 'box-shadow', 'border-color']),
                     '&:hover': {
                       transform: 'translateY(-4px)',
                       borderColor: (theme.vars || theme).palette.primary[200],
-                      boxShadow: `0 8px 30px ${alpha(
-                        theme.palette.primary[500],
-                        0.15,
-                      )}`,
+                      boxShadow: `0 8px 30px ${alpha(theme.palette.primary[500], 0.15)}`,
                       '& .adv-icon': {
                         transform: 'scale(1.15)',
                       },
@@ -152,10 +157,7 @@ export default function AdvancedComponentsGridBlock() {
                     ...theme.applyDarkStyles({
                       '&:hover': {
                         borderColor: alpha(theme.palette.primary[500], 0.3),
-                        boxShadow: `0 4px 20px ${alpha(
-                          theme.palette.common.black,
-                          0.4,
-                        )}`,
+                        boxShadow: `0 4px 20px ${alpha(theme.palette.common.black, 0.4)}`,
                       },
                     }),
                   }),
@@ -228,7 +230,7 @@ export default function AdvancedComponentsGridBlock() {
                     className="arrow-icon"
                     sx={{ transition: motionTransition('transform', 'fast') }}
                   >
-{'→'}
+                    {'→'}
                   </Box>
                 </Typography>
               </Paper>

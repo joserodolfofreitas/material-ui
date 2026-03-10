@@ -39,7 +39,12 @@ export default function GanttLanding() {
         status={ganttConfig.hero.status}
         ctas={[
           { label: 'Follow updates', href: '/blog/', variant: 'outlined' },
-          { label: 'Start building', href: '/material-ui/getting-started/', variant: 'outlined', color: 'primary' },
+          {
+            label: 'Start building',
+            href: '/material-ui/getting-started/',
+            variant: 'outlined',
+            color: 'primary',
+          },
         ]}
       />
       <Divider />

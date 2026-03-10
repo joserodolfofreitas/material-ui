@@ -33,13 +33,14 @@ const Navigation = styled('nav')(({ theme }) => [
         color: 'inherit',
         font: 'inherit',
         textDecoration: 'none',
-        padding: theme.spacing('6px', '8px'),
-        borderRadius: (theme.vars || theme).shape.borderRadius,
+        padding: theme.spacing('7px', '10px'),
+        borderRadius: '8px',
         border: '1px solid transparent',
+        transition: theme.transitions.create(['background-color', 'border-color', 'color']),
         '&:hover': {
           color: (theme.vars || theme).palette.text.primary,
-          backgroundColor: (theme.vars || theme).palette.grey[50],
-          borderColor: (theme.vars || theme).palette.grey[100],
+          backgroundColor: alpha(theme.palette.common.white, 0.82),
+          borderColor: alpha(theme.palette.primary[100], 0.95),
           '@media (hover: none)': {
             backgroundColor: 'initial',
             // Reset on touch devices, it doesn't add specificity
@@ -57,8 +58,8 @@ const Navigation = styled('nav')(({ theme }) => [
       '& > a, & > button': {
         '&:hover': {
           color: (theme.vars || theme).palette.primary[50],
-          backgroundColor: alpha(theme.palette.primaryDark[700], 0.8),
-          borderColor: (theme.vars || theme).palette.divider,
+          backgroundColor: alpha(theme.palette.primaryDark[700], 0.6),
+          borderColor: alpha(theme.palette.primary[300], 0.18),
         },
       },
     },
@@ -262,9 +263,11 @@ export default function HeaderNavBar() {
                     mt: 1,
                     minWidth: 498,
                     overflow: 'hidden',
-                    borderColor: 'grey.200',
-                    bgcolor: 'background.paper',
-                    boxShadow: `0px 4px 16px ${alpha(theme.palette.grey[200], 0.8)}`,
+                    borderRadius: '12px',
+                    borderColor: alpha(theme.palette.primary[100], 0.95),
+                    bgcolor: alpha(theme.palette.common.white, 0.92),
+                    backdropFilter: 'blur(20px)',
+                    boxShadow: `0 18px 50px ${alpha(theme.palette.primary[900], 0.1)}`,
                     '& ul': {
                       margin: 0,
                       padding: 0,
@@ -276,9 +279,9 @@ export default function HeaderNavBar() {
                     },
                     '& a': { textDecoration: 'none' },
                     ...theme.applyDarkStyles({
-                      borderColor: 'primaryDark.700',
-                      bgcolor: 'primaryDark.900',
-                      boxShadow: `0px 4px 16px ${alpha(theme.palette.common.black, 0.8)}`,
+                      borderColor: alpha(theme.palette.primary[300], 0.14),
+                      bgcolor: alpha(theme.palette.primaryDark[900], 0.92),
+                      boxShadow: `0 18px 50px ${alpha(theme.palette.common.black, 0.45)}`,
                       '& li:not(:last-of-type)': {
                         borderColor: 'primaryDark.700',
                       },
@@ -358,13 +361,15 @@ export default function HeaderNavBar() {
                   sx={(theme) => ({
                     mt: 1,
                     overflow: 'hidden',
-                    borderColor: 'grey.200',
-                    bgcolor: 'background.paper',
-                    boxShadow: `0px 4px 16px ${alpha(theme.palette.grey[200], 0.8)}`,
+                    borderRadius: '12px',
+                    borderColor: alpha(theme.palette.primary[100], 0.95),
+                    bgcolor: alpha(theme.palette.common.white, 0.92),
+                    backdropFilter: 'blur(20px)',
+                    boxShadow: `0 18px 50px ${alpha(theme.palette.primary[900], 0.1)}`,
                     ...theme.applyDarkStyles({
-                      borderColor: 'primaryDark.700',
-                      bgcolor: 'primaryDark.900',
-                      boxShadow: `0px 4px 16px ${alpha(theme.palette.common.black, 0.8)}`,
+                      borderColor: alpha(theme.palette.primary[300], 0.14),
+                      bgcolor: alpha(theme.palette.primaryDark[900], 0.92),
+                      boxShadow: `0 18px 50px ${alpha(theme.palette.common.black, 0.45)}`,
                     }),
                   })}
                 >

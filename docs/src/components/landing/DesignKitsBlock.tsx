@@ -53,8 +53,7 @@ export default function DesignKitsBlock() {
               overline="Design Kits for Figma"
               title={
                 <Typography variant="h2">
-                  Design and dev speak the{' '}
-                  <GradientText>same language</GradientText>
+                  Design and dev speak the <GradientText>same language</GradientText>
                 </Typography>
               }
               description="Figma kits that mirror every MUI component, variant, and token. Design intent survives the handoff to code - every time."

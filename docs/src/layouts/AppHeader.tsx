@@ -19,12 +19,12 @@ const Header = styled('header')(({ theme }) => [
     top: 0,
     transition: theme.transitions.create('top'),
     zIndex: theme.zIndex.appBar,
-    backgroundColor: 'rgba(255,255,255,0.8)',
-    backdropFilter: 'blur(8px)',
-    borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`,
+    backgroundColor: 'transparent',
+    backdropFilter: 'blur(10px)',
+    borderBottom: 'none',
   } as const,
   theme.applyDarkStyles({
-    backgroundColor: alpha(theme.palette.primaryDark[900], 0.7),
+    backgroundColor: 'transparent',
   }),
 ]);
 
@@ -47,13 +47,36 @@ export default function AppHeader(props: AppHeaderProps) {
           },
         }}
       />
-      <Container sx={{ display: 'flex', alignItems: 'center', minHeight: HEIGHT }}>
+      <Container
+        sx={(theme) => ({
+          display: 'flex',
+          alignItems: 'center',
+          minHeight: HEIGHT,
+          mt: 1,
+          px: { xs: 1, sm: 1.5 },
+          borderRadius: '12px',
+          border: '1px solid',
+          borderColor:
+            theme.palette.mode === 'dark'
+              ? alpha(theme.palette.primary[300], 0.16)
+              : alpha(theme.palette.primary[100], 0.95),
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? alpha(theme.palette.primaryDark[900], 0.72)
+              : alpha(theme.palette.common.white, 0.74),
+          boxShadow:
+            theme.palette.mode === 'dark'
+              ? `0 10px 30px ${alpha(theme.palette.common.black, 0.28)}`
+              : `0 10px 30px ${alpha(theme.palette.primary[900], 0.08)}`,
+          backdropFilter: 'blur(20px)',
+        })}
+      >
         <LogoWithCopyMenu />
         <Box sx={{ display: { xs: 'none', md: 'initial' } }}>
           <HeaderNavBar />
         </Box>
         <Box sx={{ ml: 'auto' }} />
-        <Stack direction="row" spacing={1}>
+        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
           <DeferredAppSearch />
           <Tooltip title={t('appFrame.github')} enterDelay={300}>
             <IconButton
@@ -65,6 +88,17 @@ export default function AppHeader(props: AppHeaderProps) {
               rel="noopener"
               data-ga-event-category="header"
               data-ga-event-action="github"
+              sx={(theme) => ({
+                border: '1px solid',
+                borderColor:
+                  theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.primary[300], 0.14)
+                    : alpha(theme.palette.primary[100], 0.95),
+                bgcolor:
+                  theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.common.white, 0.02)
+                    : alpha(theme.palette.common.white, 0.72),
+              })}
             >
               <GitHubIcon fontSize="small" />
             </IconButton>

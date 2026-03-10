@@ -49,10 +49,7 @@ export default function HighlightsBlock({
       </SectionReveal>
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {highlights.map((highlight, index) => (
-          <Grid
-            key={highlight.title}
-            size={{ xs: 12, sm: 6, md: highlights.length <= 6 ? 4 : 3 }}
-          >
+          <Grid key={highlight.title} size={{ xs: 12, sm: 6, md: highlights.length <= 6 ? 4 : 3 }}>
             <SectionReveal delay={index * 60}>
               <Paper
                 variant="outlined"

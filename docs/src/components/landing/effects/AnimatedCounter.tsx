@@ -21,8 +21,7 @@ export default function AnimatedCounter({
   const [count, setCount] = React.useState(0);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
   const prefersReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   React.useEffect(() => {
     if (!inView) return undefined;
@@ -69,7 +68,13 @@ export default function AnimatedCounter({
       </Typography>
       <Typography
         variant="body2"
-        sx={{ color: 'text.secondary', mt: 0.5, fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1 }}
+        sx={{
+          color: 'text.secondary',
+          mt: 0.5,
+          fontWeight: 600,
+          textTransform: 'uppercase',
+          letterSpacing: 1,
+        }}
       >
         {label}
       </Typography>

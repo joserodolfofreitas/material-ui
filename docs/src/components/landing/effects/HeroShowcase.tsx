@@ -82,8 +82,7 @@ export default function HeroShowcase() {
             <Str>&apos;@mui/x-data-grid&apos;</Str>;
           </CodeLine>
           <CodeLine delay={100}>
-            <Kw>import</Kw> {'{'} BarChart {'}'} <Kw>from</Kw>{' '}
-            <Str>&apos;@mui/x-charts&apos;</Str>;
+            <Kw>import</Kw> {'{'} BarChart {'}'} <Kw>from</Kw> <Str>&apos;@mui/x-charts&apos;</Str>;
           </CodeLine>
           <CodeLine delay={200} />
           <CodeLine delay={300}>
@@ -96,12 +95,12 @@ export default function HeroShowcase() {
             &lt;<Fn>Stack</Fn> <Prop>spacing</Prop>={'{'}2{'}'}&gt;
           </CodeLine>
           <CodeLine delay={600} indent={3}>
-            &lt;<Fn>BarChart</Fn> <Prop>series</Prop>={'{'}data{'}'} <Prop>height</Prop>
-            ={'{'}300{'}'} /&gt;
+            &lt;<Fn>BarChart</Fn> <Prop>series</Prop>={'{'}data{'}'} <Prop>height</Prop>={'{'}300
+            {'}'} /&gt;
           </CodeLine>
           <CodeLine delay={700} indent={3}>
-            &lt;<Fn>DataGrid</Fn> <Prop>rows</Prop>={'{'}rows{'}'} <Prop>columns</Prop>
-            ={'{'}cols{'}'} /&gt;
+            &lt;<Fn>DataGrid</Fn> <Prop>rows</Prop>={'{'}rows{'}'} <Prop>columns</Prop>={'{'}cols
+            {'}'} /&gt;
           </CodeLine>
           <CodeLine delay={800} indent={2}>
             &lt;/<Fn>Stack</Fn>&gt;
@@ -114,11 +113,7 @@ export default function HeroShowcase() {
       </Paper>
 
       {/* Floating badge - npm downloads */}
-      <FloatingBadge
-        top={{ xs: -12, md: -16 }}
-        right={{ xs: -8, md: -40 }}
-        delay={600}
-      >
+      <FloatingBadge top={{ xs: -12, md: -16 }} right={{ xs: -8, md: -40 }} delay={600}>
         <Chip
           label="4.5M+ weekly downloads"
           size="small"
@@ -129,11 +124,7 @@ export default function HeroShowcase() {
       </FloatingBadge>
 
       {/* Floating badge - GitHub stars */}
-      <FloatingBadge
-        bottom={{ xs: 40, md: 60 }}
-        left={{ xs: -8, md: -48 }}
-        delay={900}
-      >
+      <FloatingBadge bottom={{ xs: 40, md: 60 }} left={{ xs: -8, md: -48 }} delay={900}>
         <Chip
           label="95k+ GitHub stars"
           size="small"

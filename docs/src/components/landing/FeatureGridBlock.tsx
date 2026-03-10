@@ -58,12 +58,13 @@ export default function FeatureGridBlock() {
       <SectionReveal>
         <SectionHeadline
           alwaysCenter
-          overline="Built for modern teams"
+          overline="Why teams standardize on MUI"
           title={
             <Typography variant="h2">
-              The foundation <GradientText>serious products</GradientText> deserve
+              Built for <GradientText>customization, DX, and trust</GradientText>
             </Typography>
           }
+          description="Everything about MUI is designed to help React teams move faster without giving up control, documentation quality, or production reliability."
         />
       </SectionReveal>
       <Grid container spacing={3} sx={{ mt: 2 }}>

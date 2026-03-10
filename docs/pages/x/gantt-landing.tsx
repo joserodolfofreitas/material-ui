@@ -9,10 +9,7 @@ import { ganttConfig } from 'docs/src/components/landing/configs/stubConfigs';
 export default function GanttLandingPage() {
   return (
     <BrandingCssVarsProvider>
-      <Head
-        title={ganttConfig.meta.title}
-        description={ganttConfig.meta.description}
-      />
+      <Head title={ganttConfig.meta.title} description={ganttConfig.meta.description} />
       <AppHeaderBanner />
       <AppHeader gitHubRepository="https://github.com/mui/mui-x" />
       <main id="main-content">

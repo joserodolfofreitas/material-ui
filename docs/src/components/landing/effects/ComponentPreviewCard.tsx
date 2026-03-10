@@ -43,7 +43,10 @@ export default function ComponentPreviewCard() {
     >
       {/* Mini chart area */}
       <Box sx={{ p: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
-        <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, mb: 1, display: 'block' }}>
+        <Typography
+          variant="caption"
+          sx={{ color: 'text.secondary', fontWeight: 600, mb: 1, display: 'block' }}
+        >
           Revenue Overview
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5, height: 64 }}>
@@ -66,7 +69,10 @@ export default function ComponentPreviewCard() {
 
       {/* Mini data grid area */}
       <Box sx={{ p: 2 }}>
-        <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, mb: 1.5, display: 'block' }}>
+        <Typography
+          variant="caption"
+          sx={{ color: 'text.secondary', fontWeight: 600, mb: 1.5, display: 'block' }}
+        >
           Recent Transactions
         </Typography>
         {/* Header row */}
@@ -82,7 +88,13 @@ export default function ComponentPreviewCard() {
             <Typography
               key={col}
               variant="caption"
-              sx={{ fontWeight: 700, color: 'text.secondary', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: 0.5 }}
+              sx={{
+                fontWeight: 700,
+                color: 'text.secondary',
+                fontSize: '0.65rem',
+                textTransform: 'uppercase',
+                letterSpacing: 0.5,
+              }}
             >
               {col}
             </Typography>

@@ -10,7 +10,12 @@ export const schedulerHero = {
   status: 'alpha' as ProductStatus,
   ctas: [
     { label: 'Try the Alpha', href: '/x/react-scheduler/', variant: 'contained' as const },
-    { label: 'View documentation', href: '/x/react-scheduler/getting-started/', variant: 'outlined' as const, color: 'secondary' as const },
+    {
+      label: 'View documentation',
+      href: '/x/react-scheduler/getting-started/',
+      variant: 'outlined' as const,
+      color: 'secondary' as const,
+    },
   ],
 };
 

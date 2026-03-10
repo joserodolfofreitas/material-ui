@@ -26,9 +26,9 @@ interface FinalCTABlockProps {
 
 export default function FinalCTABlock({
   headline,
-  description = 'Join thousands of developers and teams building with MUI. From startups to enterprise, MUI powers the world\'s best products.',
+  description = 'Build with the complete UI platform for React teams, then accelerate implementation with advanced components and AI-native workflows when you need them.',
   primaryCta = { label: 'Get started', href: '/material-ui/getting-started/' },
-  secondaryCta = { label: 'Start building with AI', href: 'https://chat.mui.com' },
+  secondaryCta = { label: 'Explore advanced components', href: '/x/' },
   tertiaryCta,
 }: FinalCTABlockProps) {
   return (

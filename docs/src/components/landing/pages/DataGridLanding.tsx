@@ -88,10 +88,7 @@ export default function DataGridLanding() {
           {dataGridIntegrations.map((integration, index) => (
             <Grid key={integration.title} size={{ xs: 12, md: 8 }}>
               <SectionReveal delay={index * 80}>
-                <Paper
-                  variant="outlined"
-                  sx={{ p: 4, textAlign: 'center' }}
-                >
+                <Paper variant="outlined" sx={{ p: 4, textAlign: 'center' }}>
                   <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
                     {integration.title}
                   </Typography>

@@ -60,8 +60,7 @@ export default function AbstractionLevelsBlock() {
           overline="Three levels of abstraction"
           title={
             <Typography variant="h2">
-              Use as much or as little as you need - 
-              <GradientText>always in control</GradientText>
+              Use as much or as little as you need -<GradientText>always in control</GradientText>
             </Typography>
           }
           description="Start fast with high-level APIs, customize with slots and composition, or go headless for full ownership."

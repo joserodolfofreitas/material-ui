@@ -1,9 +1,11 @@
 import type { ProductStatus } from 'docs/src/components/landing/marketingTheme';
 
 export interface HomepageHeroConfig {
+  overline?: string;
   headline: string;
   gradientText: string;
   description: string;
+  proofLine?: string;
   ctas: Array<{
     label: string;
     href: string;
@@ -14,10 +16,12 @@ export interface HomepageHeroConfig {
 }
 
 export const heroConfig: HomepageHeroConfig = {
-  headline: 'The React library for',
-  gradientText: 'products that scale',
+  overline: 'UI platform for React teams',
+  headline: 'From design to production UI, in',
+  gradientText: 'one platform',
   description:
-    'Design in Figma, build with production-ready components, and move faster with AI for developers and end users, all in one platform trusted by thousands of teams.',
+    'The most complete UI platform for React teams, with production-ready components, advanced building blocks, ready-to-use templates, and AI-native workflows.',
+  proofLine: 'Built for enterprise.',
   ctas: [
     {
       label: 'Get started',
@@ -25,19 +29,18 @@ export const heroConfig: HomepageHeroConfig = {
       variant: 'contained',
     },
     {
-      label: 'Fast track with AI',
-      href: 'https://chat.mui.com',
+      label: 'Explore advanced components',
+      href: '/x/',
       variant: 'outlined',
-      color: 'primary',
-      badge: 'alpha' as ProductStatus,
+      color: 'secondary',
     },
   ],
 };
 
 export const metaConfig = {
-  title: 'MUI: The UI platform for products that scale',
+  title: 'MUI: The most complete UI platform for React teams',
   description:
-    'Design in Figma, build with production-ready React components, and accelerate with AI. Trusted by thousands of product teams.',
+    'From design to production UI in one platform. MUI brings production-ready components, advanced building blocks, trusted documentation, and AI-native workflows to React teams.',
   card: '/static/social-previews/home-preview.jpg',
 };
 
@@ -50,5 +53,9 @@ export const navConfig = {
     { label: 'Blog', href: '/blog/' },
   ],
   primaryCta: { label: 'Get started', href: '/material-ui/getting-started/' },
-  secondaryCta: { label: 'Start building', href: 'https://chat.mui.com', badge: 'alpha' as ProductStatus },
+  secondaryCta: {
+    label: 'Start building',
+    href: 'https://chat.mui.com',
+    badge: 'alpha' as ProductStatus,
+  },
 };

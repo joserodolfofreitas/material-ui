@@ -39,7 +39,12 @@ export default function ChatboxLanding() {
         status={chatboxConfig.hero.status}
         ctas={[
           { label: 'Try the Alpha', href: '/x/react-chatbox/', variant: 'contained' },
-          { label: 'View documentation', href: '/x/react-chatbox/getting-started/', variant: 'outlined', color: 'secondary' },
+          {
+            label: 'View documentation',
+            href: '/x/react-chatbox/getting-started/',
+            variant: 'outlined',
+            color: 'secondary',
+          },
         ]}
       />
       <Divider />

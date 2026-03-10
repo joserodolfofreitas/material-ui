@@ -8,12 +8,17 @@ import WidgetsRounded from '@mui/icons-material/WidgetsRounded';
 import DashboardCustomizeRounded from '@mui/icons-material/DashboardCustomizeRounded';
 import BrushRounded from '@mui/icons-material/BrushRounded';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
+import ViewQuiltRounded from '@mui/icons-material/ViewQuiltRounded';
 import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
 import StatusBadge from 'docs/src/components/landing/StatusBadge';
-import { motionTransition, type ProductStatus } from 'docs/src/components/landing/marketingTheme';
+import {
+  motionTransition,
+  premiumTokens,
+  type ProductStatus,
+} from 'docs/src/components/landing/marketingTheme';
 import { Link } from '@mui/docs/Link';
 
 interface SuiteCard {
@@ -29,28 +34,35 @@ const suiteCards: SuiteCard[] = [
     icon: <WidgetsRounded />,
     title: 'Core components',
     description:
-      'Production-ready components with deep theming, accessibility and reliability built in.',
+      'Production-ready building blocks with accessibility, theming, and reliability baked in.',
     href: '/core/',
   },
   {
     icon: <DashboardCustomizeRounded />,
     title: 'Advanced components',
     description:
-      'Data Grid, Charts, Scheduler and more - complex UI solved so your team can focus on product logic.',
+      'Data Grid, Charts, Scheduler, and more for the high-value workflows serious product teams need.',
     href: '/x/',
+  },
+  {
+    icon: <ViewQuiltRounded />,
+    title: 'Templates',
+    description:
+      'Ready-to-use application shells and polished UI patterns that help teams ship faster without starting from zero.',
+    href: '/store/#populars',
   },
   {
     icon: <BrushRounded />,
     title: 'Design Kits',
     description:
-      'Figma kits with every component, variant, state, and token - so design and code share the same vocabulary.',
+      'Design assets and tokens that keep product design and implementation aligned across the same system.',
     href: '/design-kits/',
   },
   {
     icon: <AutoAwesomeRounded />,
-    title: 'Tailored UI Blocks and templates with AI',
+    title: 'MUI Chat',
     description:
-      "AI that generates examples, scaffolds patterns, and iterates on UI - grounded in MUI's real component system.",
+      "Generate MUI-first examples, scaffold real interfaces, and iterate faster with AI grounded in MUI's ecosystem.",
     href: 'https://chat.mui.com',
     status: 'alpha' as ProductStatus,
   },
@@ -65,18 +77,16 @@ export default function PlatformSuiteBlock() {
           overline="The MUI platform"
           title={
             <Typography variant="h2">
-              Everything you need to <GradientText>design, build, and ship</GradientText>
+              One connected system for{' '}
+              <GradientText>designing, building, and shipping</GradientText>
             </Typography>
           }
-          description="One platform that connects Figma, components, templates, and AI into a single workflow."
+          description="MUI brings the essentials of modern product delivery into one platform: foundational UI, advanced workflows, templates, design assets, and AI acceleration."
         />
       </SectionReveal>
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {suiteCards.map((card, index) => (
-          <Grid
-            key={card.title}
-            size={{ xs: 12, sm: 6 }}
-          >
+          <Grid key={card.title} size={{ xs: 12, md: index < 2 ? 6 : 4 }}>
             <SectionReveal delay={index * 60}>
               <Paper
                 component={Link}
@@ -91,6 +101,11 @@ export default function PlatformSuiteBlock() {
                     flexDirection: 'column',
                     gap: 1.5,
                     textDecoration: 'none',
+                    borderRadius: premiumTokens.radius.lg,
+                    bgcolor:
+                      theme.palette.mode === 'dark'
+                        ? alpha(theme.palette.common.white, 0.02)
+                        : alpha(theme.palette.common.white, 0.82),
                     transition: motionTransition(['transform', 'box-shadow', 'border-color']),
                     '&:hover': {
                       transform: 'translateY(-4px)',

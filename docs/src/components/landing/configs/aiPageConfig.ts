@@ -4,11 +4,20 @@ export const aiHero = {
   title: 'AI that understands your',
   gradientText: 'UI system',
   description:
-    "Build interfaces where end users interact with AI through your components - ask questions to a data grid, get trend insights from charts, schedule with voice, and resolve conflicts intelligently.",
+    'Build interfaces where end users interact with AI through your components - ask questions to a data grid, get trend insights from charts, schedule with voice, and resolve conflicts intelligently.',
   status: 'alpha' as ProductStatus,
   ctas: [
-    { label: 'Start building', href: '/material-ui/getting-started/', variant: 'contained' as const },
-    { label: 'Explore AI components', href: '/x/', variant: 'outlined' as const, color: 'secondary' as const },
+    {
+      label: 'Start building',
+      href: '/material-ui/getting-started/',
+      variant: 'contained' as const,
+    },
+    {
+      label: 'Explore AI components',
+      href: '/x/',
+      variant: 'outlined' as const,
+      color: 'secondary' as const,
+    },
   ],
 };
 
@@ -38,7 +47,7 @@ export const aiCapabilities = [
 export const aiGrounding = {
   title: 'AI built into every component',
   description:
-    "Every MUI X component is designed to be AI-ready. The same APIs you use for manual interaction work seamlessly with AI - so you can add intelligence to existing UIs without rewriting anything.",
+    'Every MUI X component is designed to be AI-ready. The same APIs you use for manual interaction work seamlessly with AI - so you can add intelligence to existing UIs without rewriting anything.',
   points: [
     'Data Grid: natural language queries, smart filtering, AI-assisted data entry',
     'Charts: automated trend detection, anomaly highlighting, narrative summaries',

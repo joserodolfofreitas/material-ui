@@ -18,11 +18,7 @@ export default function StatsBar() {
           {stats.map((stat, index) => (
             <Grid key={stat.label} size={{ xs: 6, md: 4 }}>
               <SectionReveal delay={index * 100}>
-                <AnimatedCounter
-                  end={stat.end}
-                  suffix={stat.suffix}
-                  label={stat.label}
-                />
+                <AnimatedCounter end={stat.end} suffix={stat.suffix} label={stat.label} />
               </SectionReveal>
             </Grid>
           ))}

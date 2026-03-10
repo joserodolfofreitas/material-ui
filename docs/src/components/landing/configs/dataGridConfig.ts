@@ -9,7 +9,12 @@ export const dataGridHero = {
   status: undefined,
   ctas: [
     { label: 'Get started', href: '/x/react-data-grid/', variant: 'contained' as const },
-    { label: 'View documentation', href: '/x/react-data-grid/getting-started/', variant: 'outlined' as const, color: 'secondary' as const },
+    {
+      label: 'View documentation',
+      href: '/x/react-data-grid/getting-started/',
+      variant: 'outlined' as const,
+      color: 'secondary' as const,
+    },
   ],
 };
 

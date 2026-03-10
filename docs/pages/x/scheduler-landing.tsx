@@ -9,10 +9,7 @@ import { metaConfig } from 'docs/src/components/landing/configs/schedulerConfig'
 export default function SchedulerLandingPage() {
   return (
     <BrandingCssVarsProvider>
-      <Head
-        title={metaConfig.title}
-        description={metaConfig.description}
-      />
+      <Head title={metaConfig.title} description={metaConfig.description} />
       <AppHeaderBanner />
       <AppHeader gitHubRepository="https://github.com/mui/mui-x" />
       <main id="main-content">

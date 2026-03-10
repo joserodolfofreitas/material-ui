@@ -78,11 +78,7 @@ export default function CommunitySustainabilityBlock() {
                   }),
                 ]}
               >
-                <AnimatedCounter
-                  end={metric.end}
-                  suffix={metric.suffix}
-                  label={metric.label}
-                />
+                <AnimatedCounter end={metric.end} suffix={metric.suffix} label={metric.label} />
               </Paper>
             </SectionReveal>
           </Grid>

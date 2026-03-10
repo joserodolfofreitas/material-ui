@@ -112,9 +112,7 @@ export default function ComponentHeroBlock({
               variant={cta.variant || 'contained'}
               color={cta.color || 'primary'}
               size="large"
-              endIcon={
-                cta.variant !== 'text' ? <KeyboardArrowRightRounded /> : undefined
-              }
+              endIcon={cta.variant !== 'text' ? <KeyboardArrowRightRounded /> : undefined}
             >
               {cta.label}
             </Button>

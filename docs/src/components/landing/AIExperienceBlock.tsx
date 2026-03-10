@@ -16,34 +16,34 @@ import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
-import { motionTransition } from 'docs/src/components/landing/marketingTheme';
+import { motionTransition, premiumTokens } from 'docs/src/components/landing/marketingTheme';
 import GradientMesh from 'docs/src/components/landing/effects/GradientMesh';
 import { Link } from '@mui/docs/Link';
 
 const capabilities = [
   {
     icon: <TableChartRounded />,
-    title: 'Ask your Data Grid',
+    title: 'AI actions for Data Grid',
     description:
-      'Let users query data in plain language - filter, sort, group, and explore without touching a single control.',
+      'Turn filtering, grouping, pivoting, and analysis into natural-language actions on top of the same trusted grid.',
   },
   {
     icon: <InsightsRounded />,
-    title: 'Chart insights on demand',
+    title: 'Insightful chart workflows',
     description:
-      'Surface trends, anomalies, and key changes automatically. Users ask "what happened?" and get visual answers.',
+      'Connect chart updates to user prompts so trends, comparisons, and anomalies become easier to surface.',
   },
   {
     icon: <RecordVoiceOverRounded />,
-    title: 'Voice-powered scheduling',
+    title: 'Voice-ready scheduling',
     description:
-      'Schedule with voice, resolve conflicts intelligently, and let AI suggest optimal times across calendars.',
+      'Bring voice and assistant-driven actions to scheduling, coordination, and time-based planning experiences.',
   },
   {
     icon: <ChatBubbleOutlineRounded />,
-    title: 'Conversational UI',
+    title: 'Conversational product surfaces',
     description:
-      'Embed AI assistants with streaming responses, context-aware suggestions, and seamless data layer integration.',
+      'Embed calm, context-aware assistants into the workflows your users already rely on every day.',
   },
 ];
 
@@ -56,19 +56,16 @@ export default function AIExperienceBlock() {
       <Grid container spacing={4} sx={{ alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <Grid size={{ xs: 12, md: 5 }}>
           <SectionReveal>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-              
-            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}></Box>
             <SectionHeadline
-              overline="AI-native components"
+              overline="AI-native workflows"
               title={
                 <Typography variant="h2">
-                  Give your users{' '}
-                  <GradientText>AI superpowers</GradientText>
-                  <AutoAwesomeRounded sx={{ color: 'warning.main' }} />
+                  Advanced UI, now enhanced with <GradientText>AI-native workflows</GradientText>
+                  <AutoAwesomeRounded sx={{ color: 'primary.main' }} />
                 </Typography>
               }
-              description="Every MUI X component is designed to be AI-ready. Add intelligence to grids, charts, schedulers, and chat - so your end users interact with data through natural language, voice, and conversation."
+              description="AI is the multiplier, not the identity. MUI's advanced components are evolving to support natural language, voice, and assistant-driven product interactions across grids, charts, scheduling, and chat."
             />
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mt: 3 }}>
               <Button
@@ -79,7 +76,7 @@ export default function AIExperienceBlock() {
                 size="large"
                 endIcon={<KeyboardArrowRightRounded />}
               >
-                Explore AI features
+                Explore AI workflows
               </Button>
               <Button
                 component={Link}
@@ -89,7 +86,7 @@ export default function AIExperienceBlock() {
                 color="secondary"
                 size="large"
               >
-                See Data Grid AI
+                See Data Grid in action
               </Button>
             </Stack>
           </SectionReveal>
@@ -108,15 +105,20 @@ export default function AIExperienceBlock() {
                         display: 'flex',
                         flexDirection: 'column',
                         gap: 1,
+                        borderRadius: premiumTokens.radius.lg,
+                        bgcolor:
+                          theme.palette.mode === 'dark'
+                            ? alpha(theme.palette.common.white, 0.02)
+                            : alpha(theme.palette.common.white, 0.8),
                         transition: motionTransition(['transform', 'box-shadow', 'border-color']),
                         '&:hover': {
                           transform: 'translateY(-2px)',
-                          borderColor: (theme.vars || theme).palette.warning[200],
-                          boxShadow: `0 4px 20px ${alpha(theme.palette.warning[500], 0.1)}`,
+                          borderColor: (theme.vars || theme).palette.primary[200],
+                          boxShadow: `0 8px 30px ${alpha(theme.palette.primary[500], 0.14)}`,
                         },
                         ...theme.applyDarkStyles({
                           '&:hover': {
-                            borderColor: alpha(theme.palette.warning[500], 0.3),
+                            borderColor: alpha(theme.palette.primary[500], 0.3),
                             boxShadow: `0 4px 20px ${alpha(theme.palette.common.black, 0.4)}`,
                           },
                         }),
@@ -131,12 +133,12 @@ export default function AIExperienceBlock() {
                           justifyContent: 'center',
                           width: 36,
                           height: 36,
-                          borderRadius: 1,
-                          color: (theme.vars || theme).palette.warning[700],
-                          bgcolor: alpha(theme.palette.warning[100], 0.5),
+                          borderRadius: 1.5,
+                          color: (theme.vars || theme).palette.primary[700],
+                          bgcolor: alpha(theme.palette.primary[100], 0.6),
                           ...theme.applyDarkStyles({
-                            color: (theme.vars || theme).palette.warning[300],
-                            bgcolor: alpha(theme.palette.warning[900], 0.3),
+                            color: (theme.vars || theme).palette.primary[300],
+                            bgcolor: alpha(theme.palette.primary[900], 0.32),
                           }),
                         }),
                       ]}

@@ -9,10 +9,7 @@ import { chatboxConfig } from 'docs/src/components/landing/configs/stubConfigs';
 export default function ChatboxLandingPage() {
   return (
     <BrandingCssVarsProvider>
-      <Head
-        title={chatboxConfig.meta.title}
-        description={chatboxConfig.meta.description}
-      />
+      <Head title={chatboxConfig.meta.title} description={chatboxConfig.meta.description} />
       <AppHeaderBanner />
       <AppHeader gitHubRepository="https://github.com/mui/mui-x" />
       <main id="main-content">

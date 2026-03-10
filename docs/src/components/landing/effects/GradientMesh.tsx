@@ -56,9 +56,7 @@ export default function GradientMesh({ sx }: GradientMeshProps) {
           height: '60%',
           borderRadius: '50%',
           background: `radial-gradient(circle, ${
-            theme.palette.mode === 'dark'
-              ? 'rgba(25, 118, 210, 0.15)'
-              : 'rgba(25, 118, 210, 0.08)'
+            theme.palette.mode === 'dark' ? 'rgba(25, 118, 210, 0.15)' : 'rgba(25, 118, 210, 0.08)'
           } 0%, transparent 70%)`,
           filter: 'blur(60px)',
           animation: `${drift1} 20s ease-in-out infinite`,
@@ -74,9 +72,7 @@ export default function GradientMesh({ sx }: GradientMeshProps) {
           height: '50%',
           borderRadius: '50%',
           background: `radial-gradient(circle, ${
-            theme.palette.mode === 'dark'
-              ? 'rgba(156, 39, 176, 0.12)'
-              : 'rgba(156, 39, 176, 0.06)'
+            theme.palette.mode === 'dark' ? 'rgba(156, 39, 176, 0.12)' : 'rgba(156, 39, 176, 0.06)'
           } 0%, transparent 70%)`,
           filter: 'blur(60px)',
           animation: `${drift2} 25s ease-in-out infinite`,
@@ -92,9 +88,7 @@ export default function GradientMesh({ sx }: GradientMeshProps) {
           height: '40%',
           borderRadius: '50%',
           background: `radial-gradient(circle, ${
-            theme.palette.mode === 'dark'
-              ? 'rgba(0, 200, 83, 0.1)'
-              : 'rgba(0, 200, 83, 0.05)'
+            theme.palette.mode === 'dark' ? 'rgba(0, 200, 83, 0.1)' : 'rgba(0, 200, 83, 0.05)'
           } 0%, transparent 70%)`,
           filter: 'blur(60px)',
           animation: `${drift3} 18s ease-in-out infinite`,

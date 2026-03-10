@@ -73,16 +73,17 @@ For coming-soon or alpha products, use `StubLandingBlock` instead of `Highlights
 
 Use `StatusBadge` with one of these statuses:
 
-| Status        | Label         | Color     | Meaning                          |
-|---------------|---------------|-----------|----------------------------------|
-| `stable`      | Stable        | success   | Production-ready, semver         |
-| `preview`     | Preview       | info      | API may change, usable in prod   |
-| `alpha`       | Alpha         | warning   | Early access, expect changes     |
-| `coming-soon` | Coming soon   | default   | Announced, not yet available     |
+| Status        | Label       | Color   | Meaning                        |
+| ------------- | ----------- | ------- | ------------------------------ |
+| `stable`      | Stable      | success | Production-ready, semver       |
+| `preview`     | Preview     | info    | API may change, usable in prod |
+| `alpha`       | Alpha       | warning | Early access, expect changes   |
+| `coming-soon` | Coming soon | default | Announced, not yet available   |
 
 ## Content configs
 
 All page content lives in TypeScript config files under `configs/`. This means:
+
 - **Content is type-safe** — TypeScript catches typos and missing fields
 - **Content is centralized** — one file per product, easy to find and update
 - **Content is separated from layout** — change copy without touching components
@@ -90,6 +91,7 @@ All page content lives in TypeScript config files under `configs/`. This means:
 ## Motion tokens
 
 Defined in `marketingTheme.ts`:
+
 - **Durations**: `fast` (150ms), `base` (250ms), `slow` (350ms)
 - **Easing**: `cubic-bezier(0.2, 0, 0, 1)` — Material standard
 - **Helper**: `motionTransition(['prop1', 'prop2'], 'base')` generates CSS transition strings
@@ -98,6 +100,7 @@ Defined in `marketingTheme.ts`:
 ## Card hover pattern
 
 Use `motionTransition` for consistent card hover effects:
+
 ```tsx
 sx={[
   (theme) => ({
@@ -114,30 +117,31 @@ sx={[
 ## Visual effects
 
 Effects live in `effects/` and are designed to be:
+
 - **Accessible** — all animations respect `prefers-reduced-motion`
 - **Performant** — CSS animations only, no JS animation loops in render
 - **Decorative** — all use `aria-hidden` or are purely visual
 
-| Effect                | Used in                          | Description                                    |
-|-----------------------|----------------------------------|------------------------------------------------|
-| `GradientMesh`        | HeroBlock, AIExperienceBlock, CommunitySustainabilityBlock | Drifting gradient orbs background |
-| `AnimatedCounter`     | StatsBar, CommunitySustainabilityBlock | Scroll-triggered count-up with ease-out cubic  |
-| `ShimmerLine`         | ComponentPreviewCard             | Skeleton shimmer for simulated data rows       |
-| `FloatingParticles`   | AdvancedComponentsGridBlock      | Floating dots that drift upward                |
-| `LiveComponentShowcase` | Homepage hero                  | Live MUI components in a dashboard composition |
-| `HeroShowcase`        | (available, not used on homepage) | Animated code editor with floating stat badges |
-| `ComponentPreviewCard`| AdvancedComponentsGridBlock      | Simulated chart + data grid preview            |
+| Effect                  | Used in                                                    | Description                                    |
+| ----------------------- | ---------------------------------------------------------- | ---------------------------------------------- |
+| `GradientMesh`          | HeroBlock, AIExperienceBlock, CommunitySustainabilityBlock | Drifting gradient orbs background              |
+| `AnimatedCounter`       | StatsBar, CommunitySustainabilityBlock                     | Scroll-triggered count-up with ease-out cubic  |
+| `ShimmerLine`           | ComponentPreviewCard                                       | Skeleton shimmer for simulated data rows       |
+| `FloatingParticles`     | AdvancedComponentsGridBlock                                | Floating dots that drift upward                |
+| `LiveComponentShowcase` | Homepage hero                                              | Live MUI components in a dashboard composition |
+| `HeroShowcase`          | (available, not used on homepage)                          | Animated code editor with floating stat badges |
+| `ComponentPreviewCard`  | AdvancedComponentsGridBlock                                | Simulated chart + data grid preview            |
 
 ## Routes
 
-| Page                    | Route                              |
-|-------------------------|------------------------------------|
-| Homepage                | `/`                                |
-| AI                      | `/ai`                              |
-| Data Grid landing       | `/x/data-grid-landing`             |
-| Charts landing          | `/x/charts-landing`                |
-| Scheduler landing       | `/x/scheduler-landing`             |
-| Chatbox landing         | `/x/chatbox-landing`               |
-| Gantt landing           | `/x/gantt-landing`                 |
-| Upload landing          | `/x/upload-landing`                |
-| Rich Text Editor landing| `/x/rich-text-editor-landing`      |
+| Page                     | Route                         |
+| ------------------------ | ----------------------------- |
+| Homepage                 | `/`                           |
+| AI                       | `/ai`                         |
+| Data Grid landing        | `/x/data-grid-landing`        |
+| Charts landing           | `/x/charts-landing`           |
+| Scheduler landing        | `/x/scheduler-landing`        |
+| Chatbox landing          | `/x/chatbox-landing`          |
+| Gantt landing            | `/x/gantt-landing`            |
+| Upload landing           | `/x/upload-landing`           |
+| Rich Text Editor landing | `/x/rich-text-editor-landing` |

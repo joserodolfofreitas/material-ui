@@ -49,8 +49,7 @@ export default function AILanding() {
             overline="AI-native components"
             title={
               <Typography variant="h2">
-                Intelligence built into{' '}
-                <GradientText>every component</GradientText>
+                Intelligence built into <GradientText>every component</GradientText>
               </Typography>
             }
             description="Each MUI X component is designed to be AI-ready. Add natural language, voice, and conversational intelligence to your existing UI."
@@ -126,8 +125,7 @@ export default function AILanding() {
                 overline="How it works"
                 title={
                   <Typography variant="h2">
-                    AI built into the{' '}
-                    <GradientText>component layer</GradientText>
+                    AI built into the <GradientText>component layer</GradientText>
                   </Typography>
                 }
                 description={aiGrounding.description}
@@ -136,16 +134,21 @@ export default function AILanding() {
           </Grid>
           <Grid size={{ xs: 12, md: 7 }}>
             <SectionReveal delay={100}>
-              <Paper
-                variant="outlined"
-                sx={{ p: 4 }}
-              >
+              <Paper variant="outlined" sx={{ p: 4 }}>
                 {aiGrounding.points.map((point) => (
                   <Box
                     key={point}
-                    sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2, '&:last-child': { mb: 0 } }}
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1.5,
+                      mb: 2,
+                      '&:last-child': { mb: 0 },
+                    }}
                   >
-                    <CheckCircleOutlineRounded sx={{ color: 'success.main', fontSize: 20, flexShrink: 0 }} />
+                    <CheckCircleOutlineRounded
+                      sx={{ color: 'success.main', fontSize: 20, flexShrink: 0 }}
+                    />
                     <Typography variant="body1">{point}</Typography>
                   </Box>
                 ))}
