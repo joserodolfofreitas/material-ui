@@ -34,54 +34,144 @@ const pulse = keyframes`
 `;
 
 const rows = [
-  { id: 1, commodity: 'Copper', region: 'Americas', trader: 'Iris Chen', quantity: 1420, unitPrice: 8210, grossValue: 11658200, fillRate: 94 },
-  { id: 2, commodity: 'Copper', region: 'EMEA', trader: 'Noah Park', quantity: 1080, unitPrice: 8450, grossValue: 9126000, fillRate: 91 },
-  { id: 3, commodity: 'Copper', region: 'APAC', trader: 'Zara Kim', quantity: 1190, unitPrice: 8340, grossValue: 9924600, fillRate: 96 },
-  { id: 4, commodity: 'Aluminum', region: 'Americas', trader: 'Lena Brooks', quantity: 1680, unitPrice: 2390, grossValue: 4015200, fillRate: 89 },
-  { id: 5, commodity: 'Aluminum', region: 'EMEA', trader: 'Elias Roy', quantity: 1520, unitPrice: 2470, grossValue: 3754400, fillRate: 93 },
-  { id: 6, commodity: 'Aluminum', region: 'APAC', trader: 'Mila Khan', quantity: 1455, unitPrice: 2510, grossValue: 3652050, fillRate: 90 },
-  { id: 7, commodity: 'Nickel', region: 'Americas', trader: 'Omar Diaz', quantity: 860, unitPrice: 18210, grossValue: 15660600, fillRate: 88 },
-  { id: 8, commodity: 'Nickel', region: 'EMEA', trader: 'Sofia Bell', quantity: 920, unitPrice: 17980, grossValue: 16541600, fillRate: 92 },
-  { id: 9, commodity: 'Nickel', region: 'APAC', trader: 'Theo Ivanov', quantity: 880, unitPrice: 18510, grossValue: 16288800, fillRate: 95 },
+  {
+    id: 1,
+    component: 'Data Grid',
+    page: 'Data Grid - Overview',
+    section: 'X',
+    device: 'Desktop',
+    views: 182_000,
+    avgTime: 4.8,
+    engagement: 94,
+  },
+  {
+    id: 2,
+    component: 'Data Grid',
+    page: 'Data Grid - Column definitions',
+    section: 'X',
+    device: 'Desktop',
+    views: 136_000,
+    avgTime: 5.2,
+    engagement: 92,
+  },
+  {
+    id: 3,
+    component: 'Data Grid',
+    page: 'Data Grid - Filtering',
+    section: 'X',
+    device: 'Mobile',
+    views: 98_000,
+    avgTime: 4.1,
+    engagement: 90,
+  },
+  {
+    id: 4,
+    component: 'Charts',
+    page: 'Charts - Overview',
+    section: 'X',
+    device: 'Desktop',
+    views: 124_000,
+    avgTime: 3.6,
+    engagement: 89,
+  },
+  {
+    id: 5,
+    component: 'Charts',
+    page: 'Charts - Bar chart',
+    section: 'X',
+    device: 'Mobile',
+    views: 86_000,
+    avgTime: 3.9,
+    engagement: 87,
+  },
+  {
+    id: 6,
+    component: 'Scheduler',
+    page: 'Scheduler - Overview',
+    section: 'X',
+    device: 'Desktop',
+    views: 62_000,
+    avgTime: 4.4,
+    engagement: 91,
+  },
+  {
+    id: 7,
+    component: 'Scheduler',
+    page: 'Scheduler - Resources',
+    section: 'X',
+    device: 'Desktop',
+    views: 48_000,
+    avgTime: 4.0,
+    engagement: 88,
+  },
+  {
+    id: 8,
+    component: 'Chatbox',
+    page: 'Chatbox - Overview',
+    section: 'X',
+    device: 'Desktop',
+    views: 54_000,
+    avgTime: 3.8,
+    engagement: 86,
+  },
+  {
+    id: 9,
+    component: 'Chatbox',
+    page: 'Chatbox - Streaming messages',
+    section: 'X',
+    device: 'Mobile',
+    views: 39_000,
+    avgTime: 3.5,
+    engagement: 84,
+  },
 ] as const;
 
 const columns: GridColDef<(typeof rows)[number]>[] = [
-  { field: 'commodity', headerName: 'Commodity', width: 140 },
-  { field: 'region', headerName: 'Region', width: 110 },
-  { field: 'trader', headerName: 'Owner', width: 130 },
-  { field: 'quantity', headerName: 'Quantity', type: 'number', width: 110 },
+  { field: 'component', headerName: 'Component', width: 150 },
+  { field: 'page', headerName: 'Page', flex: 1, minWidth: 160 },
+  { field: 'section', headerName: 'Section', width: 90 },
+  { field: 'device', headerName: 'Device', width: 110 },
   {
-    field: 'unitPrice',
-    headerName: 'Avg price',
+    field: 'views',
+    headerName: 'Monthly views',
     type: 'number',
-    width: 110,
-    valueFormatter: (value) => `$${Number(value).toLocaleString()}`,
+    width: 140,
+    valueFormatter: (value) => Number(value).toLocaleString(),
   },
   {
-    field: 'grossValue',
-    headerName: 'Gross value',
+    field: 'avgTime',
+    headerName: 'Avg time on page',
     type: 'number',
-    width: 130,
-    valueFormatter: (value) => `$${(Number(value) / 1000000).toFixed(1)}M`,
+    width: 150,
+    valueFormatter: (value) => `${Number(value).toFixed(1)} min`,
   },
   {
-    field: 'fillRate',
-    headerName: 'Fill rate',
+    field: 'engagement',
+    headerName: 'Engagement score',
     type: 'number',
-    width: 96,
+    width: 150,
     valueFormatter: (value) => `${value}%`,
   },
 ];
 
 const chartData = [
-  { commodity: 'Copper', value: 30.7 },
-  { commodity: 'Aluminum', value: 11.4 },
-  { commodity: 'Nickel', value: 48.5 },
+  { component: 'Data Grid', value: 416 },
+  { component: 'Charts', value: 210 },
+  { component: 'Scheduler', value: 110 },
+  { component: 'Chatbox', value: 93 },
 ];
 
 const summaryCards = [
-  { label: 'Structured instantly', value: '3 Groups', detail: 'A clearer view from one instruction' },
-  { label: 'Decision-ready total', value: '$90.6M', detail: 'Live aggregation across the workspace' },
+  {
+    label: 'Components in the library',
+    value: '100+',
+    detail: 'Spanning layout, data display, inputs, and more',
+  },
+  {
+    label: 'Monthly downloads',
+    value: '20M+',
+    detail: 'Trusted across the React ecosystem every month',
+  },
 ];
 
 function PromptDots() {
@@ -114,19 +204,18 @@ function PivotingGrid() {
   const initialState = useKeepGroupedColumnsHidden({
     apiRef,
     initialState: {
-      rowGrouping: { model: ['commodity'] },
+      rowGrouping: { model: ['component'] },
       aggregation: {
         model: {
-          quantity: 'sum',
-          unitPrice: 'avg',
-          grossValue: 'sum',
-          fillRate: 'avg',
+          views: 'sum',
+          avgTime: 'avg',
+          engagement: 'avg',
         },
       },
       columns: {
         columnVisibilityModel: {
-          region: false,
-          trader: false,
+          page: false,
+          device: false,
         },
       },
     },
@@ -181,7 +270,7 @@ function PivotingGrid() {
         rowHeight={42}
         columnHeaderHeight={42}
         groupingColDef={{
-          headerName: 'Commodity group',
+          headerName: 'Component group',
           minWidth: 180,
         }}
         isGroupExpandedByDefault={() => true}
@@ -259,7 +348,7 @@ function AssistantPanel() {
           })}
         >
           <Typography sx={{ fontSize: 13, lineHeight: 1.45 }}>
-            Group by commodity and total gross value
+            Group docs traffic by component and total monthly views
           </Typography>
         </Box>
         <Box
@@ -286,7 +375,7 @@ function AssistantPanel() {
             </Typography>
           </Stack>
           <Typography sx={{ fontSize: 12.5, lineHeight: 1.6, color: 'text.secondary' }}>
-            The grid is grouped, totals are calculated, and the chart is synced to the new view.
+            The grid is grouped by component, page views are aggregated, and the chart is synced to the new view.
           </Typography>
         </Box>
         <Paper
@@ -309,10 +398,13 @@ function AssistantPanel() {
             Updated insight
           </Typography>
           <Typography sx={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.03em' }}>
-            Nickel leads at <Box component="span" sx={{ color: 'primary.main' }}>$48.5M</Box>
+            Data Grid leads with{' '}
+            <Box component="span" sx={{ color: 'primary.main' }}>
+              400k+ monthly views
+            </Box>
           </Typography>
           <Typography sx={{ fontSize: 12, color: 'text.secondary', mt: 0.5 }}>
-            Commodity-level view now reveals the highest-value segment at a glance.
+            Component-level view now reveals the highest-interest docs at a glance.
           </Typography>
         </Paper>
         <Stack direction="row" spacing={1} sx={{ alignItems: 'center', color: 'text.secondary' }}>
@@ -542,16 +634,16 @@ export default function LiveComponentShowcase() {
               })}
             >
               <Typography sx={{ fontSize: 11, fontWeight: 700, color: 'text.secondary' }}>
-                Signal threshold
+            Views threshold
               </Typography>
               <Typography sx={{ mt: 0.25, fontSize: 12, color: 'text.secondary' }}>
-                Highlight categories above $20M in gross value.
+            Highlight components above 150k monthly page views.
               </Typography>
               <Slider
-                value={20}
+                value={150}
                 min={0}
-                max={50}
-                step={5}
+                max={400}
+                step={25}
                 disabled
                 aria-label="Insight threshold"
                 sx={{
@@ -561,7 +653,7 @@ export default function LiveComponentShowcase() {
                 }}
               />
               <Typography sx={{ fontSize: 12, color: 'primary.main', fontWeight: 700 }}>
-                Copper and Nickel stay above the signal line.
+                Data Grid and Charts stay above the signal line.
               </Typography>
             </Paper>
           </Box>
@@ -604,12 +696,18 @@ export default function LiveComponentShowcase() {
                   })}
                 >
                   <Typography sx={{ fontSize: 12, fontWeight: 700, color: 'text.secondary', mb: 0.75 }}>
-                    Gross value by commodity
+                    Monthly docs views by component
                   </Typography>
                   <BarChart
                     dataset={chartData}
-                    xAxis={[{ dataKey: 'commodity', scaleType: 'band' }]}
-                    series={[{ dataKey: 'value', color: theme.palette.primary.main, label: 'Gross value ($M)' }]}
+                    xAxis={[{ dataKey: 'component', scaleType: 'band' }]}
+                    series={[
+                      {
+                        dataKey: 'value',
+                        color: theme.palette.primary.main,
+                        label: 'Monthly page views (k)',
+                      },
+                    ]}
                     height={156}
                     margin={{ top: 10, bottom: 26, left: 30, right: 6 }}
                     hideLegend
