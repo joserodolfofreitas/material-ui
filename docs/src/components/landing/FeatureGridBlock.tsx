@@ -18,7 +18,7 @@ const features = [
     icon: <VerifiedRounded fontSize="small" color="primary" />,
     title: 'Reliability at scale',
     description:
-      'Battle-tested in production by thousands of teams. Rigorous testing, semantic versioning, and stable upgrade paths you can count on.',
+      'Battle-tested in production by thousands of teams, with rigorous testing, semantic versioning, and stable upgrade paths you can count on.',
   },
   {
     icon: <InvertColorsRounded fontSize="small" color="primary" />,
@@ -30,7 +30,7 @@ const features = [
     icon: <AccessibilityNewRounded fontSize="small" color="primary" />,
     title: 'Accessibility-first',
     description:
-      'WAI-ARIA patterns, keyboard navigation, focus management, and screen reader support built into every component.',
+      'WAI-ARIA patterns, keyboard navigation, focus management, and screen reader support built into core and advanced components.',
   },
   {
     icon: <CodeRounded fontSize="small" color="primary" />,
@@ -46,9 +46,9 @@ const features = [
   },
   {
     icon: <UpdateRounded fontSize="small" color="primary" />,
-    title: 'Sustainability',
+    title: 'Release cadence and support',
     description:
-      'Maintained long-term by a dedicated team. Stable release cadence, clear deprecation policies, and a commitment to backward compatibility.',
+      'Maintained long-term by a dedicated team with weekly releases, long-term support for core lines, clear deprecation policies, and a commitment to backward compatibility.',
   },
 ];
 

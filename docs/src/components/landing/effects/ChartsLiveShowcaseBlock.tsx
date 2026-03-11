@@ -17,15 +17,7 @@ import GradientText from 'docs/src/components/typography/GradientText';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
 import { premiumTokens } from 'docs/src/components/landing/marketingTheme';
 import { Link } from '@mui/docs/Link';
-import { BarPlot } from '@mui/x-charts/BarChart';
-import {
-  ChartContainer,
-  ChartsClipPath,
-  ChartsGrid,
-  ChartsXAxis,
-  ChartsYAxis,
-} from '@mui/x-charts';
-import { LinePlot } from '@mui/x-charts/LineChart';
+import { LineChart } from '@mui/x-charts/LineChart';
 
 const candlestickPreview = [
   { label: 'Mon', low: 38, high: 74, open: 48, close: 62 },
@@ -241,51 +233,17 @@ export default function ChartsLiveShowcaseBlock() {
                     Product activation trend
                   </Typography>
                   <Typography sx={{ mt: 0.5, fontSize: 13, color: 'text.secondary' }}>
-                    Track activation growth against the healthy baseline. Bars show new trials; lines show activated
-                    workspaces and target.
+                    Track activation growth against the healthy baseline teams watch week over week.
                   </Typography>
-                  <ChartContainer
-                    xAxis={[{ id: 'x-axis', data: weeklyActivation, scaleType: 'band' }]}
-                    yAxis={[
-                      { id: 'trials', position: 'left' },
-                      { id: 'activation', position: 'right' },
-                    ]}
+                  <LineChart
+                    xAxis={[{ data: weeklyActivation, scaleType: 'point' }]}
                     series={[
-                      {
-                        type: 'bar',
-                        data: [120, 145, 180, 195, 220, 240],
-                        label: 'New trials',
-                        color: '#7B61FF',
-                        yAxisId: 'trials',
-                      },
-                      {
-                        type: 'line',
-                        data: [42, 47, 51, 56, 63, 68],
-                        label: 'Activated workspaces',
-                        color: '#5090F7',
-                        yAxisId: 'activation',
-                      },
-                      {
-                        type: 'line',
-                        data: [38, 39, 41, 43, 45, 46],
-                        label: 'Target baseline',
-                        color: '#A8C9FF',
-                        yAxisId: 'activation',
-                      },
+                      { data: [42, 47, 51, 56, 63, 68], label: 'Activated workspaces', color: '#5090F7' },
+                      { data: [38, 39, 41, 43, 45, 46], label: 'Target baseline', color: '#A8C9FF' },
                     ]}
                     height={260}
-                    margin={{ top: 24, bottom: 28, left: 36, right: 36 }}
-                  >
-                    <g clipPath={`url(#product-activation-clip)`}>
-                      <BarPlot />
-                      <LinePlot />
-                    </g>
-                    <ChartsClipPath id="product-activation-clip" />
-                    <ChartsGrid vertical horizontal />
-                    <ChartsXAxis position="bottom" axisId="x-axis" />
-                    <ChartsYAxis position="left" axisId="trials" />
-                    <ChartsYAxis position="right" axisId="activation" />
-                  </ChartContainer>
+                    margin={{ top: 24, bottom: 28, left: 36, right: 12 }}
+                  />
                 </Paper>
               </Grid>
             </Grid>

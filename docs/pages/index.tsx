@@ -18,6 +18,7 @@ import FeatureGridBlock from 'docs/src/components/landing/FeatureGridBlock';
 import FinalCTABlock from 'docs/src/components/landing/FinalCTABlock';
 import { premiumTokens } from 'docs/src/components/landing/marketingTheme';
 import { heroConfig, metaConfig } from 'docs/src/components/landing/configs/homepageConfig';
+import DesignSystemBlock from 'docs/src/components/landing/DesignSystemBlock';
 
 const LiveComponentShowcase = dynamic(
   () => import('docs/src/components/landing/effects/LiveComponentShowcase'),
@@ -117,6 +118,8 @@ export default function Home() {
             visual={<LiveComponentShowcase />}
           />
           <TrustLogoCloudBlock />
+          <Divider />
+          <DesignSystemBlock />
           <Divider />
           <AdvancedComponentsGridBlock />
           <Divider />
