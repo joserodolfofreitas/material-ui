@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import KeyboardArrowDownRounded from '@mui/icons-material/KeyboardArrowDownRounded';
 import SvgHamburgerMenu from 'docs/src/icons/SvgHamburgerMenu';
+import { productMenuItems } from 'docs/src/components/header/productMenuConfig';
 import { Link } from '@mui/docs/Link';
 import ROUTES from 'docs/src/route';
 
@@ -52,29 +53,6 @@ const UList = styled('ul')({
   padding: 0,
   margin: 0,
 });
-
-const PRODUCTS = [
-  {
-    name: 'MUI Core',
-    description: 'Ready-to-use foundational React components, free forever.',
-    href: ROUTES.productCore,
-  },
-  {
-    name: 'MUI X',
-    description: 'Advanced and powerful components for complex use cases.',
-    href: ROUTES.productAdvanced,
-  },
-  {
-    name: 'Templates',
-    description: 'Fully built templates for your application.',
-    href: ROUTES.productTemplates,
-  },
-  {
-    name: 'Design Kits',
-    description: 'Material UI components in your favorite design tool.',
-    href: ROUTES.productDesignKits,
-  },
-];
 
 const DOCS = [
   {
@@ -194,8 +172,8 @@ export default function HeaderNavDropdown() {
                 </Anchor>
                 <Collapse in={productsOpen}>
                   <UList>
-                    {PRODUCTS.map((item) => (
-                      <li key={item.name}>
+                    {productMenuItems.map((item) => (
+                      <li key={item.id}>
                         <Anchor
                           href={item.href}
                           as={Link}
@@ -209,7 +187,12 @@ export default function HeaderNavDropdown() {
                               justifyContent: 'space-between',
                             }}
                           >
-                            {item.name}
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <Box component="span" sx={{ display: 'inline-flex' }}>
+                                {item.name}
+                              </Box>
+                              {item.chip}
+                            </Box>
                           </Box>
                           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                             {item.description}

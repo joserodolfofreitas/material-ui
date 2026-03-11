@@ -3,20 +3,12 @@ import type { Highlight } from 'docs/src/components/landing/HighlightsBlock';
 import type { UseCase } from 'docs/src/components/landing/UseCasesBlock';
 
 export const chartsHero = {
-  title: 'React charts for the',
-  gradientText: 'dashboards teams actually build',
+  title: 'Build better products with',
+  gradientText: 'charts that help users make decisions',
   description:
-    'Build dashboards and analytical surfaces with bar, line, pie, scatter, sparkline, gauge, heatmap, radar, funnel, and sankey charts, then layer in composition, zoom, pan, export, and advanced customization as your product grows.',
+    'Turn data into analytical views that help users spot patterns, compare outcomes, and act faster, with charts that are composable, themeable, and ready for advanced product experiences.',
   status: undefined,
-  ctas: [
-    { label: 'Get started', href: '/x/react-charts/', variant: 'contained' as const },
-    {
-      label: 'View documentation',
-      href: '/x/react-charts/quickstart/',
-      variant: 'outlined' as const,
-      color: 'secondary' as const,
-    },
-  ],
+  ctas: [],
 };
 
 export const chartsHighlights: Omit<Highlight, 'icon'>[] = [
@@ -108,7 +100,7 @@ export const chartsExamples = [
 ];
 
 export const metaConfig = {
-  title: 'MUI X Charts: React charts for real dashboards',
+  title: 'MUI X Charts: React charts that help users make decisions',
   description:
-    'React charts for real dashboards, with essential and advanced chart types, composition, zoom and pan, export, and theme-aware customization.',
+    'React charts that help users compare outcomes, spot patterns, and act faster, with composition, advanced chart types, zoom and pan, and theme-aware customization.',
 };

@@ -3,20 +3,12 @@ import type { Highlight } from 'docs/src/components/landing/HighlightsBlock';
 import type { UseCase } from 'docs/src/components/landing/UseCasesBlock';
 
 export const schedulerHero = {
-  title: 'Scheduling for complex products:',
-  gradientText: 'events, resources, timelines',
+  title: 'Build better products with',
+  gradientText: 'UI that coordinates time and resources',
   description:
-    "A calendar and scheduling component for React that handles events, recurring patterns, resource timelines, and drag-and-drop - built on MUI's component system.",
+    'Give teams the tools to manage schedules, availability, and resource allocation across complex operational workflows.',
   status: 'alpha' as ProductStatus,
-  ctas: [
-    { label: 'Try the Alpha', href: '/x/react-scheduler/', variant: 'contained' as const },
-    {
-      label: 'View documentation',
-      href: '/x/react-scheduler/getting-started/',
-      variant: 'outlined' as const,
-      color: 'secondary' as const,
-    },
-  ],
+  ctas: [],
 };
 
 export const schedulerHighlights: Omit<Highlight, 'icon'>[] = [

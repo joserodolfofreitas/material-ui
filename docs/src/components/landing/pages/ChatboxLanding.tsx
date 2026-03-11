@@ -11,6 +11,7 @@ import SmartToyRounded from '@mui/icons-material/SmartToyRounded';
 import SupportAgentRounded from '@mui/icons-material/SupportAgentRounded';
 import ForumRounded from '@mui/icons-material/ForumRounded';
 import ComponentHeroBlock from 'docs/src/components/landing/ComponentHeroBlock';
+import LandingComponentNav from 'docs/src/components/landing/LandingComponentNav';
 import StubLandingBlock from 'docs/src/components/landing/StubLandingBlock';
 import { chatboxConfig } from 'docs/src/components/landing/configs/stubConfigs';
 
@@ -47,6 +48,7 @@ export default function ChatboxLanding() {
           },
         ]}
       />
+      <LandingComponentNav activeId="chatbox" />
       <Divider />
       <StubLandingBlock
         title={chatboxConfig.hero.title}

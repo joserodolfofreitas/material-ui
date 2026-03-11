@@ -6,10 +6,10 @@ import type { PlannedHighlight, StubUseCase } from 'docs/src/components/landing/
 // ---------------------------------------------------------------------------
 export const chatboxConfig = {
   hero: {
-    title: 'A conversational UI component for',
-    gradientText: 'chat and AI assistants',
+    title: 'Build better products with',
+    gradientText: 'conversation built into the UI',
     description:
-      'Build chat interfaces, AI assistant panels, and messaging experiences with streaming support, customizable message rendering, and MUI theming.',
+      'Help users ask questions, resolve issues, and take action through chat and assistant experiences that feel native to the product.',
     status: 'alpha' as ProductStatus,
   },
   plannedHighlights: [
@@ -73,10 +73,10 @@ export const chatboxConfig = {
 // ---------------------------------------------------------------------------
 export const ganttConfig = {
   hero: {
-    title: 'Project timeline visualization with',
-    gradientText: 'dependencies and milestones',
+    title: 'Build better products with',
+    gradientText: 'planning UI built for execution',
     description:
-      "A Gantt chart component for React that visualizes project timelines, task dependencies, milestones, and resource allocation - built on MUI's component system.",
+      'Help teams plan timelines, manage dependencies, and keep execution-heavy work moving with a Gantt surface designed for complex products.',
     status: 'coming-soon' as ProductStatus,
   },
   plannedHighlights: [

@@ -6,6 +6,8 @@ import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { alpha } from '@mui/material/styles';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
@@ -18,13 +20,21 @@ import SpeedRounded from '@mui/icons-material/SpeedRounded';
 import TableChartRounded from '@mui/icons-material/TableChartRounded';
 import ViewKanbanRounded from '@mui/icons-material/ViewKanbanRounded';
 import PivotTableChartRounded from '@mui/icons-material/PivotTableChartRounded';
+import { Link } from '@mui/docs/Link';
 import Section from 'docs/src/layouts/Section';
-import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
-import GradientText from 'docs/src/components/typography/GradientText';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
+import { dataGridScaleShowcaseColumns } from 'docs/src/components/landing/configs/dataGridConfig';
 import { premiumTokens } from 'docs/src/components/landing/marketingTheme';
 import XGridGlobalStyles from 'docs/src/components/home/XGridGlobalStyles';
 import { BarChart } from '@mui/x-charts/BarChart';
+import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
+import {
+  DataGrid,
+  GridToolbarQuickFilter as CommunityQuickFilter,
+  type GridColDef as CommunityGridColDef,
+  type GridRenderCellParams as CommunityGridRenderCellParams,
+  useGridApiRef as useCommunityGridApiRef,
+} from '@mui/x-data-grid';
 import {
   DataGridPremium,
   type GridColDef as PremiumGridColDef,
@@ -32,13 +42,32 @@ import {
 } from '@mui/x-data-grid-premium';
 import {
   DataGridPro,
-  GridToolbarQuickFilter,
   type GridColDef,
+  type GridRenderCellParams,
   type GridRowParams,
+  useGridApiRef,
 } from '@mui/x-data-grid-pro';
-import { useDemoData } from '@mui/x-data-grid-generator';
 
 type ShowcaseId = 'scale' | 'ai' | 'tree' | 'pivot';
+
+const showcaseOrder: ShowcaseId[] = ['scale', 'ai', 'tree', 'pivot'];
+const marketRowCount = 100000;
+const marketCsvPath = '/static/data-grid-market-100k.csv';
+
+interface MarketRow {
+  id: number;
+  venue: string;
+  contract: string;
+  desk: string;
+  trader: string;
+  bid: number;
+  ask: number;
+  spread: number;
+  filled: number;
+  status: string;
+  trendSeed: number;
+  updatedAt: string;
+}
 
 const showcaseMeta: Record<
   ShowcaseId,
@@ -53,10 +82,10 @@ const showcaseMeta: Record<
   scale: {
     label: '100K+ rows',
     eyebrow: 'Performance at scale',
-    title: 'A high-volume operations grid with 100,000 rows',
+    title: 'A live market monitor with 100,000 rows',
     description:
-      'Show how virtualization, quick filtering, and pagination hold up when the grid is carrying the weight of a real internal product.',
-    chips: ['100,000 rows', 'Virtualized rendering', 'Quick filter'],
+      'Show how the grid stays responsive under pressure with 100,000 records, dense columns, inline sparklines, and live updates in the same surface.',
+    chips: ['100,000 rows', 'Live updates', 'Sparkline columns'],
   },
   ai: {
     label: 'AI assistance',
@@ -234,45 +263,52 @@ const pivotChart = [
 ] as const;
 
 const visibleFields = ['commodity', 'unitPrice', 'quantity', 'filledQuantity', 'status', 'traderName'] as const;
+const scaleColumnWidths = Object.fromEntries(
+  dataGridScaleShowcaseColumns.map((column) => [column.field, column.width]),
+) as Record<string, number>;
+
+function parseMarketRows(csvText: string) {
+  const lines = csvText.trim().split(/\r?\n/);
+
+  return lines.slice(1).map((line) => {
+    const [
+      id,
+      contract,
+      venue,
+      desk,
+      trader,
+      bid,
+      ask,
+      spread,
+      filled,
+      status,
+      trendSeed,
+      updatedAt,
+    ] = line.split(',');
+
+    return {
+      id: Number(id),
+      contract,
+      venue,
+      desk,
+      trader,
+      bid: Number(bid),
+      ask: Number(ask),
+      spread: Number(spread),
+      filled: Number(filled),
+      status,
+      trendSeed: Number(trendSeed),
+      updatedAt,
+    } satisfies MarketRow;
+  });
+}
 
 export default function DataGridFeatureShowcaseBlock() {
   const [active, setActive] = React.useState<ShowcaseId>('scale');
 
   return (
-    <Section cozy>
+    <Section cozy sx={{ pt: { xs: 3, sm: 5, md: 6 } }}>
       <SectionReveal>
-        <SectionHeadline
-          alwaysCenter
-          overline="Advanced showcase"
-          title={
-            <Typography variant="h2">
-              Ready-to-use advanced features for <GradientText>serious product teams</GradientText>
-            </Typography>
-          }
-          description="Move through the kinds of workflows teams actually ask for on the Data Grid page: massive datasets, AI assistance, tree data with detail panels, and analytical pivot views."
-        />
-      </SectionReveal>
-      <SectionReveal delay={60}>
-        <Stack
-          direction={{ xs: 'column', md: 'row' }}
-          spacing={1}
-          useFlexGap
-          sx={{ justifyContent: 'center', alignItems: 'center', mt: 2, mb: 3 }}
-        >
-          {(Object.keys(showcaseMeta) as ShowcaseId[]).map((id) => (
-            <Button
-              key={id}
-              variant={active === id ? 'contained' : 'outlined'}
-              color={active === id ? 'primary' : 'secondary'}
-              onClick={() => setActive(id)}
-              sx={{ borderRadius: premiumTokens.radius.pill, fontWeight: 700, whiteSpace: 'nowrap' }}
-            >
-              {showcaseMeta[id].label}
-            </Button>
-          ))}
-        </Stack>
-      </SectionReveal>
-      <SectionReveal delay={120}>
         <Paper
           variant="outlined"
           sx={(theme) => ({
@@ -295,6 +331,105 @@ export default function DataGridFeatureShowcaseBlock() {
         >
           <Box sx={{ p: { xs: 2, md: 2.5 }, borderBottom: '1px solid', borderColor: 'divider' }}>
             <Stack spacing={1.5}>
+              <Stack
+                direction={{ xs: 'column', md: 'row' }}
+                spacing={1}
+                useFlexGap
+                sx={{ justifyContent: 'space-between', alignItems: { md: 'flex-start' } }}
+              >
+                <Typography sx={{ fontSize: 12, color: 'text.secondary', maxWidth: 560 }}>
+                  See how the Data Grid helps users search faster, analyze more clearly, and take action without
+                  leaving the flow of work.
+                </Typography>
+                <Tabs
+                  value={active}
+                  onChange={(_, value: ShowcaseId) => setActive(value)}
+                  variant="scrollable"
+                  allowScrollButtonsMobile
+                  sx={(theme) => ({
+                    minHeight: 0,
+                    flexShrink: 0,
+                    alignSelf: { xs: 'stretch', md: 'flex-start' },
+                    p: 0.5,
+                    borderRadius: premiumTokens.radius.xl,
+                    border: '1px solid',
+                    borderColor:
+                      theme.palette.mode === 'dark'
+                        ? alpha(theme.palette.primary[300], 0.14)
+                        : alpha(theme.palette.primary[100], 0.9),
+                    bgcolor:
+                      theme.palette.mode === 'dark'
+                        ? alpha(theme.palette.common.white, 0.03)
+                        : alpha(theme.palette.primary[50], 0.72),
+                    '& .MuiTabs-list': {
+                      gap: 0.75,
+                    },
+                    '& .MuiTabs-indicator': {
+                      display: 'none',
+                    },
+                    '& .MuiTabs-scrollButtons': {
+                      borderRadius: premiumTokens.radius.pill,
+                    },
+                  })}
+                >
+                  {showcaseOrder.map((id, index) => (
+                    <Tab
+                      key={id}
+                      value={id}
+                      disableRipple
+                      label={
+                        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                          <Box
+                            sx={(theme) => ({
+                              width: 22,
+                              height: 22,
+                              borderRadius: '999px',
+                              display: 'grid',
+                              placeItems: 'center',
+                              fontSize: 11,
+                              fontWeight: 800,
+                              color: active === id ? 'primary.contrastText' : 'text.secondary',
+                              bgcolor:
+                                active === id
+                                  ? 'primary.main'
+                                  : theme.palette.mode === 'dark'
+                                    ? alpha(theme.palette.common.white, 0.08)
+                                    : alpha(theme.palette.common.white, 0.92),
+                            })}
+                          >
+                            {index + 1}
+                          </Box>
+                          <Typography sx={{ fontSize: 12.5, fontWeight: 700, whiteSpace: 'nowrap' }}>
+                            {showcaseMeta[id].label}
+                          </Typography>
+                        </Stack>
+                      }
+                      sx={(theme) => ({
+                        minHeight: 0,
+                        minWidth: 0,
+                        px: 1.25,
+                        py: 1,
+                        borderRadius: premiumTokens.radius.lg,
+                        alignItems: 'stretch',
+                        color: 'text.secondary',
+                        textTransform: 'none',
+                        transition: theme.transitions.create(['background-color', 'box-shadow', 'color']),
+                        '&.Mui-selected': {
+                          color: 'text.primary',
+                          bgcolor:
+                            theme.palette.mode === 'dark'
+                              ? alpha(theme.palette.primary[500], 0.18)
+                              : alpha(theme.palette.common.white, 0.96),
+                          boxShadow:
+                            theme.palette.mode === 'dark'
+                              ? `0 8px 24px ${alpha(theme.palette.common.black, 0.22)}`
+                              : `0 8px 24px ${alpha(theme.palette.primary[900], 0.08)}`,
+                        },
+                      })}
+                    />
+                  ))}
+                </Tabs>
+              </Stack>
               <Box>
                 <Typography sx={{ fontSize: 12, fontWeight: 700, color: 'primary.main' }}>
                   {showcaseMeta[active].eyebrow}
@@ -331,28 +466,213 @@ export default function DataGridFeatureShowcaseBlock() {
 }
 
 function ScaleShowcase() {
-  const { loading, data } = useDemoData({
-    dataSet: 'Commodity',
-    rowLength: 100000,
-    maxColumns: 8,
-    editable: true,
-    visibleFields: [...visibleFields],
-  });
+  const apiRef = useGridApiRef();
+  const [marketRows, setMarketRows] = React.useState<MarketRow[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
-  const sortedColumns = React.useMemo(() => {
-    return [...data.columns].sort(
-      (a, b) => visibleFields.indexOf(a.field as (typeof visibleFields)[number]) - visibleFields.indexOf(b.field as (typeof visibleFields)[number]),
-    );
-  }, [data.columns]);
+  const liveRowsRef = React.useRef(
+    new Map<number | string, { bid: number; ask: number; spread: number; filled: number; trendSeed: number; updatedAt: string }>(),
+  );
+
+  React.useEffect(() => {
+    let active = true;
+
+    fetch(marketCsvPath)
+      .then((response) => response.text())
+      .then((csvText) => {
+        if (!active) {
+          return;
+        }
+        setMarketRows(parseMarketRows(csvText));
+        setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (marketRows.length === 0) {
+      return;
+    }
+
+    const seededRows = marketRows.slice(0, 36).map((row) => [
+      row.id,
+      {
+        bid: row.bid,
+        ask: row.ask,
+        spread: row.spread,
+        filled: row.filled,
+        trendSeed: row.trendSeed,
+        updatedAt: row.updatedAt,
+      },
+    ]);
+
+    liveRowsRef.current = new Map(seededRows);
+  }, [marketRows]);
+
+  React.useEffect(() => {
+    if (marketRows.length === 0) {
+      return undefined;
+    }
+
+    const interval = setInterval(() => {
+      const keys = Array.from(liveRowsRef.current.keys());
+      if (keys.length === 0) {
+        return;
+      }
+
+      const selectedKey = keys[Math.floor(Date.now() / 1000) % keys.length];
+      const current = liveRowsRef.current.get(selectedKey)!;
+      const nextBid = Number((current.bid + (current.trendSeed % 2 === 0 ? 0.4 : -0.3)).toFixed(2));
+      const nextAsk = Number((nextBid + 0.1 + ((current.trendSeed % 3) * 0.02)).toFixed(2));
+      const nextSpread = Number((nextAsk - nextBid).toFixed(2));
+      const nextFilled = Math.max(1, Math.min(99, current.filled + (current.trendSeed % 2 === 0 ? 2 : -1)));
+      const nextUpdatedAt = 'just now';
+
+      liveRowsRef.current.set(selectedKey, {
+        bid: nextBid,
+        ask: nextAsk,
+        spread: nextSpread,
+        filled: nextFilled,
+        trendSeed: current.trendSeed + 1,
+        updatedAt: nextUpdatedAt,
+      });
+
+      apiRef.current?.updateRows([
+        {
+          id: selectedKey,
+          bid: nextBid,
+          ask: nextAsk,
+          spread: nextSpread,
+          filled: nextFilled,
+          trendSeed: current.trendSeed + 1,
+          updatedAt: nextUpdatedAt,
+        },
+      ]);
+    }, 1800);
+
+    return () => clearInterval(interval);
+  }, [apiRef, marketRows.length]);
+
+  const columns = React.useMemo(() => {
+    return [
+      { field: 'venue', headerName: 'Venue', width: scaleColumnWidths.venue },
+      { field: 'contract', headerName: 'Contract', width: scaleColumnWidths.contract },
+      { field: 'desk', headerName: 'Desk', width: scaleColumnWidths.desk },
+      { field: 'trader', headerName: 'Trader', width: scaleColumnWidths.trader },
+      {
+        field: 'bid',
+        headerName: 'Bid',
+        type: 'number',
+        width: scaleColumnWidths.bid,
+        valueFormatter: (value: number) => value.toFixed(2),
+      },
+      {
+        field: 'ask',
+        headerName: 'Ask',
+        type: 'number',
+        width: scaleColumnWidths.ask,
+        valueFormatter: (value: number) => value.toFixed(2),
+      },
+      {
+        field: 'spread',
+        headerName: 'Spread',
+        type: 'number',
+        width: scaleColumnWidths.spread,
+        valueFormatter: (value: number) => value.toFixed(2),
+      },
+      {
+        field: 'trendSeed',
+        headerName: '30-min trend',
+        width: scaleColumnWidths.trendSeed,
+        sortable: false,
+        filterable: false,
+        renderCell: (params: GridRenderCellParams<MarketRow, number>) => {
+          const seed = Number(params.value || 12);
+          const sparkline = Array.from({ length: 12 }, (_, step) =>
+            Math.max(10, seed + ((params.row.id as number) % 7) + ((step * 3) % 11)),
+          );
+          return (
+            <SparkLineChart
+              data={sparkline}
+              width={(params.colDef.computedWidth || 150) - 16}
+              height={28}
+              plotType="line"
+              showHighlight
+              color="#5090F7"
+            />
+          );
+        },
+      },
+      {
+        field: 'filled',
+        headerName: 'Filled',
+        width: scaleColumnWidths.filled,
+        renderCell: (params: GridRenderCellParams<MarketRow, number>) => (
+          <Box sx={{ width: '100%', pr: 1 }}>
+            <Box
+              sx={(theme) => ({
+                width: '100%',
+                height: 8,
+                borderRadius: '999px',
+                bgcolor:
+                  theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.common.white, 0.08)
+                    : alpha(theme.palette.primary[100], 0.6),
+                overflow: 'hidden',
+              })}
+            >
+              <Box
+                sx={{
+                  width: `${params.value}%`,
+                  height: '100%',
+                  bgcolor: params.value > 70 ? 'success.main' : params.value > 40 ? 'warning.main' : 'error.main',
+                }}
+              />
+            </Box>
+            <Typography sx={{ mt: 0.5, fontSize: 11, color: 'text.secondary' }}>{params.value}%</Typography>
+          </Box>
+        ),
+      },
+      {
+        field: 'status',
+        headerName: 'Status',
+        width: scaleColumnWidths.status,
+        renderCell: (params: GridRenderCellParams<MarketRow, string>) => (
+          <Chip
+            size="small"
+            label={params.value}
+            color={
+              params.value === 'Filled'
+                ? 'success'
+                : params.value === 'Open'
+                  ? 'primary'
+                  : params.value === 'Monitoring'
+                    ? 'warning'
+                    : 'default'
+            }
+            sx={{ borderRadius: premiumTokens.radius.pill, fontWeight: 700 }}
+          />
+        ),
+      },
+      {
+        field: 'updatedAt',
+        headerName: 'Updated',
+        width: scaleColumnWidths.updatedAt,
+      },
+    ] as GridColDef<MarketRow>[];
+  }, []);
 
   return (
     <Box sx={{ p: { xs: 1.5, md: 2 } }}>
-      <XGridGlobalStyles selector="#data-grid-showcase-scale" pro />
+      <XGridGlobalStyles selector="#data-grid-showcase-scale" />
       <Grid container spacing={2} sx={{ mb: 2 }}>
         {[
-          { label: 'Rows loaded', value: '100,000' },
-          { label: 'Visible columns', value: '6' },
-          { label: 'Scroll experience', value: 'Virtualized' },
+          { label: 'Rows loaded', value: marketRowCount.toLocaleString() },
+          { label: 'Live feeds', value: '36 streams' },
+          { label: 'Complex columns', value: 'Sparkline + status' },
         ].map((item) => (
           <Grid key={item.label} size={{ xs: 12, sm: 4 }}>
             <Paper
@@ -381,29 +701,60 @@ function ScaleShowcase() {
           </Grid>
         ))}
       </Grid>
-      <Paper id="data-grid-showcase-scale" variant="outlined" sx={{ height: 500, borderRadius: premiumTokens.radius.lg }}>
+      <Paper id="data-grid-showcase-scale" variant="outlined" sx={{ height: 520, borderRadius: premiumTokens.radius.lg }}>
         <DataGridPro
-          {...data}
-          columns={sortedColumns}
+          apiRef={apiRef}
+          rows={marketRows}
+          columns={columns}
           loading={loading}
+          pagination={false}
           density="compact"
-          pagination
           checkboxSelection
           disableRowSelectionOnClick
-          pageSizeOptions={[25, 50, 100]}
-          initialState={{
-            pagination: {
-              paginationModel: { pageSize: 25, page: 0 },
-            },
-          }}
-          slots={{ toolbar: GridToolbarQuickFilter }}
+          rowHeight={44}
+          columnHeaderHeight={44}
+          slots={{ toolbar: CommunityQuickFilter }}
           slotProps={{
             toolbar: {
               quickFilterParser: (input: string) => input.split(/\s+/).filter(Boolean),
             },
+            loadingOverlay: {
+              variant: 'skeleton',
+              noRowsVariant: 'skeleton',
+            },
           }}
         />
       </Paper>
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={1.25}
+        useFlexGap
+        sx={{ mt: 2, justifyContent: 'space-between', alignItems: { sm: 'center' } }}
+      >
+        <Typography sx={{ fontSize: 12, color: 'text.secondary', maxWidth: 520 }}>
+          Start with the grid fundamentals users depend on every day, then layer in grouping, pivoting, charts,
+          and AI-assisted interaction as their work gets more complex.
+        </Typography>
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} useFlexGap>
+          <Button
+            component={Link}
+            href="/x/react-data-grid/"
+            variant="contained"
+            sx={{ borderRadius: premiumTokens.radius.pill, fontWeight: 700, whiteSpace: 'nowrap' }}
+          >
+            Get started
+          </Button>
+          <Button
+            component={Link}
+            href="/x/react-data-grid/quickstart/"
+            variant="outlined"
+            color="secondary"
+            sx={{ borderRadius: premiumTokens.radius.pill, fontWeight: 700, whiteSpace: 'nowrap' }}
+          >
+            View documentation
+          </Button>
+        </Stack>
+      </Stack>
     </Box>
   );
 }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -9,20 +10,33 @@ import { alpha } from '@mui/material/styles';
 import AutoGraphRounded from '@mui/icons-material/AutoGraphRounded';
 import DashboardRounded from '@mui/icons-material/DashboardRounded';
 import ZoomInRounded from '@mui/icons-material/ZoomInRounded';
+import StatusBadge from 'docs/src/components/landing/StatusBadge';
 import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
 import SectionReveal from 'docs/src/components/landing/SectionReveal';
 import { premiumTokens } from 'docs/src/components/landing/marketingTheme';
-import { BarChart } from '@mui/x-charts/BarChart';
-import { LineChart } from '@mui/x-charts/LineChart';
+import { Link } from '@mui/docs/Link';
+import { BarPlot } from '@mui/x-charts/BarChart';
+import {
+  ChartContainer,
+  ChartsClipPath,
+  ChartsGrid,
+  ChartsXAxis,
+  ChartsYAxis,
+} from '@mui/x-charts';
+import { LinePlot } from '@mui/x-charts/LineChart';
 
-const quarterlyRevenue = [
-  { quarter: 'Q1', pipeline: 3.8, closed: 3.1 },
-  { quarter: 'Q2', pipeline: 4.4, closed: 3.7 },
-  { quarter: 'Q3', pipeline: 5.1, closed: 4.4 },
-  { quarter: 'Q4', pipeline: 5.7, closed: 4.9 },
-];
+const candlestickPreview = [
+  { label: 'Mon', low: 38, high: 74, open: 48, close: 62 },
+  { label: 'Tue', low: 42, high: 78, open: 64, close: 52 },
+  { label: 'Wed', low: 46, high: 82, open: 54, close: 72 },
+  { label: 'Thu', low: 50, high: 88, open: 76, close: 58 },
+  { label: 'Fri', low: 44, high: 80, open: 56, close: 68 },
+  { label: 'Mon', low: 48, high: 92, open: 70, close: 84 },
+  { label: 'Tue', low: 54, high: 94, open: 86, close: 64 },
+  { label: 'Wed', low: 52, high: 90, open: 62, close: 78 },
+] as const;
 
 const weeklyActivation = [
   'Week 1',
@@ -32,6 +46,114 @@ const weeklyActivation = [
   'Week 5',
   'Week 6',
 ];
+
+function CandlestickPreview() {
+  return (
+    <Box sx={{ mt: 2, height: 280, position: 'relative' }}>
+      <Box
+        sx={(theme) => ({
+          position: 'absolute',
+          inset: 0,
+          borderRadius: premiumTokens.radius.lg,
+          backgroundImage: `linear-gradient(to bottom, transparent 0%, transparent calc(25% - 1px), ${alpha(
+            theme.palette.divider,
+            0.6,
+          )} 25%, transparent calc(25% + 1px), transparent calc(50% - 1px), ${alpha(
+            theme.palette.divider,
+            0.6,
+          )} 50%, transparent calc(50% + 1px), transparent calc(75% - 1px), ${alpha(
+            theme.palette.divider,
+            0.6,
+          )} 75%, transparent calc(75% + 1px), transparent 100%)`,
+        })}
+      />
+      <Stack direction="row" spacing={1} sx={{ position: 'absolute', top: 0, right: 0, zIndex: 1 }}>
+        <Chip
+          size="small"
+          label="Mock preview"
+          variant="outlined"
+          sx={{ borderRadius: premiumTokens.radius.pill, fontWeight: 700 }}
+        />
+        <StatusBadge status="coming-soon" />
+      </Stack>
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          pt: 5,
+          pb: 3,
+          px: 1,
+          display: 'grid',
+          gridTemplateColumns: `repeat(${candlestickPreview.length}, minmax(0, 1fr))`,
+          gap: 1.25,
+          alignItems: 'stretch',
+        }}
+      >
+        {candlestickPreview.map((point) => {
+          const bullish = point.close >= point.open;
+          const bodyTop = Math.min(point.open, point.close);
+          const bodyBottom = Math.max(point.open, point.close);
+          const bodyHeight = Math.max(bodyBottom - bodyTop, 6);
+
+          return (
+            <Box
+              key={`${point.label}-${point.high}-${point.low}`}
+              sx={{
+                position: 'relative',
+                minWidth: 0,
+              }}
+            >
+              <Box
+                sx={(theme) => ({
+                  position: 'absolute',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  top: `${100 - point.high}%`,
+                  height: `${point.high - point.low}%`,
+                  width: 2,
+                  borderRadius: '999px',
+                  bgcolor: bullish ? theme.palette.success.main : theme.palette.error.main,
+                  opacity: 0.9,
+                })}
+              />
+              <Box
+                sx={(theme) => ({
+                  position: 'absolute',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  top: `${100 - bodyBottom}%`,
+                  height: `${bodyHeight}%`,
+                  width: { xs: 12, sm: 18 },
+                  borderRadius: '6px',
+                  border: '1px solid',
+                  borderColor: bullish ? alpha(theme.palette.success.main, 0.7) : alpha(theme.palette.error.main, 0.7),
+                  bgcolor: bullish
+                    ? alpha(theme.palette.success.main, 0.22)
+                    : alpha(theme.palette.error.main, 0.2),
+                  boxShadow: bullish
+                    ? `0 6px 16px ${alpha(theme.palette.success.main, 0.18)}`
+                    : `0 6px 16px ${alpha(theme.palette.error.main, 0.16)}`,
+                })}
+              />
+              <Typography
+                sx={{
+                  position: 'absolute',
+                  bottom: -2,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  fontSize: 11,
+                  color: 'text.secondary',
+                }}
+              >
+                {point.label}
+              </Typography>
+            </Box>
+          );
+        })}
+      </Box>
+    </Box>
+  );
+}
 
 export default function ChartsLiveShowcaseBlock() {
   return (
@@ -43,10 +165,10 @@ export default function ChartsLiveShowcaseBlock() {
               overline="Live showcase"
               title={
                 <Typography variant="h2">
-                  Dashboard views built with <GradientText>real chart patterns</GradientText>
+                  Charts that help users <GradientText>see what matters faster</GradientText>
                 </Typography>
               }
-              description="These examples mirror the kinds of analytical surfaces teams build most often: a business review view for revenue and a time-series view for ongoing product health."
+              description="These examples show how charts help users compare outcomes, spot change, and make decisions inside analytical products."
             />
             <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap' }} useFlexGap>
               <Chip
@@ -90,22 +212,13 @@ export default function ChartsLiveShowcaseBlock() {
                   })}
                 >
                   <Typography sx={{ fontSize: 12, fontWeight: 700, color: 'text.secondary' }}>
-                    Executive revenue review
+                    Candlestick price action
                   </Typography>
-                  <Typography sx={{ mt: 0.5, fontSize: 13, color: 'text.secondary' }}>
-                    Compare pipeline against closed revenue to see where the quarter is converting efficiently.
+                  <Typography sx={{ mt: 0.5, fontSize: 13, color: 'text.secondary', maxWidth: 520 }}>
+                    Mock a forthcoming financial-chart workflow with OHLC candles, daily movement, and trading-style
+                    inspection in the same charts system.
                   </Typography>
-                  <BarChart
-                    dataset={quarterlyRevenue}
-                    xAxis={[{ dataKey: 'quarter', scaleType: 'band' }]}
-                    series={[
-                      { dataKey: 'pipeline', label: 'Pipeline ($M)', color: '#5090F7' },
-                      { dataKey: 'closed', label: 'Closed revenue ($M)', color: '#7CC4FA' },
-                    ]}
-                    height={280}
-                    margin={{ top: 24, bottom: 28, left: 36, right: 12 }}
-                    borderRadius={8}
-                  />
+                  <CandlestickPreview />
                 </Paper>
               </Grid>
               <Grid size={{ xs: 12 }}>
@@ -128,23 +241,89 @@ export default function ChartsLiveShowcaseBlock() {
                     Product activation trend
                   </Typography>
                   <Typography sx={{ mt: 0.5, fontSize: 13, color: 'text.secondary' }}>
-                    Track activation growth against the healthy baseline teams watch week over week.
+                    Track activation growth against the healthy baseline. Bars show new trials; lines show activated
+                    workspaces and target.
                   </Typography>
-                  <LineChart
-                    xAxis={[{ data: weeklyActivation, scaleType: 'point' }]}
+                  <ChartContainer
+                    xAxis={[{ id: 'x-axis', data: weeklyActivation, scaleType: 'band' }]}
+                    yAxis={[
+                      { id: 'trials', position: 'left' },
+                      { id: 'activation', position: 'right' },
+                    ]}
                     series={[
-                      { data: [42, 47, 51, 56, 63, 68], label: 'Activated workspaces', color: '#5090F7' },
-                      { data: [38, 39, 41, 43, 45, 46], label: 'Target baseline', color: '#A8C9FF' },
+                      {
+                        type: 'bar',
+                        data: [120, 145, 180, 195, 220, 240],
+                        label: 'New trials',
+                        color: '#7B61FF',
+                        yAxisId: 'trials',
+                      },
+                      {
+                        type: 'line',
+                        data: [42, 47, 51, 56, 63, 68],
+                        label: 'Activated workspaces',
+                        color: '#5090F7',
+                        yAxisId: 'activation',
+                      },
+                      {
+                        type: 'line',
+                        data: [38, 39, 41, 43, 45, 46],
+                        label: 'Target baseline',
+                        color: '#A8C9FF',
+                        yAxisId: 'activation',
+                      },
                     ]}
                     height={260}
-                    margin={{ top: 24, bottom: 28, left: 36, right: 12 }}
-                  />
+                    margin={{ top: 24, bottom: 28, left: 36, right: 36 }}
+                  >
+                    <g clipPath={`url(#product-activation-clip)`}>
+                      <BarPlot />
+                      <LinePlot />
+                    </g>
+                    <ChartsClipPath id="product-activation-clip" />
+                    <ChartsGrid vertical horizontal />
+                    <ChartsXAxis position="bottom" axisId="x-axis" />
+                    <ChartsYAxis position="left" axisId="trials" />
+                    <ChartsYAxis position="right" axisId="activation" />
+                  </ChartContainer>
                 </Paper>
               </Grid>
             </Grid>
           </SectionReveal>
         </Grid>
       </Grid>
+      <SectionReveal delay={160}>
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          spacing={1.25}
+          useFlexGap
+          sx={{ mt: 2.5, justifyContent: 'space-between', alignItems: { sm: 'center' } }}
+        >
+          <Typography sx={{ fontSize: 12, color: 'text.secondary', maxWidth: 520 }}>
+            Start with the chart patterns users rely on most, then expand into richer analytical experiences with
+            composition, zoom and pan, advanced chart types, and export.
+          </Typography>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} useFlexGap>
+            <Button
+              component={Link}
+              href="/x/react-charts/"
+              variant="contained"
+              sx={{ borderRadius: premiumTokens.radius.pill, fontWeight: 700, whiteSpace: 'nowrap' }}
+            >
+              Get started
+            </Button>
+            <Button
+              component={Link}
+              href="/x/react-charts/quickstart/"
+              variant="outlined"
+              color="secondary"
+              sx={{ borderRadius: premiumTokens.radius.pill, fontWeight: 700, whiteSpace: 'nowrap' }}
+            >
+              View documentation
+            </Button>
+          </Stack>
+        </Stack>
+      </SectionReveal>
     </Section>
   );
 }

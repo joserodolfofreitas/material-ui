@@ -2,21 +2,28 @@ import type { Highlight } from 'docs/src/components/landing/HighlightsBlock';
 import type { UseCase } from 'docs/src/components/landing/UseCasesBlock';
 
 export const dataGridHero = {
-  title: 'A fast, extensible React data grid',
-  gradientText: 'for real product workflows',
+  title: 'Build better products with a',
+  gradientText: 'data grid that helps users get work done',
   description:
-    'Go from simple CRUD tables to complex analytical workspaces with sorting, filtering, editing, column pinning, row grouping, aggregation, pivoting, export, and server-side data.',
+    'Give users one place to search, edit, analyze, and act on complex data with the performance, customization, and advanced workflows modern products need.',
   status: undefined,
-  ctas: [
-    { label: 'Get started', href: '/x/react-data-grid/', variant: 'contained' as const },
-    {
-      label: 'View documentation',
-      href: '/x/react-data-grid/quickstart/',
-      variant: 'outlined' as const,
-      color: 'secondary' as const,
-    },
-  ],
+  ctas: [],
 };
+
+export const dataGridScaleShowcaseColumns = [
+  { field: '__check__', headerName: '', width: 48 },
+  { field: 'venue', headerName: 'Venue', width: 110 },
+  { field: 'contract', headerName: 'Contract', width: 150 },
+  { field: 'desk', headerName: 'Desk', width: 90 },
+  { field: 'trader', headerName: 'Trader', width: 120 },
+  { field: 'bid', headerName: 'Bid', width: 90 },
+  { field: 'ask', headerName: 'Ask', width: 90 },
+  { field: 'spread', headerName: 'Spread', width: 90 },
+  { field: 'trendSeed', headerName: '30-min trend', width: 160 },
+  { field: 'filled', headerName: 'Filled', width: 120 },
+  { field: 'status', headerName: 'Status', width: 120 },
+  { field: 'updatedAt', headerName: 'Updated', width: 90 },
+] as const;
 
 export const dataGridHighlights: Omit<Highlight, 'icon'>[] = [
   {
@@ -58,9 +65,9 @@ export const dataGridHighlights: Omit<Highlight, 'icon'>[] = [
 
 export const dataGridUseCases: Omit<UseCase, 'icon'>[] = [
   {
-    title: 'Admin and operations software',
+    title: 'Admin, operations, CRM, ERP, and internal tools',
     description:
-      'Manage high-volume records with inline editing, bulk actions, pinned columns, and fast search.',
+      'Manage high-volume records with inline editing, bulk actions, pinned columns, hierarchy, and fast search across business-critical workflows.',
   },
   {
     title: 'Financial and analytical workbenches',
@@ -68,9 +75,9 @@ export const dataGridUseCases: Omit<UseCase, 'icon'>[] = [
       'Handle large datasets with virtualization, grouping, aggregation, pivoting, and Excel-style workflows.',
   },
   {
-    title: 'CRM, ERP, and internal tools',
+    title: 'Healthcare, manufacturing, and other data-heavy applications',
     description:
-      'Use master-detail panels, server-side data, and rich row interactions for complex business workflows.',
+      'Handle complex records, structured hierarchies, and operational detail at scale in software where dense data is the product experience.',
   },
 ];
 
@@ -114,5 +121,5 @@ export const dataGridWhyStrip = [
 export const metaConfig = {
   title: 'MUI X Data Grid: A fast, extensible React data grid',
   description:
-    'A fast, extensible React data grid for real product workflows, with editing, filtering, sorting, grouping, pivoting, export, and server-side data.',
+    'A fast, extensible React data grid for products that help users search, edit, analyze, and act on complex data.',
 };

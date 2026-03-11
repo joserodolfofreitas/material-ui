@@ -56,7 +56,7 @@ export default function StubLandingBlock({
             alwaysCenter
             overline="Planned highlights"
             title={<Typography variant="h2">What we&apos;re building</Typography>}
-            description="These features are planned. Status badges indicate what's available today and what's coming next."
+            description="These capabilities are designed to help users get work done more easily. Status badges indicate what&apos;s available today and what&apos;s coming next."
           />
         </SectionReveal>
         <Grid container spacing={3} sx={{ mt: 2 }}>
@@ -113,7 +113,7 @@ export default function StubLandingBlock({
             overline="Use cases"
             title={
               <Typography variant="h2">
-                Built for <GradientText>real-world scenarios</GradientText>
+                Built for <GradientText>the jobs users need to do</GradientText>
               </Typography>
             }
           />

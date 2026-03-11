@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import { unstable_debounce as debounce } from '@mui/utils';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import IconImage from 'docs/src/components/icon/IconImage';
+import { productMenuItems } from 'docs/src/components/header/productMenuConfig';
 import ROUTES from 'docs/src/route';
 import { Link } from '@mui/docs/Link';
 import MuiProductSelector from 'docs/src/modules/components/MuiProductSelector';
@@ -66,12 +66,7 @@ const Navigation = styled('nav')(({ theme }) => [
   }),
 ]);
 
-const PRODUCT_IDS = [
-  'product-core',
-  'product-advanced',
-  'product-templates',
-  'product-design',
-] as const;
+const PRODUCT_IDS = productMenuItems.map((item) => item.id);
 
 type ProductSubMenuProps = {
   icon: React.ReactElement<unknown>;
@@ -261,7 +256,7 @@ export default function HeaderNavBar() {
                   variant="outlined"
                   sx={(theme) => ({
                     mt: 1,
-                    minWidth: 498,
+                    minWidth: 560,
                     overflow: 'hidden',
                     borderRadius: '12px',
                     borderColor: alpha(theme.palette.primary[100], 0.95),
@@ -289,42 +284,18 @@ export default function HeaderNavBar() {
                   })}
                 >
                   <ul>
-                    <li>
-                      <ProductSubMenu
-                        id={PRODUCT_IDS[0]}
-                        href={ROUTES.productCore}
-                        icon={<IconImage name="product-core" />}
-                        name="MUI Core"
-                        description="Ready-to-use foundational React components, free forever."
-                      />
-                    </li>
-                    <li>
-                      <ProductSubMenu
-                        id={PRODUCT_IDS[1]}
-                        href={ROUTES.productAdvanced}
-                        icon={<IconImage name="product-advanced" />}
-                        name="MUI X"
-                        description="Advanced and powerful components for complex use cases."
-                      />
-                    </li>
-                    <li>
-                      <ProductSubMenu
-                        id={PRODUCT_IDS[2]}
-                        href={ROUTES.productTemplates}
-                        icon={<IconImage name="product-templates" />}
-                        name="Templates"
-                        description="Fully built templates for your application."
-                      />
-                    </li>
-                    <li>
-                      <ProductSubMenu
-                        id={PRODUCT_IDS[3]}
-                        href={ROUTES.productDesignKits}
-                        icon={<IconImage name="product-designkits" />}
-                        name="Design Kits"
-                        description="Material UI components in your favorite design tool."
-                      />
-                    </li>
+                    {productMenuItems.map((item) => (
+                      <li key={item.id}>
+                        <ProductSubMenu
+                          id={item.id}
+                          href={item.href}
+                          icon={item.icon}
+                          name={item.name}
+                          description={item.description}
+                          chip={item.chip}
+                        />
+                      </li>
+                    ))}
                   </ul>
                 </Paper>
               </Fade>

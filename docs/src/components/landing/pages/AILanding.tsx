@@ -16,6 +16,7 @@ import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
 import GradientText from 'docs/src/components/typography/GradientText';
 import ComponentHeroBlock from 'docs/src/components/landing/ComponentHeroBlock';
 import FinalCTABlock from 'docs/src/components/landing/FinalCTABlock';
+import LandingComponentNav from 'docs/src/components/landing/LandingComponentNav';
 import { motionTransition } from 'docs/src/components/landing/marketingTheme';
 import {
   aiHero,
@@ -40,6 +41,7 @@ export default function AILanding() {
         status={aiHero.status}
         ctas={aiHero.ctas}
       />
+      <LandingComponentNav activeId="ai" />
       <Divider />
       {/* Capabilities */}
       <Section cozy>
@@ -49,10 +51,10 @@ export default function AILanding() {
             overline="AI-native components"
             title={
               <Typography variant="h2">
-                Intelligence built into <GradientText>every component</GradientText>
+                Intelligence built into <GradientText>the UI people already use</GradientText>
               </Typography>
             }
-            description="Each MUI X component is designed to be AI-ready. Add natural language, voice, and conversational intelligence to your existing UI."
+            description="Each MUI X component is designed to make work easier. Add natural language, voice, and conversational intelligence to the UI your users already rely on."
           />
         </SectionReveal>
         <Grid container spacing={3} sx={{ mt: 2 }}>
@@ -125,7 +127,7 @@ export default function AILanding() {
                 overline="How it works"
                 title={
                   <Typography variant="h2">
-                    AI built into the <GradientText>component layer</GradientText>
+                    AI built into the <GradientText>way users get work done</GradientText>
                   </Typography>
                 }
                 description={aiGrounding.description}

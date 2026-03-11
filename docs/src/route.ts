@@ -48,6 +48,13 @@ const ROUTES = {
   chartsOverview: '/x/react-charts/',
   // Tree View doc pages
   treeViewOverview: '/x/react-tree-view/',
+  // Advanced component landing pages
+  aiLanding: '/ai/',
+  dataGridLanding: '/x/data-grid-landing/',
+  chartsLanding: '/x/charts-landing/',
+  schedulerLanding: '/x/scheduler-landing/',
+  chatboxLanding: '/x/chatbox-landing/',
+  ganttLanding: '/x/gantt-landing/',
   // Toolpad pages
   toolpadLandingPage: '/toolpad/',
   toolpadStudioLandingPage: '/toolpad/studio/',

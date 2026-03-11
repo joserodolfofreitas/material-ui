@@ -1,10 +1,10 @@
 import type { ProductStatus } from 'docs/src/components/landing/marketingTheme';
 
 export const aiHero = {
-  title: 'AI that understands your',
-  gradientText: 'UI system',
+  title: 'Build better products with',
+  gradientText: 'AI that helps users get work done',
   description:
-    'Build interfaces where end users interact with AI through your components - ask questions to a data grid, get trend insights from charts, schedule with voice, and resolve conflicts intelligently.',
+    'Add natural-language, voice, and assistant-driven interaction to the components your product already uses so users can ask, understand, and act without leaving the flow of work.',
   status: 'alpha' as ProductStatus,
   ctas: [
     {

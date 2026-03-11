@@ -19,6 +19,7 @@ import QueryStatsRounded from '@mui/icons-material/QueryStatsRounded';
 import GradientText from 'docs/src/components/typography/GradientText';
 import ComponentHeroBlock from 'docs/src/components/landing/ComponentHeroBlock';
 import HighlightsBlock from 'docs/src/components/landing/HighlightsBlock';
+import LandingComponentNav from 'docs/src/components/landing/LandingComponentNav';
 import UseCasesBlock from 'docs/src/components/landing/UseCasesBlock';
 import FinalCTABlock from 'docs/src/components/landing/FinalCTABlock';
 import Section from 'docs/src/layouts/Section';
@@ -82,6 +83,7 @@ export default function ChartsLanding() {
         status={chartsHero.status}
         ctas={chartsHero.ctas}
       />
+      <LandingComponentNav activeId="charts" />
       <Divider />
       <ChartsLiveShowcaseBlock />
       <Divider />
@@ -89,10 +91,10 @@ export default function ChartsLanding() {
         overline="Highlights"
         headline={
           <Typography variant="h2">
-            Composable charts for <GradientText>every dashboard</GradientText>
+            Composable charts for <GradientText>decision-making products</GradientText>
           </Typography>
         }
-        description="Independent building blocks you compose freely - not a monolithic chart config."
+        description="Independent building blocks that help users understand data, compare outcomes, and move from insight to action."
         highlights={chartsHighlights.map((h, i) => ({
           ...h,
           icon: highlightIcons[i] || <BarChartRounded />,
@@ -106,10 +108,10 @@ export default function ChartsLanding() {
             overline="Common workflows"
             title={
               <Typography variant="h2">
-                Documentation paths for <GradientText>real dashboard needs</GradientText>
+                Documentation paths for <GradientText>the analysis users need</GradientText>
               </Typography>
             }
-            description="Use these entry points to jump straight to the chart patterns and advanced capabilities teams most often implement."
+            description="Use these entry points to jump straight to the chart patterns teams use to help users read, compare, and explore data."
           />
         </SectionReveal>
         <Grid container spacing={3} sx={{ mt: 2 }}>
