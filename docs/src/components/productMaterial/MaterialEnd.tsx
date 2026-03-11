@@ -90,11 +90,11 @@ export default function MaterialEnd({ noFaq }: MaterialEndProps) {
                     Does it support Material Design 3?
                   </Typography>
                   <Typography>
-                    Material UI currently adopts Material Design 2. You can follow{' '}
-                    <Link href="https://github.com/mui/material-ui/issues/29345">
-                      this GitHub issue
-                    </Link>{' '}
-                    for future design-related updates.
+                    Material UI ships with Material Design 2 styling by default. The docs now
+                    include an MD3 theme preset preview, alongside guidance for building your own
+                    brand theme or layering external CSS such as Tailwind. Follow the{' '}
+                    <Link href={ROUTES.materialStyling}>styling guide</Link> for the current paths
+                    and future design-related updates.
                   </Typography>
                 </div>
               </ListItem>

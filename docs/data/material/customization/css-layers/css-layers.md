@@ -13,6 +13,8 @@ Benefits of using cascade layers include:
 - **Better integration with CSS frameworks**: With cascade layers, you can use Tailwind CSS v4 utility classes to override Material UI styles without the need for the `!important` directive.
 - **Better debuggability**: Cascade layers appear in the browser's dev tools, making it easier to see which styles are applied and in what order.
 
+If your goal is to keep Material UI's behavior but author most of the presentation in Tailwind or another external CSS system, this is the recommended starting point. The [styling guide](/material-ui/getting-started/styling/) explains where CSS layers fit relative to theme presets such as Material, MD3, and your own brand.
+
 ## Implementing a single cascade layer
 
 This method creates a single layer, namely `@layer mui`, for all Material UI components and global styles.

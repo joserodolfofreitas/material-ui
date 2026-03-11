@@ -4,6 +4,7 @@ import WebRoundedIcon from '@mui/icons-material/WebRounded';
 import DrawRoundedIcon from '@mui/icons-material/DrawRounded';
 import PlayCircleFilledWhiteRoundedIcon from '@mui/icons-material/PlayCircleFilledWhiteRounded';
 import DesignServicesRoundedIcon from '@mui/icons-material/DesignServicesRounded';
+import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 import { InfoCard } from '@mui/docs/InfoCard';
 
 const content = [
@@ -30,6 +31,13 @@ const content = [
     description: 'Learn about the available customization methods.',
     link: '/material-ui/customization/how-to-customize/',
     icon: <DesignServicesRoundedIcon color="primary" />,
+  },
+  {
+    title: 'Styling presets',
+    description:
+      'Compare Material, MD3, and custom-brand styling paths, including Tailwind-friendly layering.',
+    link: '/material-ui/getting-started/styling/',
+    icon: <LayersRoundedIcon color="primary" />,
   },
   {
     title: 'Templates',

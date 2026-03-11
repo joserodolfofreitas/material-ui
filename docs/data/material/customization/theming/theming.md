@@ -16,6 +16,16 @@ Use `ThemeProvider` to inject a custom theme into your application.
 `ThemeProvider` relies on the [context feature of React](https://react.dev/learn/passing-data-deeply-with-context) to pass the theme down to the components, so you need to make sure that `ThemeProvider` is a parent of the components you are trying to customize.
 You can learn more about this in [the API section](#themeprovider).
 
+## Style presets
+
+You can use the same theming API to drive very different visual outcomes:
+
+- **Material Design**: use the default theme and component styles.
+- **Material Design 3**: create a theme that swaps in MD3 tokens and component presets.
+- **Your own brand**: define your own palette, typography, shape, and `components` overrides.
+
+See the [styling guide](/material-ui/getting-started/styling/) for a preset-oriented overview, including when to combine theming with external CSS such as Tailwind.
+
 ## Theme configuration variables
 
 Changing the theme configuration variables is the most effective way to match Material UI to your needs.

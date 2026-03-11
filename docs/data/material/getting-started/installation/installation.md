@@ -24,6 +24,17 @@ yarn add @mui/material @emotion/react @emotion/styled
 
 </codeblock>
 
+## Choose a styling path
+
+After installing `@mui/material`, choose the styling preset that matches your product:
+
+- **Material Design**: use the default component styling and start shipping immediately.
+- **Material Design 3**: keep the same package, then apply an MD3-style theme preset to your app.
+- **Your own brand**: define your own tokens and component overrides in the theme.
+- **Tailwind or another CSS framework**: keep the package, then use [CSS layers](/material-ui/customization/css-layers/) so utility classes can win without `!important`.
+
+The [styling guide](/material-ui/getting-started/styling/) walks through these options and explains the trade-offs.
+
 ### Peer dependencies
 
 <!-- #react-peer-version -->

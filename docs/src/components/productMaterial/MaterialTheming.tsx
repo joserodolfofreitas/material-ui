@@ -3,6 +3,7 @@ import { CssVarsProvider } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
+import LayersRounded from '@mui/icons-material/LayersRounded';
 import { HighlightedCode } from '@mui/docs/HighlightedCode';
 import Section from 'docs/src/layouts/Section';
 import SectionHeadline from 'docs/src/components/typography/SectionHeadline';
@@ -12,6 +13,10 @@ import Highlighter from 'docs/src/components/action/Highlighter';
 import SvgMaterialDesign from 'docs/src/icons/SvgMaterialDesign';
 import Frame from 'docs/src/components/action/Frame';
 import PlayerCard from 'docs/src/components/showcase/PlayerCard';
+import {
+  type ThemeRecipe,
+  getThemeFromRecipe,
+} from 'docs/src/components/home/MaterialDesignComponents';
 
 const code = `
 <Card
@@ -73,7 +78,7 @@ const code = `
 </Card>`;
 
 export default function MaterialTheming() {
-  const [customized, setCustomized] = React.useState(true);
+  const [recipe, setRecipe] = React.useState<ThemeRecipe>('brand');
   return (
     <Section>
       <Grid container spacing={2}>
@@ -88,18 +93,44 @@ export default function MaterialTheming() {
             description="Start quickly with Material Design or use the advanced theming feature to easily tailor the components to your needs."
           />
           <Group sx={{ m: -2, p: 2 }}>
-            <Highlighter disableBorder selected={customized} onClick={() => setCustomized(true)}>
+            <Highlighter
+              disableBorder
+              selected={recipe === 'brand'}
+              onClick={() => setRecipe('brand')}
+            >
               <Item
                 icon={<AutoAwesomeRounded color="warning" />}
-                title="Custom Theme"
-                description="Theming allows you to use your brand's design tokens, easily making the components reflect its look and feel."
+                title="Your Brand"
+                description="A polished example brand preset with gradients, soft surfaces, and custom tokens layered on the same components."
               />
             </Highlighter>
-            <Highlighter disableBorder selected={!customized} onClick={() => setCustomized(false)}>
+            <Highlighter disableBorder selected={recipe === 'md3'} onClick={() => setRecipe('md3')}>
+              <Item
+                icon={<LayersRounded color="primary" />}
+                title="MD3 Theme"
+                description="Swap in a Material Design 3 preset when you want updated shapes, tonal surfaces, and different component treatments."
+              />
+            </Highlighter>
+            <Highlighter
+              disableBorder
+              selected={recipe === 'material'}
+              onClick={() => setRecipe('material')}
+            >
               <Item
                 icon={<SvgMaterialDesign />}
                 title="Material Design"
                 description="Every component comes with Google's tried and tested design system ready for use."
+              />
+            </Highlighter>
+            <Highlighter
+              disableBorder
+              selected={recipe === 'brutalism'}
+              onClick={() => setRecipe('brutalism')}
+            >
+              <Item
+                icon={<AutoAwesomeRounded color="error" />}
+                title="Brutalism"
+                description="An intentionally harsh preset that pushes square corners, hard borders, and offset shadows to show how far theming can diverge."
               />
             </Highlighter>
           </Group>
@@ -116,13 +147,9 @@ export default function MaterialTheming() {
                 minHeight: 188,
               }}
             >
-              {customized ? (
-                <PlayerCard />
-              ) : (
-                <CssVarsProvider>
-                  <PlayerCard disableTheming />
-                </CssVarsProvider>
-              )}
+              <CssVarsProvider theme={getThemeFromRecipe(recipe)}>
+                <PlayerCard disableTheming />
+              </CssVarsProvider>
             </Frame.Demo>
             <Frame.Info sx={{ maxHeight: 300, overflow: 'auto' }}>
               <HighlightedCode copyButtonHidden plainStyle code={code} language="jsx" />

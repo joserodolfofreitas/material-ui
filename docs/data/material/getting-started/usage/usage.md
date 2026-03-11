@@ -9,6 +9,16 @@ For example, try changing the `variant` on the [Button](/material-ui/react-butto
 
 {{"demo": "ButtonUsage.js", "defaultCodeOpen": true}}
 
+## Pick your styling preset
+
+Material UI components work with three common styling paths:
+
+- Keep the default Material Design styling.
+- Apply an MD3-style theme preset.
+- Build your own brand theme on top of the same components.
+
+If you plan to style primarily with external CSS or Tailwind, see the [styling guide](/material-ui/getting-started/styling/) together with the [CSS layers guide](/material-ui/customization/css-layers/).
+
 ## Globals
 
 Since Material UI components are built to function in isolation, they don't require any kind of globally scoped styles.

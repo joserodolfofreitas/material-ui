@@ -17,6 +17,7 @@ const ROUTES = {
   materialAllComponents: '/material-ui/all-components/',
   freeTemplates: '/material-ui/getting-started/templates/',
   components: '/material-ui/getting-started/supported-components/',
+  materialStyling: '/material-ui/getting-started/styling/',
   customization: '/material-ui/customization/how-to-customize/',
   theming: '/material-ui/customization/theming/',
   documentation: '/material-ui/getting-started/',

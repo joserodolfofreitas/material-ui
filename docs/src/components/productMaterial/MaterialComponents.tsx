@@ -29,7 +29,10 @@ import Highlighter from 'docs/src/components/action/Highlighter';
 import More from 'docs/src/components/action/More';
 import Frame from 'docs/src/components/action/Frame';
 import { ShowcaseCodeWrapper } from 'docs/src/components/home/ShowcaseContainer';
-import { customTheme } from 'docs/src/components/home/MaterialDesignComponents';
+import {
+  type ThemeRecipe,
+  getThemeFromRecipe,
+} from 'docs/src/components/home/MaterialDesignComponents';
 import { HighlightedCode } from '@mui/docs/HighlightedCode';
 import MaterialVsCustomToggle from 'docs/src/components/action/MaterialVsCustomToggle';
 import ROUTES from 'docs/src/route';
@@ -107,7 +110,7 @@ const CODES = {
 
 export default function MaterialComponents() {
   const [demo, setDemo] = React.useState<(typeof DEMOS)[number]>(DEMOS[0]);
-  const [customized, setCustomized] = React.useState(false);
+  const [recipe, setRecipe] = React.useState<ThemeRecipe>('material');
   const icons = {
     [DEMOS[0]]: <SmartButtonRounded fontSize="small" />,
     [DEMOS[1]]: <InputRounded fontSize="small" />,
@@ -140,7 +143,7 @@ export default function MaterialComponents() {
         <Grid size={{ xs: 12, md: 6 }}>
           <Frame sx={{ height: '100%' }}>
             <Frame.Demo className="mui-default-theme" sx={{ flexGrow: 1 }}>
-              <CssVarsProvider theme={customized ? customTheme : undefined}>
+              <CssVarsProvider theme={getThemeFromRecipe(recipe)}>
                 {demo === 'Button' && (
                   <Box
                     sx={{
@@ -285,7 +288,7 @@ export default function MaterialComponents() {
               </CssVarsProvider>
             </Frame.Demo>
             <Frame.Info data-mui-color-scheme="dark" sx={{ p: 0 }}>
-              <MaterialVsCustomToggle customized={customized} setCustomized={setCustomized} />
+              <MaterialVsCustomToggle recipe={recipe} setRecipe={setRecipe} />
               <ShowcaseCodeWrapper maxHeight={demo === 'Table' ? 220 : 350} hasDesignToggle>
                 <HighlightedCode copyButtonHidden plainStyle code={CODES[demo]} language="jsx" />
               </ShowcaseCodeWrapper>

@@ -2,16 +2,17 @@ import * as React from 'react';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button, { buttonClasses } from '@mui/material/Button';
+import {
+  type ThemeRecipe,
+  themeRecipeLabels,
+} from 'docs/src/components/home/MaterialDesignComponents';
 
 interface MaterialVsCustomToggleProps {
-  customized: boolean;
-  setCustomized: React.Dispatch<boolean>;
+  recipe: ThemeRecipe;
+  setRecipe: React.Dispatch<ThemeRecipe>;
 }
 
-export default function MaterialVsCustomToggle({
-  customized,
-  setCustomized,
-}: MaterialVsCustomToggleProps) {
+export default function MaterialVsCustomToggle({ recipe, setRecipe }: MaterialVsCustomToggleProps) {
   return (
     <Box
       sx={(theme) => ({
@@ -22,6 +23,7 @@ export default function MaterialVsCustomToggle({
         p: 1.5,
         display: 'flex',
         gap: 1,
+        flexWrap: 'wrap',
         zIndex: 3,
         background: `linear-gradient(to bottom, ${
           (theme.vars || theme).palette.common.black
@@ -39,22 +41,42 @@ export default function MaterialVsCustomToggle({
       <Button
         size="small"
         variant="outlined"
-        color={customized ? 'secondary' : 'primary'}
+        color={recipe === 'material' ? 'primary' : 'secondary'}
         onClick={() => {
-          setCustomized(false);
+          setRecipe('material');
         }}
       >
-        Material Design
+        {themeRecipeLabels.material}
       </Button>
       <Button
         size="small"
         variant="outlined"
-        color={customized ? 'primary' : 'secondary'}
+        color={recipe === 'md3' ? 'primary' : 'secondary'}
         onClick={() => {
-          setCustomized(true);
+          setRecipe('md3');
         }}
       >
-        Custom theme
+        {themeRecipeLabels.md3}
+      </Button>
+      <Button
+        size="small"
+        variant="outlined"
+        color={recipe === 'brand' ? 'primary' : 'secondary'}
+        onClick={() => {
+          setRecipe('brand');
+        }}
+      >
+        {themeRecipeLabels.brand}
+      </Button>
+      <Button
+        size="small"
+        variant="outlined"
+        color={recipe === 'brutalism' ? 'primary' : 'secondary'}
+        onClick={() => {
+          setRecipe('brutalism');
+        }}
+      >
+        {themeRecipeLabels.brutalism}
       </Button>
     </Box>
   );

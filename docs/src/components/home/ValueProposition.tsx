@@ -14,7 +14,7 @@ const content = [
     icon: <InvertColorsRoundedIcon fontSize="small" color="primary" />,
     title: 'Timeless aesthetics',
     description:
-      "Build beautiful UIs with ease. Start with Google's Material Design, or create your own sophisticated theme.",
+      'Build beautiful UIs with ease. Start with Material Design, preview an MD3 preset, or create your own sophisticated theme.',
   },
   {
     icon: <HandymanRoundedIcon fontSize="small" color="primary" />,
