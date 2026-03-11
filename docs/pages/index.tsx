@@ -84,7 +84,7 @@ export default function Home() {
             right: 0,
             left: 0,
             height: { xs: 820, md: 1080 },
-            background: premiumTokens.hero.stageBackground(theme),
+            background: theme.palette.background.default,
             pointerEvents: 'none',
             zIndex: 0,
           },
@@ -95,11 +95,7 @@ export default function Home() {
             right: 0,
             left: 0,
             height: { xs: 820, md: 1080 },
-            background: `
-              linear-gradient(180deg, ${theme.palette.mode === 'dark' ? alpha(theme.palette.common.white, 0) : alpha(theme.palette.common.white, 0.28)} 0%, transparent 26%),
-              radial-gradient(circle at 24% 24%, ${alpha(theme.palette.primary[200], theme.palette.mode === 'dark' ? 0 : 0.35)} 0%, transparent 26%),
-              radial-gradient(circle at 78% 30%, ${alpha(theme.palette.info.main, theme.palette.mode === 'dark' ? 0.06 : 0.16)} 0%, transparent 24%)
-            `,
+            background: 'none',
             pointerEvents: 'none',
             zIndex: 0,
           },

@@ -8,7 +8,6 @@ import { alpha, keyframes } from '@mui/material/styles';
 import KeyboardArrowRightRounded from '@mui/icons-material/KeyboardArrowRightRounded';
 import GradientText from 'docs/src/components/typography/GradientText';
 import StatusBadge from 'docs/src/components/landing/StatusBadge';
-import GradientMesh from 'docs/src/components/landing/effects/GradientMesh';
 import {
   motionTransition,
   premiumTokens,
@@ -66,22 +65,9 @@ export default function HeroBlock({
           minHeight: { md: 'calc(100vh - var(--MuiDocs-header-height) - 72px)' },
           display: 'flex',
           alignItems: { xs: 'center', md: 'flex-start' },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: { xs: '22%', md: '16%' },
-            right: { xs: '-22%', md: '6%' },
-            width: { xs: 280, md: 620 },
-            height: { xs: 280, md: 620 },
-            background: premiumTokens.hero.visualGlow(theme),
-            opacity: theme.palette.mode === 'dark' ? 0.95 : 1,
-            filter: 'blur(6px)',
-            pointerEvents: 'none',
-          },
         }),
       ]}
     >
-      <GradientMesh />
       <Container
         sx={{
           position: 'relative',

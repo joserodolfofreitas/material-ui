@@ -4,7 +4,7 @@ import BarChartRounded from '@mui/icons-material/BarChartRounded';
 import CalendarMonthRounded from '@mui/icons-material/CalendarMonthRounded';
 import ChatBubbleOutlineRounded from '@mui/icons-material/ChatBubbleOutlineRounded';
 import TableChartRounded from '@mui/icons-material/TableChartRounded';
-import ViewTimelineRounded from '@mui/icons-material/ViewTimelineRounded';
+import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import IconImage from 'docs/src/components/icon/IconImage';
 import ROUTES from 'docs/src/route';
@@ -29,12 +29,28 @@ function buildStatusChip(label: string) {
   );
 }
 
+function withStandardIconWidth(icon: React.ReactElement<unknown>) {
+  return (
+    <Box
+      sx={{
+        width: 36,
+        height: 36,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {icon}
+    </Box>
+  );
+}
+
 export const productMenuItems: ProductMenuItem[] = [
   {
-    id: 'product-core',
+    id: 'product-material-ui',
     name: 'Material UI primitives',
     description: 'Ready-to-use foundational React components, free forever.',
-    href: ROUTES.productCore,
+    href: ROUTES.productMaterial,
     icon: <IconImage name="product-core" />,
   },
   {
@@ -42,21 +58,21 @@ export const productMenuItems: ProductMenuItem[] = [
     name: 'Data Grid',
     description: 'High-performance data grid for dense, complex product workflows.',
     href: ROUTES.dataGridLanding,
-    icon: <TableChartRounded />,
+    icon: withStandardIconWidth(<TableChartRounded />),
   },
   {
     id: 'product-charts',
     name: 'Charts',
     description: 'Composable charts for dashboards, analytics, and visual exploration.',
     href: ROUTES.chartsLanding,
-    icon: <BarChartRounded />,
+    icon: withStandardIconWidth(<BarChartRounded />),
   },
   {
     id: 'product-scheduler',
     name: 'Scheduler',
     description: 'Scheduling surfaces for events, resources, and timeline-heavy workflows.',
     href: ROUTES.schedulerLanding,
-    icon: <CalendarMonthRounded />,
+    icon: withStandardIconWidth(<CalendarMonthRounded />),
     chip: buildStatusChip('Alpha'),
   },
   {
@@ -64,7 +80,7 @@ export const productMenuItems: ProductMenuItem[] = [
     name: 'Chatbox',
     description: 'Conversational UI for assistants, messaging, and AI-native experiences.',
     href: ROUTES.chatboxLanding,
-    icon: <ChatBubbleOutlineRounded />,
+    icon: withStandardIconWidth(<ChatBubbleOutlineRounded />),
     chip: buildStatusChip('Alpha'),
   },
   {
@@ -72,7 +88,7 @@ export const productMenuItems: ProductMenuItem[] = [
     name: 'MUI Chat',
     description: "Generate MUI-first examples, scaffold interfaces, and kickstart flows with AI grounded in MUI's ecosystem.",
     href: 'https://chat.mui.com',
-    icon: <AutoAwesomeRounded />,
+    icon: withStandardIconWidth(<AutoAwesomeRounded />),
     chip: buildStatusChip('Alpha'),
   },
   {

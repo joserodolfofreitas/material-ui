@@ -33,7 +33,7 @@ const capabilities = [
   },
   {
     icon: <InsightsRounded />,
-    title: 'Charts that stay in sync',
+    title: 'Charts insights and trend analysis',
     description:
       'Connect chart updates to prompts so trends, comparisons, and anomalies stay tied to the same workflow.',
   },
@@ -60,34 +60,13 @@ export default function AIExperienceBlock() {
       <Grid container spacing={4} sx={{ alignItems: 'center', position: 'relative', zIndex: 1 }}>
         <Grid size={{ xs: 12, md: 5 }}>
           <SectionReveal>
-            <Box
-              sx={(theme) => ({
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 1,
-                mb: 2,
-                px: 1.25,
-                py: 0.75,
-                borderRadius: premiumTokens.radius.pill,
-                border: '1px solid',
-                borderColor:
-                  theme.palette.mode === 'dark'
-                    ? alpha(theme.palette.primary[500], 0.16)
-                    : alpha(theme.palette.primary[200], 0.6),
-                bgcolor:
-                  theme.palette.mode === 'dark'
-                    ? alpha(theme.palette.primary[500], 0.06)
-                    : alpha(theme.palette.common.white, 0.5),
-                backdropFilter: 'blur(12px)',
-              })}
-            >
-              <AutoAwesomeRounded sx={{ fontSize: 16, color: 'primary.main' }} />
-              <Typography variant="body2" sx={{ fontWeight: 700, color: 'text.primary' }}>
-                Built into advanced components
-              </Typography>
-            </Box>
             <SectionHeadline
-              overline="AI-native workflows"
+              overline={
+                <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.75 }}>
+                  <AutoAwesomeRounded sx={{ fontSize: 16, color: 'primary.main' }} />
+                  <span>AI-native workflows</span>
+                </Box>
+              }
               title={
                 <Typography variant="h2">
                   Advanced UI, now enhanced with <GradientText>AI-native workflows</GradientText>
@@ -120,92 +99,71 @@ export default function AIExperienceBlock() {
           </SectionReveal>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
-          <Box
-            sx={(theme) => ({
-              p: { xs: 1, sm: 1.25 },
-              borderRadius: premiumTokens.radius.xl,
-              border: '1px solid',
-              borderColor:
-                theme.palette.mode === 'dark'
-                  ? alpha(theme.palette.primary[300], 0.14)
-                  : alpha(theme.palette.primary[100], 0.7),
-              bgcolor:
-                theme.palette.mode === 'dark'
-                  ? alpha(theme.palette.common.white, 0.02)
-                  : alpha(theme.palette.common.white, 0.42),
-              backdropFilter: 'blur(18px)',
-              boxShadow:
-                theme.palette.mode === 'dark'
-                  ? `0 18px 50px ${alpha(theme.palette.common.black, 0.32)}`
-                  : `0 18px 50px ${alpha(theme.palette.primary[900], 0.08)}`,
-            })}
-          >
-            <Grid container spacing={2}>
-              {capabilities.map((cap, index) => (
-                <Grid key={cap.title} size={{ xs: 12, sm: 6 }}>
-                  <SectionReveal delay={index * 80}>
-                    <Paper
-                      variant="outlined"
+          <Grid container spacing={2}>
+            {capabilities.map((cap, index) => (
+              <Grid key={cap.title} size={{ xs: 12, sm: 6 }}>
+                <SectionReveal delay={index * 80}>
+                  <Paper
+                    variant="outlined"
+                    sx={[
+                      (theme) => ({
+                        p: 2.75,
+                        minHeight: 176,
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 1.25,
+                        borderRadius: premiumTokens.radius.lg,
+                        borderColor:
+                          theme.palette.mode === 'dark'
+                            ? alpha(theme.palette.primary[300], 0.1)
+                            : alpha(theme.palette.primary[100], 0.75),
+                        bgcolor:
+                          theme.palette.mode === 'dark'
+                            ? alpha(theme.palette.common.white, 0.03)
+                            : alpha(theme.palette.common.white, 0.86),
+                        boxShadow: 'none',
+                        ...cardHoverSx(theme),
+                      }),
+                    ]}
+                  >
+                    <Box
                       sx={[
                         (theme) => ({
-                          p: 2.75,
-                          minHeight: 176,
-                          height: '100%',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: 1.25,
-                          borderRadius: premiumTokens.radius.lg,
-                          borderColor:
-                            theme.palette.mode === 'dark'
-                              ? alpha(theme.palette.primary[300], 0.1)
-                              : alpha(theme.palette.primary[100], 0.75),
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: 40,
+                          height: 40,
+                          borderRadius: '10px',
+                          color: (theme.vars || theme).palette.primary[700],
                           bgcolor:
                             theme.palette.mode === 'dark'
-                              ? alpha(theme.palette.common.white, 0.03)
-                              : alpha(theme.palette.common.white, 0.86),
-                          boxShadow: 'none',
-                          ...cardHoverSx(theme),
+                              ? alpha(theme.palette.primary[900], 0.34)
+                              : alpha(theme.palette.primary[100], 0.55),
+                          transition: motionTransition(['transform', 'background-color']),
+                          '.MuiPaper-root:hover &': {
+                            transform: 'scale(1.05)',
+                          },
+                          ...theme.applyDarkStyles({
+                            color: (theme.vars || theme).palette.primary[300],
+                          }),
                         }),
                       ]}
                     >
-                      <Box
-                        sx={[
-                          (theme) => ({
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: 40,
-                            height: 40,
-                            borderRadius: '10px',
-                            color: (theme.vars || theme).palette.primary[700],
-                            bgcolor:
-                              theme.palette.mode === 'dark'
-                                ? alpha(theme.palette.primary[900], 0.34)
-                                : alpha(theme.palette.primary[100], 0.55),
-                            transition: motionTransition(['transform', 'background-color']),
-                            '.MuiPaper-root:hover &': {
-                              transform: 'scale(1.05)',
-                            },
-                            ...theme.applyDarkStyles({
-                              color: (theme.vars || theme).palette.primary[300],
-                            }),
-                          }),
-                        ]}
-                      >
-                        {cap.icon}
-                      </Box>
-                      <Typography variant="body1" sx={{ fontWeight: 700, color: 'text.primary' }}>
-                        {cap.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: 'text.secondary', maxWidth: 260 }}>
-                        {cap.description}
-                      </Typography>
-                    </Paper>
-                  </SectionReveal>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+                      {cap.icon}
+                    </Box>
+                    <Typography variant="body1" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                      {cap.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.secondary', maxWidth: 260 }}>
+                      {cap.description}
+                    </Typography>
+                  </Paper>
+                </SectionReveal>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
     </Section>
